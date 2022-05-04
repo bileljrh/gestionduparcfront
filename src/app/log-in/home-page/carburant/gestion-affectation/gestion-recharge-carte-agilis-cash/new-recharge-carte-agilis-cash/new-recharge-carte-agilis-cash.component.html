@@ -1,0 +1,149 @@
+<div class="container-fluid m-0 p-0 frame" [formGroup]="newRechargeForm" ngxUiLoaderBlurred>
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 header">
+      <span class="float-left">
+        <mat-icon class="mr-2">fiber_new</mat-icon>
+        Ajouter nouvelle recharge carte Agilis Cash</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-12 mt-3">
+      Données de recharge
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Mois de mission
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="text" [value]="actualMonth" readonly>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Destination</mat-label>
+        <input matInput type="text" formControlName="destination">
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Index de départ</mat-label>
+        <input matInput type="number" formControlName="indexDepart">
+      </mat-form-field>
+    </div>
+    <!--
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Index d'arrivée</mat-label>
+        <input matInput type="number" formControlName="indexArrivee">
+      </mat-form-field>
+    </div>
+    -->
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Distance à parcourir</mat-label>
+        <input matInput type="number" formControlName="distanceParcourir">
+      </mat-form-field>
+    </div>
+    <!--
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Taux de consommation</mat-label>
+        <input matInput type="number" formControlName="tauxConsommation">
+      </mat-form-field>
+    </div>
+    -->
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Montant demandé
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="number" formControlName="montantDemandee">       
+        <mat-error *ngIf="f.montantDemandee.invalid">Montant Demandee est requis</mat-error>   
+      </mat-form-field>
+    </div>
+    <!--
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Quatité de carburant</mat-label>
+        <input matInput type="number" placeholder="quantité actuelle dans le réservoir"
+               formControlName="quantiteCarburantReservoir">
+      </mat-form-field>
+    </div>
+    -->
+    <div class="col-12 mt-4">
+      Données du carte Agilis Cash
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Numéro de carte
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <mat-select formControlName="numeroCarte">
+          <mat-option *ngFor="let carteAgilisCash of listCarteAgilisCashNotRecharged"
+                      [value]="carteAgilisCash">{{carteAgilisCash.numeroCarte}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.numeroCarte.invalid">Numero Carte est requis</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Montant
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="number" [value]="montant" readonly>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Date fin validité
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="text" [value]="dateFinValidite|date: 'dd-MM-yyyy'" readonly>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Numéro de série</mat-label>
+        <input matInput type="text" [value]="numeroPlaque" readonly>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Bénéficiaire</mat-label>
+        <input matInput type="text" [value]="nomBeneficiaire" readonly>
+        <mat-hint align="end">{{matriculeBeneficiaire}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Structure</mat-label>
+        <input matInput type="text" [value]="designationStructure" readonly>
+        <mat-hint align="end">{{codeStructure}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Type carburant</mat-label>
+        <input matInput type="text" [value]="typeCarburant" readonly>
+      </mat-form-field>
+    </div>
+    <div class="offset-6 col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onConfirm()" style="width: 100%"
+                [disabled]="!newRechargeForm.valid">
+          Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader></ngx-ui-loader>
+
+
+

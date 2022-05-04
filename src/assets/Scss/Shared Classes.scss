@@ -1,0 +1,118 @@
+@import "Variables";
+
+body {
+  outline: none;
+  background-color: transparent;
+}
+
+
+.frame {
+  padding: 15px;
+  border: 1px solid $Third_Color;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  background-color: $Second_Color;
+  box-shadow: inset -1px 3px 40px -38px rgba(63, 81, 181, 1);
+}
+
+button {
+  width: 140px;
+  min-height: 30px;
+  font-size: 12px;
+  line-height: 5px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.primary {
+  background-color: $First_Color;
+  color: white;
+}
+
+.secondary {
+  background-color: $Third_Color;
+  color: black;
+  border: 0.5mm solid $First_Color;
+}
+
+div [class="example-container mat-elevation-z8"], table {
+  background-color: $Second_Color;
+  box-shadow: none;
+  width: 100%;
+}
+
+
+table td {
+  font-size: 13px;
+}
+
+table th {
+  background-color: $Second_Color;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+table tr {
+  transition: all 0.12s ease-in-out;
+}
+
+table tr:nth-child(odd) {
+  background-color: $Third_Color;
+}
+
+table tr:hover {
+  background-color: rgba(63, 81, 181, 0.4);
+}
+
+
+button:focus {
+  outline: none;
+}
+
+.isActif {
+  color: $First_Color;
+  cursor: pointer;
+}
+
+.isntActiif {
+  color: $Second_Color;
+  cursor: not-allowed;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+//.example-full-width {
+//  width: 100%;
+//}
+
+::ng-deep .mat-sort-header-arrow {
+  color: dimgray;
+}
+
+
+.mouseUp {
+  cursor: pointer;
+
+  &:hover {
+    color: $First_Color;
+  }
+}
+
+.addButton {
+  width: 100%;
+  background-color: $Third_Color;
+  border: 1px solid white;
+}
+
+.required {
+  transform: scale(0.6);
+  color: red;
+}
+
+

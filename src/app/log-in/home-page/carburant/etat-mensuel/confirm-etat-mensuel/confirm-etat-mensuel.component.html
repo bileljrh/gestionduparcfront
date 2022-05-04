@@ -1,0 +1,28 @@
+<div class="container-fluid m-0 p-0">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0">
+      <span class="float-left">
+        <mat-icon class="mr-2">how_to_reg</mat-icon>
+        Confirmation d'état mensuel sélectionné</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-12 mt-3">
+      <ng-container *ngIf="!isConfirm">Voulez vous confirmer cet état mensuel? cette action est irréversible si vous
+        confirmer votre choix !
+      </ng-container>
+      <ng-container *ngIf="isConfirm">Voulez vous déconfirmer cet état mensuel? cette action est irréversible si vous
+        confirmer votre choix !
+      </ng-container>
+    </div>
+    <div class="offset-6 col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onCancelConfirmation()" style="width: 90%">Annuler</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onConfirmConfirmation()" style="width: 100%">Confirmer</button>
+      </div>
+    </div>
+  </div>
+</div>

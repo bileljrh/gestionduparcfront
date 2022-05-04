@@ -1,0 +1,148 @@
+@import "src/assets/Scss/Variables";
+@import "src/assets/Scss/Shared Classes";
+
+
+div.container-fluid.m-0.m-0 {
+  border: 2px solid $First_Color;
+  border-radius: 5px;
+}
+
+span.float-right {
+  font-size: 15px;
+  font-weight: 500;
+  color: $First_Color;
+}
+
+
+.title {
+  height: 38px;
+  background-color: $First_Color;
+}
+
+
+div > div > span.float-right.closeDialog {
+  margin-top: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  color: $First_Color;
+  background-color: white;
+  padding: 0px 3px 3px 3px;
+  width: 17px;
+  height: 17px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 50%;
+
+
+  &:hover {
+    color: $First_Color;
+  }
+}
+
+div > span.float-left {
+  color: white;
+  padding-left: 10px;
+  vertical-align: middle;
+  display: flex !important;
+  align-items: center;
+  padding-top: 7px;
+}
+
+div > span.float-left > mat-icon {
+  transform: scale(0.7);
+}
+
+
+button > span > mat-icon {
+  transform: scale(0.6);
+}
+
+.float-right > button:nth-child(1) {
+  background-color: white;
+  color: $First_Color;
+
+}
+
+.float-right > button:nth-child(1) {
+  background-color: white;
+  color: $First_Color;
+  border: 1px solid $First_Color;
+  font-size: 12px;
+}
+
+
+div.offset-6.col-3 > div > button {
+  background-color: white;
+  color: $First_Color;
+  border: 1px solid $First_Color;
+  font-size: 12px;
+}
+
+
+div.col-3 > div > button {
+  background-color: $First_Color;
+  color: white;
+  border: none;
+  font-size: 12px;
+}
+
+.example-full-width {
+  width: 100%;
+  font-size: 12px;
+}
+
+
+//==============================================
+
+table {
+  width: 100%;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.example-element-diagram {
+  min-width: 80px;
+  border: 2px solid black;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  height: 104px;
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description {
+  padding: 16px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+
+.example-full-width1 {
+  width: 100%;
+  font-size: 11px;
+}

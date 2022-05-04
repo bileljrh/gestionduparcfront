@@ -1,0 +1,28 @@
+<div class="container-fluid m-0 p-0 frame" [formGroup]="modifiedUniteForm">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0">
+      <span class="float-left">
+        <mat-icon class="mr-2">fiber_new</mat-icon>
+        Modifier l'unité sélectionnée</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-12 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Unité</mat-label>
+        <input matInput placeholder type="text" formControlName="unite">
+      </mat-form-field>
+    </div>
+    <div class="offset-6 col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onConfirm()" style="width: 100%" [disabled]="!modifiedUniteForm.valid">
+          Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

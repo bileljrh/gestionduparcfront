@@ -1,0 +1,29 @@
+@import "src/assets/Scss/Variables";
+@import "src/assets/Scss/Shared Classes";
+
+td:nth-child(3), td:nth-child(4) {
+  cursor: pointer;
+}
+
+.example-container {
+  height: 340px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+
+div [class="example-container mat-elevation-z8"] {
+  background-color: $Second_Color;
+  box-shadow: none;
+  width: 100%;
+}
+
+
+div.col-12 > button {
+  width: 100%;
+  background-color: $Third_Color;
+  border: 1px solid white;
+}

@@ -1,0 +1,1858 @@
+<div class="container-fluid m-0 p-0 frame" ngxUiLoaderBlurred style="max-height: 700px;">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 title">
+      <span class="float-left">
+        <mat-icon class="mr-2">settings</mat-icon>
+        Assigner les droits d'accès au groupe</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-4 mt-4">
+      <div class="container-fluid">
+        <div class="row">
+          <div (click)="displayModuleAuthorities(1)" class="col-12 borderTopContainer"
+               [ngClass]="{'elementContainer': codeAuthorities !== 1, 'elementContainerActif':codeAuthorities === 1 }"
+               style="border-top-left-radius: 5px;border-top-right-radius: 5px;" matRipple>
+            <mat-icon class="matIconContainer">add_shopping_cart</mat-icon>
+            Achat
+          </div>
+          <div (click)="displayModuleAuthorities(2)" class="col-12 borderTopContainer"
+               [ngClass]="{'elementContainer': codeAuthorities !== 2, 'elementContainerActif':codeAuthorities === 2 }"
+               matRipple>
+            <mat-icon mat-icon class="matIconContainer">emoji_transportation</mat-icon>
+            Administratif
+          </div>
+          <div (click)="displayModuleAuthorities(3)" class="col-12 borderTopContainer"
+               [ngClass]="{'elementContainer': codeAuthorities !== 3, 'elementContainerActif':codeAuthorities === 3 }"
+               matRipple>
+            <mat-icon class="matIconContainer">security</mat-icon>
+            Administration
+          </div>
+          <div (click)="displayModuleAuthorities(4)" class="col-12 borderTopContainer"
+               [ngClass]="{'elementContainer': codeAuthorities !== 4, 'elementContainerActif':codeAuthorities === 4 }"
+               matRipple>
+            <mat-icon class="matIconContainer">local_gas_station</mat-icon>
+            Carburant
+          </div>
+          <div (click)="displayModuleAuthorities(5)" class="col-12 borderTopContainer"
+               [ngClass]="{'elementContainer': codeAuthorities !== 5, 'elementContainerActif':codeAuthorities === 5 }"
+               matRipple>
+            <mat-icon mat-icon class="matIconContainer">book_online</mat-icon>
+            Exploitation
+          </div>
+          <div (click)="displayModuleAuthorities(6)" class="col-12 borderTopContainer"
+               [ngClass]="{'elementContainer': codeAuthorities !== 6, 'elementContainerActif':codeAuthorities === 6 }"
+               matRipple>
+            <mat-icon class="matIconContainer">handyman</mat-icon>
+            Maintenance et réparation
+          </div>
+
+          <div (click)="displayModuleAuthorities(7)" class="col-12 borderTopContainer"
+               [ngClass]="{'elementContainer': codeAuthorities !== 7, 'elementContainerActif':codeAuthorities === 7 }"
+               matRipple>
+            <mat-icon class="matIconContainer">addchart</mat-icon>
+            Ordres de mission
+          </div>
+          <div (click)="displayModuleAuthorities(8)" class="col-12 borderTopContainer"
+               [ngClass]="{'elementContainer': codeAuthorities !== 8, 'elementContainerActif':codeAuthorities === 8 }"
+               matRipple>
+            <mat-icon class="matIconContainer">miscellaneous_services</mat-icon>
+            Reférentiel
+          </div>
+          <div (click)="displayModuleAuthorities(9)" class="col-12 borderTopContainer borderButtonContainer"
+               [ngClass]="{'elementContainer': codeAuthorities !== 9, 'elementContainerActif':codeAuthorities === 9 }"
+               style="border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;" matRipple>
+            <mat-icon class="matIconContainer">table_view</mat-icon>
+            Stock
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-8 mt-4">  
+
+      <div *ngIf="codeAuthorities===1" class="authoritiesContainer">
+        <div class="row mt-3">
+          <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+            <li>Bon de commande :</li>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="VIEW_BON_COMMANDE_CTRL">Lire</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="ADD_BON_COMMANDE_CTRL">Ajouter</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="MODIFY_BON_COMMANDE_CTRL">Modifier</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="DELETE_BON_COMMANDE_CTRL">Supprimer</mat-checkbox>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="codeAuthorities===2" class="authoritiesContainer">
+        <div class="container-fluid">
+
+          <div class="row mt-3">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion des véhicules :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_VEHICULE_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_VEHICULE_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_VEHICULE_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_VEHICULE_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion des taxes de circulation :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_TAXE_CIRCULATION_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_TAXE_CIRCULATION_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_TAXE_CIRCULATION_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_TAXE_CIRCULATION_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion des assurances :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_ASSURANCE_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_ASSURANCE_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_ASSURANCE_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_ASSURANCE_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion des visites techniques :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_VISITE_TECHNIQUE_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_VISITE_TECHNIQUE_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_VISITE_TECHNIQUE_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_VISITE_TECHNIQUE_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion des réformes :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_REFORME_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_REFORME_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_REFORME_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_REFORME_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion des GPS :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_GPS_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_GPS_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_GPS_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_GPS_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div *ngIf="codeAuthorities===3" class="authoritiesContainer">
+        <div class="container-fluid">
+          <div class="row mt-3">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Alertes :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_ALERTES_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_ALERTES_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_ALERTES_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_ALERTES_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Création des utilisateurs :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_USERS_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_USERS_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_USERS_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_USERS_CTRL">Supprimer</mat-checkbox>
+            </div>
+
+            <div class="col-5 m-0 p-0 singleAuthorityElement">
+            </div>
+
+
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ACTIVATE_USERS_CTRL">Activer</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="LOCK_USERS_CTRL">Vérouiller</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_PASSWORD_USERS_CTRL">Modifier MP</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="RESET_PASSWORD_USERS_CTRL">Reset MP</mat-checkbox>
+            </div>
+
+
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Groupes des utilisateurs :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_GROUPES_USERS_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_GROUPES_USERS_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_GROUPES_USERS_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_GROUPES_USERS_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Messages applicatifs :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_MESSAGES_APPLICATIFS_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_MESSAGES_APPLICATIFS_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_MESSAGES_APPLICATIFS_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_MESSAGES_APPLICATIFS_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>paramètres d'application :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_PARAMETRES_APPLICATION_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_PARAMETRES_APPLICATION_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_PARAMETRES_APPLICATION_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Traçabilités :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_TRACABILITES_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_TRACABILITES_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="codeAuthorities===4" class="authoritiesContainer">
+        <div class="container-fluid">
+
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion De recharge de carburant de Complementaire:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_DEMANDE_RECHARGE_COMPLEMENTAIRE_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_DEMANDE_RECHARGE_COMPLEMENTAIRE_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_DEMANDE_RECHARGE_COMPLEMENTAIRE_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="CONFIRMATION_DEMANDE_RECHARGE_COMPLEMENTAIRE_CTRL">Confirmer </mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VALIDATION_DEMANDE_RECHARGE_COMPLEMENTAIRE_CTRL">Valider</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_RECHARGE_COMPLEMENTAIRE_CTRL">Supprimer</mat-checkbox>
+            </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+                <li>Gestion De recharge de carburant de compensation:</li>
+              </div>
+              <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_DEMANDE_RECHARGE_CARBURANT_COMPENSATION_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_DEMANDE_RECHARGE_CARBURANT_COMPENSATION_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_DEMANDE_RECHARGE_CARBURANT_COMPENSATION_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="CONFIRMATION_DEMANDE_RECHARGE_CARBURANT_COMPENSATION_CTRL">Confirmer </mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VALIDATION_DEMANDE_RECHARGE_CARBURANT_COMPENSATION_CTRL">Valider</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_RECHARGE_CARBURANT_COMPENSATION_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>  
+
+
+
+
+
+
+          <div style="text-align: center;">Distribution de carburant</div>
+        
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Distribution de carburant de fonction:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_DISTRIBUTION_CARBURANT_FONCTION_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_DISTRIBUTION_CARBURANT_FONCTION_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_DISTRIBUTION_CARBURANT_FONCTION_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_DISTRIBUTION_CARBURANT_FONCTION_CTRL">Supprimer</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VEHICULE_DISTRIBUTION_CARBURANT_FONCTION_CTRL">Vehicule</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Distribution de carburant de vehicule:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_DISTRIBUTION_CARBURANT_VEHICULE_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_DISTRIBUTION_CARBURANT_VEHICULE_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_DISTRIBUTION_CARBURANT_VEHICULE_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_DISTRIBUTION_CARBURANT_VEHICULE_CTRL">Supprimer</mat-checkbox>
+            </div>
+
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Distribution de carburant de compensation:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_DESTRIBUTION_CARBURANT_SERVICE_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_DESTRIBUTION_CARBURANT_SERVICE_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_DESTRIBUTION_CARBURANT_SERVICE_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_DESTRIBUTION_CARBURANT_SERVICE_CTRL">Supprimer</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VEHICULE_DESTRIBUTION_CARBURANT_SERVICE_CTRL">Vehicule</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Distribution de carburant de service:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_DESTRIBUTION_CARBURANT_COMPENSATION_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_DESTRIBUTION_CARBURANT_COMPENSATION_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_DESTRIBUTION_CARBURANT_COMPENSATION_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_DESTRIBUTION_CARBURANT_COMPENSATION_CTRL">Supprimer</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VEHICULE_DESTRIBUTION_CARBURANT_COMPENSATION_CTRL">Vehicule</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Transfert parc:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_TRANSFERT_PARC_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_TRANSFERT_PARC_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DETAIL_TRANSFERT_PARC_CTRL">Modifier</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Retour carburant:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_RETOUR_CARBURANT_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_RETOUR_CARBURANT_CTRL">Ajouter</mat-checkbox>
+            </div>
+
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Etat mensuel:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_ETAT_MENSUEL_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_ETAT_MENSUEL_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_ETAT_MENSUEL_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_ETAT_MENSUEL_CTRL">Supprimer</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VEHICULE_ETAT_MENSUEL_CTRL">Vehicule</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VALIDER_ETAT_MENSUEL_CTRL">Valider</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="CONFIRMER_ETAT_MENSUEL_CTRL">Confirmer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Bon de carburant des Bons:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_BON_CARBURANT_BON_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_BON_CARBURANT_BON_CTRL">Ajouter</mat-checkbox>
+            </div>
+
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Suivi:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_SUIVI_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_SUIVI_CTRL">Ajouter</mat-checkbox>
+            </div>
+
+          </div>
+
+          <div style="text-align: center;">Carte Plafond </div>
+          
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion Carte:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_CARTE_PLAFOND_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_CARTE_PLAFOND_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_CARTE_PLAFOND_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_CARTE_PLAFOND_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>  
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion demande affectation :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_DEMANDE_AFFECTATION_CARTE_PLAFOND_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_DEMANDE_AFFECTATION_CARTE_PLAFOND_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="CONFIRM_DEMANDE_AFFECTATION_CARTE_PLAFOND_CTRL">Confirmer</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VALIDATION_DEMANDE_AFFECTATION_CARTE_PLAFOND_CTRL">Valider</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VEHICULE_DEMANDE_AFFECTATION_CARTE_PLAFOND_CTRL">Vehicule</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_DEMANDE_AFFECTATION_CARTE_PLAFOND_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion Historique demande affectation:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_HISTORIQUE_DEMANDE_AFFECTATION_CARTE_PLAFOND_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VEHICULE_HISTORIQUE_DEMANDE_AFFECTATION_CARTE_PLAFOND_CTRL">Vehicule</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_HISTORIQUE_DEMANDE_AFFECTATION_CARTE_PLAFOND_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion declaration perte :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_DECLARATION_PERTE_CARTE_PLAFOND_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_DECLARATION_PERTE_CARTE_PLAFOND_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_DECLARATION_PERTE_CARTE_PLAFOND_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_DECLARATION_PERTE_CARTE_PLAFOND_CTRL">Supprimer</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="CONFIRMATION_DECLARATION_PERTE_CARTE_PLAFOND_CTRL">Confirmer</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion Historique declaration perte :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_HISTORIQUE_DECLARATION_PERTE_CARTE_PLAFOND_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_HISTORIQUE_DECLARATION_PERTE_CARTE_PLAFOND_CTRL">Supprimer</mat-checkbox>
+          </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion demande annulation :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_DEMANDE_ANNULATION_CARTE_PLAFOND_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_DEMANDE_ANNULATION_CARTE_PLAFOND_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_DEMANDE_ANNULATION_CARTE_PLAFOND_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="CONFIRMATION_DEMANDE_ANNULATION_CARTE_PLAFOND_CTRL">Confirmer</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_DEMANDE_ANNULATION_CARTE_PLAFOND_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion historique demande annulation :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_HISTORIQUE_DEMANDE_ANNULATION_CARTE_PLAFOND_CTRL">Lire</mat-checkbox>
+            </div>
+            </div>
+     <br>
+          <div style="text-align: center;">Carte Agilis Cash </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion Carte:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_AGILIS_CASH_CRT">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_AGILIS_CASH_CRT">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_AGILIS_CASH_CRT">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_AGILIS_CASH_CRT">Supprimer</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VEHICULE_AGILIS_CASH_CRT">Vehicule</mat-checkbox>
+            </div>
+          </div>  
+
+      <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion de recharge :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_RECHARGE_AGILIS_CRT">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_RECHARGE_AGILIS_CRT">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_RECHARGE_AGILIS_CRT">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VEHICULE_RECHARGE_AGILIS_CRT">Vehicule</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VALIDER_RECHARGE_AGILIS_CRT">Valider</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="CONFIRMER_RECHARGE_AGILIS_CRT">Confirmer</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_RECHARGE_AGILIS_CRT">Supprimer</mat-checkbox>
+            </div>
+          
+          </div>
+
+
+  <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion de recharge :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_RECHARGE_AGILIS_CRT">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_RECHARGE_AGILIS_CRT">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_RECHARGE_AGILIS_CRT">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VEHICULE_RECHARGE_AGILIS_CRT">Vehicule</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VALIDER_RECHARGE_AGILIS_CRT">Valider</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="CONFIRMER_RECHARGE_AGILIS_CRT">Confirmer</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_RECHARGE_AGILIS_CRT">Supprimer</mat-checkbox>
+            </div>
+          
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion declaration de perte:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_DECLARATION_PERTE_AGILIS_CRT">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_DECLARATION_PERTE_AGILIS_CRT">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_DECLARATION_PERTE_AGILIS_CRT">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_DECLARATION_PERTE_AGILIS_CRT">Supprimer</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Historique de perte:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_HISTORIQUE_PERTE_AGILIS_CRT">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_HISTORIQUE_PERTE_AGILIS_CRT">Supprimer</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion d'annulation:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_ANNULATION_AGILIS_CRT">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_ANNULATION_AGILIS_CRT">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_ANNULATION_AGILIS_CRT">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_ANNULATION_AGILIS_CRT">Supprimer</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="CONFIRMER_ANNULATION_AGILIS_CRT">Confirmer</mat-checkbox>
+            </div>
+          </div>
+          <br>
+          <div style="text-align: center;">Carte Jocker </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion Carte :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_CARTE_JOCKER_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_CARTE_JOCKER_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_CARTE_JOCKER_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_CARTE_JOCKER_CTRL">Supprimer</mat-checkbox>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="row mt-2">
+          <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+            <li>Gestion Demande Affectation :</li>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="VIEW_DEMANDE_AFFECTATION_CARTE_JOCKER_CTRL">Lire</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="ADD_DEMANDE_AFFECTATION_CARTE_JOCKER_CTRL">Ajouter</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="MODIFY_DEMANDE_AFFECTATION_CARTE_JOCKER_CTRL">Modifier</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="CONFIRMATION_DEMANDE_AFFECTATION_CARTE_JOCKER_CTRL">Confirmer</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="VALIDATION_DEMANDE_AFFECTATION_CARTE_JOCKER_CTRL">Validation</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="VEHICULE_DEMANDE_AFFECTATION_CARTE_JOCKER_CTRL">Vehicule</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="DELETE_DEMANDE_AFFECTATION_CARTE_JOCKER_CTRL">Supprimer</mat-checkbox>
+          </div>
+      </div>
+
+
+
+
+
+
+      <div class="row mt-2">
+        <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+          <li>Gstion Demande desafectation :</li>
+        </div>
+        <div class="col singleAuthorityCheckbox m-0 p-0">
+          <mat-checkbox [formControl]="VIEW_DEMANDE_DESAFFECTATION_CARTE_JOCKER_CTRL">Lire</mat-checkbox>
+        </div>
+        <div class="col singleAuthorityCheckbox m-0 p-0">
+          <mat-checkbox [formControl]="CONFIRMATION_DEMANDE_DESAFFECTATION_CARTE_JOCKER_CTRL">Confirmer</mat-checkbox>
+        </div>
+        <div class="col singleAuthorityCheckbox m-0 p-0">
+          <mat-checkbox [formControl]="MODIFY_DEMANDE_DESAFFECTATION_CARTE_JOCKER_CTRL">Modifier</mat-checkbox>
+        </div>
+        <div class="col singleAuthorityCheckbox m-0 p-0">
+          <mat-checkbox [formControl]="ADD_DEMANDE_DESAFFECTATION_CARTE_JOCKER_CTRL">Ajouter</mat-checkbox>
+        </div>
+        <div class="col singleAuthorityCheckbox m-0 p-0">
+          <mat-checkbox [formControl]="DELETE_DEMANDE_DESAFFECTATION_CARTE_JOCKER_CTRL">Supprimer</mat-checkbox>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+        <li>Gestion Declaration de perte :</li>
+      </div>
+      <div class="col singleAuthorityCheckbox m-0 p-0">
+        <mat-checkbox [formControl]="VIEW_DECLARATION_PERTE_CARTE_JOCKER_CTRL">Lire</mat-checkbox>
+      </div>
+      <div class="col singleAuthorityCheckbox m-0 p-0">
+        <mat-checkbox [formControl]="ADD_DECLARATION_PERTE_CARTE_JOCKER_CTRL">Ajouter</mat-checkbox>
+      </div>
+      <div class="col singleAuthorityCheckbox m-0 p-0">
+        <mat-checkbox [formControl]="MODIFY_DECLARATION_PERTE_CARTE_JOCKER_CTRL">Modifier</mat-checkbox>
+      </div>
+      <div class="col singleAuthorityCheckbox m-0 p-0">
+        <mat-checkbox [formControl]="CONFIRMATION_DECLARATION_PERTE_CARTE_JOCKER_CTRL">Confirmer</mat-checkbox>
+      </div>
+      <div class="col singleAuthorityCheckbox m-0 p-0">
+        <mat-checkbox [formControl]="DELETE_DECLARATION_PERTE_CARTE_JOCKER_CTRL">Supprimer</mat-checkbox>
+      </div>
+  </div>
+
+
+  <div class="row mt-2">
+    <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+      <li>Demande de recharge de sous compte :</li>
+    </div>
+    <div class="col singleAuthorityCheckbox m-0 p-0">
+      <mat-checkbox [formControl]="VIEW_DEMANDE_RECHARGE_SOUS_COMPTE_CTRL">Lire</mat-checkbox>
+    </div>
+    <div class="col singleAuthorityCheckbox m-0 p-0">
+      <mat-checkbox [formControl]="ADD_DEMANDE_RECHARGE_SOUS_COMPTE_CTRL">Ajouter</mat-checkbox>
+    </div>
+    <div class="col singleAuthorityCheckbox m-0 p-0">
+      <mat-checkbox [formControl]="VALID_DEMANDE_RECHARGE_SOUS_COMPTE_CTRL">Valider</mat-checkbox>
+    </div>
+    <div class="col singleAuthorityCheckbox m-0 p-0">
+      <mat-checkbox [formControl]="CONFIRM_DEMANDE_RECHARGE_SOUS_COMPTE_CTRL">Confirmer</mat-checkbox>
+    </div>
+    <div class="col singleAuthorityCheckbox m-0 p-0">
+      <mat-checkbox [formControl]="DELETE_DEMANDE_RECHARGE_SOUS_COMPTE_CTRL">Supprimer</mat-checkbox>
+    </div>
+   
+  </div>
+
+
+  <div class="row mt-2">
+    <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+      <li>Historique des demande de recharge de sous compte :</li>
+    </div>
+    <div class="col singleAuthorityCheckbox m-0 p-0">
+      <mat-checkbox [formControl]="VIEW_HISTORIQUE_DEMANDE_RECHARGE_SOUS_COMPTE_CTRL ">Lire</mat-checkbox>
+    </div>
+    <div class="col singleAuthorityCheckbox m-0 p-0">
+      <mat-checkbox [formControl]="DELETE_HISTORIQUE_DEMANDE_RECHARGE_SOUS_COMPTE_CTRL">Supprimer</mat-checkbox>
+    </div>
+   
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+      <li>Recharge de quota mensuel :</li>
+    </div>
+    <div class="col singleAuthorityCheckbox m-0 p-0">
+      <mat-checkbox [formControl]="VIEW_RECHARGE_QUOTA_MENSUEL_CTRL">Lire</mat-checkbox>
+    </div>
+    <div class="col singleAuthorityCheckbox m-0 p-0">
+      <mat-checkbox [formControl]="ADD_RECHARGE_QUOTA_MENSUEL_CTRL">Ajouter</mat-checkbox>
+    </div>
+    <div class="col singleAuthorityCheckbox m-0 p-0">
+      <mat-checkbox [formControl]="VALID_RECHARGE_QUOTA_MENSUEL_CTRL">Valider</mat-checkbox>
+    </div>
+    <div class="col singleAuthorityCheckbox m-0 p-0">
+      <mat-checkbox [formControl]="CONFIRM_RECHARGE_QUOTA_MENSUEL_CTRL">Confirmer</mat-checkbox>
+    </div>
+  </div>
+
+
+  <div class="row mt-2">
+    <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+      <li>Historique des de recharge de quota mensuel :</li>
+    </div>
+    <div class="col singleAuthorityCheckbox m-0 p-0">
+      <mat-checkbox [formControl]="VIEW_HISTORIQUE_RECHARGE_QUOTA_MENSUEL_CTRL ">Lire</mat-checkbox>
+    </div>
+   
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+      <li>Gestion Historique declaration perte :</li>
+    </div>
+    <div class="col singleAuthorityCheckbox m-0 p-0">
+      <mat-checkbox [formControl]="VIEW_HISTORIQUE_DECLARATION_PERTE_CARTE_JOCKER_CTRL">Lire</mat-checkbox>
+    </div>
+    <div class="col singleAuthorityCheckbox m-0 p-0">
+      <mat-checkbox [formControl]="DELETE_HISTORIQUE_DECLARATION_PERTE_CARTE_JOCKER_CTRL">Supprimer</mat-checkbox>
+    </div>
+</div>
+
+
+
+<div class="row mt-2">
+  <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+    <li>Gestion Demande Quota :</li>
+  </div>
+  <div class="col singleAuthorityCheckbox m-0 p-0">
+    <mat-checkbox [formControl]="VIEW_DEMANDE_QUOTA_CARTE_JOCKER_CTRL">Lire</mat-checkbox>
+  </div>
+  <div class="col singleAuthorityCheckbox m-0 p-0">
+    <mat-checkbox [formControl]="ADD_DEMANDE_QUOTA_CARTE_JOCKER_CTRL">Ajouter</mat-checkbox>
+  </div>
+  <div class="col singleAuthorityCheckbox m-0 p-0">
+    <mat-checkbox [formControl]="MODIFY_DEMANDE_QUOTA_CARTE_JOCKER_CTRL">Modifier</mat-checkbox>
+  </div>
+  <div class="col singleAuthorityCheckbox m-0 p-0">
+    <mat-checkbox [formControl]="CONFIRMATION_DEMANDE_QUOTA_CARTE_JOCKER_CTRL">Confirmer</mat-checkbox>
+  </div>
+  <div class="col singleAuthorityCheckbox m-0 p-0">
+    <mat-checkbox [formControl]="VALIDATION_DEMANDE_QUOTA_CARTE_JOCKER_CTRL">Valider</mat-checkbox>
+  </div>
+  <div class="col singleAuthorityCheckbox m-0 p-0">
+    <mat-checkbox [formControl]="DELETE_DEMANDE_QUOTA_CARTE_JOCKER_CTRL">Supprimer</mat-checkbox>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
+        </div>
+      
+ 
+      <div *ngIf="codeAuthorities===5" class="authoritiesContainer">
+        <div class="container-fluid">
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gestion Reservation :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_RESERVATION_CTRL">Lire</mat-checkbox>
+            </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="ADD_RESERVATION_CTRL">Ajouter</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="CONFIRMER_RESERVATION_CTRL">Confirmer </mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="VIEW_VEHICULE_RESERVATION_CTRL">Vehicules </mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="MODIFY_RESERVATION_CTRL">Modifier</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="DELETE_RESERVATION_CTRL">Supprimer</mat-checkbox>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+            <li>Locations :</li>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="VIEW_LOCATION_CTRL">Lire</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="ADD_LOCATION_CTRL">Ajouter</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="MODIFY_LOCATION_CTRL">Modifier</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="DELETE_LOCATION_CTRL">Supprimer</mat-checkbox>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+            <li>Sinistres :</li>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="VIEW_SINISTRE_CTRL">Lire</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="ADD_SINISTRE_CTRL">Ajouter</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="VIEW_VEHICULE_SINISTRE_CTRL">Vehicules </mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="MODIFY_SINISTRE_CTRL">Modifier</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="DELETE_SINISTRE_CTRL">Supprimer</mat-checkbox>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+            <li> Emprunts :</li>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="VIEW_EMPRUNT_CTRL">Lire</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="ADD_EMPRUNT_CTRL">Ajouter</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="VIEW_VEHICULE_EMPRUNT_CTRL">Vehicules </mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="MODIFY_EMPRUNT_CTRL">Modifier</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="CONFIRMER_EMPRUNT_CTRL">Confirmer</mat-checkbox>
+          </div>
+          <div class="col singleAuthorityCheckbox m-0 p-0">
+            <mat-checkbox [formControl]="DELETE_EMPRUNT_CTRL">Supprimer</mat-checkbox>
+          </div>
+
+          </div></div>
+</div>
+      <div *ngIf="codeAuthorities===6" class="authoritiesContainer">
+        <div class="container-fluid">
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li> Demande d'interventions:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_DEMANDE_INTERVENTION_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_DEMANDE_INTERVENTION_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_DEMANDE_INTERVENTION_CTRL">Supprimer </mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_DEMANDE_INTERVENTION_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="RECU_DEMANDE_INTERVENTION_CTRL">Reçu</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VEHICULE_DEMANDE_INTERVENTION_CTRL">Fiche vehicule</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ANNULATION_DEMANDE_INTERVENTION_CTRL">Annuler</mat-checkbox>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="container-fluid">
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li> Bon de Travail:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_BON_TRAVAIL_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_BON_TRAVAIL_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_BON_TRAVAIL_CTRL">Supprimer </mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DETAILS_BON_TRAVAIL_CTRL">Details</mat-checkbox>
+            </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li> Sortie Véhicule:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_SORTIE_VEHICULE_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_SORTIE_VEHICULE_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="REOUVRIR_SORTIE_VEHICULE_CTRL">Reouvrir</mat-checkbox>
+            </div>
+          
+            </div>
+        </div>
+
+        <div class="container-fluid">
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li> Historique maintenance et réparation:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_HISTORIQUE_MAINTENANCE_VEHICULE_CTRL">Lire</mat-checkbox>
+            </div>
+            
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_HISTORIQUE_MAINTENANCE_VEHICULE_CTRL">Supprimer </mat-checkbox>
+            </div>
+            
+            </div>
+        </div>
+      </div>
+
+      <div *ngIf="codeAuthorities===7" class="authoritiesContainer">
+        <div class="container-fluid">
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li> Ordre de mission :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_ORDRE_MISSION_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_ORDRE_MISSION_CTRL">Ajouter</mat-checkbox>
+            </div>
+           
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="CONFIRMER_ORDRE_MISSION_CTRL">Confirmer</mat-checkbox>
+            </div>
+
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VEHICULE_ORDRE_MISSION_CTRL">Lire Vehicule</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_ORDRE_MISSION_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_ORDRE_MISSION_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li> Vehicule depassant :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_VEHICULE_DEPASSANT_CTRL">Lire</mat-checkbox>
+            </div>
+            
+           
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DETAILS_VEHICULE_DEPASSANT_CTRL">Details</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VEHICULE_VEHICULE_DEPASSANT_CTRL">Details</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_VEHICULE_DEPASSANT_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="codeAuthorities===8" class="authoritiesContainer">
+        <div class="container-fluid">
+          <div class="row mt-3">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Sous famille articles :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_SOUS_FAMILLES_ARTICLES_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_SOUS_FAMILLES_ARTICLES_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_SOUS_FAMILLES_ARTICLES_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_SOUS_FAMILLES_ARTICLES_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Famille articles :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_FAMILLES_ARTICLES_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_FAMILLES_ARTICLES_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_FAMILLES_ARTICLES_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_FAMILLES_ARTICLES_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Articles :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_ARTICLES_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_ARTICLES_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_ARTICLES_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_ARTICLES_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Gouvernorats :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_GOUVERNORATS_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_GOUVERNORATS_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_GOUVERNORATS_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_GOUVERNORATS_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Stations de péage :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_STATIONS_PEAGE_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_STATIONS_PEAGE_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_STATIONS_PEAGE_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_STATIONS_PEAGE_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Experts :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_EXPERTS_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_EXPERTS_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_EXPERTS_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_EXPERTS_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Fournisseurs :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_FOURNISSEURS_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_FOURNISSEURS_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_FOURNISSEURS_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_FOURNISSEURS_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Lieu de parking :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_LIEUX_PARKING_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_LIEUX_PARKING_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_LIEUX_PARKING_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_LIEUX_PARKING_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>familles des opérations de réparation :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_FAMILLES_OPERATIONS_REPARATION_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_FAMILLES_OPERATIONS_REPARATION_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_FAMILLES_OPERATIONS_REPARATION_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_FAMILLES_OPERATIONS_REPARATION_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Opérations de réparation :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_OPERATIONS_REPARATION_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_OPERATIONS_REPARATION_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_OPERATIONS_REPARATION_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_OPERATIONS_REPARATION_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Programmes entretiens préventifs :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_PROGRAMMES_ENTRETIENS_PREVENTIFS_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_PROGRAMMES_ENTRETIENS_PREVENTIFS_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_PROGRAMMES_ENTRETIENS_PREVENTIFS_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_PROGRAMMES_ENTRETIENS_PREVENTIFS_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Année :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_ANNEES_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_ANNEES_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col m-0 p-0">
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_ANNEES_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Energies :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_ENERGIES_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_ENERGIES_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_ENERGIES_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_ENERGIES_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>TVA :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_TVA_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_TVA_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col m-0 p-0">
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_TVA_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Unités :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_UNITES_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_UNITES_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_UNITES_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Usages véhicules :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_USAGES_VEHICULES_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_USAGES_VEHICULES_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_USAGES_VEHICULES_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_USAGES_VEHICULES_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Causes sinistres :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_CAUSES_SINISTRES_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_CAUSES_SINISTRES_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_CAUSES_SINISTRES_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_CAUSES_SINISTRES_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Genre véhicule :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_GENRES_VEHICULE_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_GENRES_VEHICULE_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_GENRES_VEHICULE_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_GENRES_VEHICULE_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Marque véhicule :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_MARQUES_VEHICULE_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_MARQUES_VEHICULE_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_MARQUES_VEHICULE_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_MARQUES_VEHICULE_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Type véhicule :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_TYPES_VEHICULE_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_TYPES_VEHICULE_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_TYPES_VEHICULE_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_TYPES_VEHICULE_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Structure administration :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_STRUCTURE_ADMINISTRATIVE_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_STRUCTURE_ADMINISTRATIVE_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_STRUCTURE_ADMINISTRATIVE_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_STRUCTURE_ADMINISTRATIVE_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Unités de gestion de parc :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_UNITE_GESTION_PARC_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_UNITE_GESTION_PARC_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_UNITE_GESTION_PARC_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_UNITE_GESTION_PARC_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Détails de personnels :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_DETAILS_PERSONNELS_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_DETAILS_PERSONNELS_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_DETAILS_PERSONNELS_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_DETAILS_PERSONNELS_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Etats de stock :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_ETATS_STOCK_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_ETATS_STOCK_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_ETATS_STOCK_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_ETATS_STOCK_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Bénéficiaires des emprunts :</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_BENEFICIAIRES_EMPRUNTS_CTRL">Lire</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_BENEFICIAIRES_EMPRUNTS_CTRL">Ajouter</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_BENEFICIAIRES_EMPRUNTS_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_BENEFICIAIRES_EMPRUNTS_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+     <div *ngIf="codeAuthorities===9" class="authoritiesContainer">
+        <div class="container-fluid">
+   
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Bon Sortie pour bon travail:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_Bon_Travail_Sortie_CTRL">Lire</mat-checkbox>
+            </div>        
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DETAILS_Bon_Travail_Sortie_CTRL">Details</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Transfert du vers magasin:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_Bon_Transfert_vers_magasin_CTRL">Lire</mat-checkbox>
+            </div>  
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_Bon_Transfert_vers_magasin_CTRL">Ajout</mat-checkbox>
+            </div>          
+            
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="CONFIRM_Bon_Transfert_vers_magasin_CTRL">Confirmer</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VALIDER_Bon_Transfert_vers_magasin_CTRL">Valider</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_Bon_Transfert_vers_magasin_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_Bon_Transfert_vers_magasin_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+          <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+            <li>Bon de sortie pour structure:</li>
+          </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Réception des Fournisseurs:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_Reception_Fournisseur_CTRL">Lire</mat-checkbox>
+            </div>        
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DETAILS_Reception_Fournisseur_CTRL">Details</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_Reception_Fournisseur_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Réception d'un atelier:</li>
+            </div>
+            </div>
+
+          <div class="row mt-2">
+              <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+                <li>Transfert du magasin:</li>
+              </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Retour d'une structure:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_Retour_Structure_CTRL">Lire</mat-checkbox>
+            </div>   
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_Retour_Structure_CTRL">Ajout</mat-checkbox>
+            </div>       
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DETAILS_Retour_Structure_CTRL">Details</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_Retour_Structure_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Régulation du stock:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_Regulation_Stock_CTRL">Lire</mat-checkbox>
+            </div>   
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_Regulation_Stock_CTRL">Ajout</mat-checkbox>
+            </div>      
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DETAILS_Regulation_Stock_CTRL">Details</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_Regulation_Stock_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Inventaire du stock:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_Inventaire_Stock_CTRL">Lire</mat-checkbox>
+            </div>   
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_Inventaire_Stock_CTRL">Ajout</mat-checkbox>
+            </div>      
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DETAILS_Inventaire_Stock_CTRL">Details</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_Inventaire_Stock_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Historique Régulation du stock:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_HISTORIQUE_REGULATION_CTRL">Lire</mat-checkbox>
+            </div>   
+                
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_HISTORIQUE_REGULATION_CTRL">Supprimer</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Alert du  stock:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_ALERT_STOCK_CTRL">Lire</mat-checkbox>
+            </div>   
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Alert fin visite technique:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_ALERT_VEHICULE_CTRL">Lire</mat-checkbox>
+            </div>   
+          </div>
+
+
+
+          <div class="row mt-2">
+            <div class="col-5 m-0 p-0 singleAuthorityElement" style="margin-top: 7px">
+              <li>Transfert de parc vers magasin:</li>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VIEW_TRANSFERT_PARC_VERS_MAGASIN_CTRL">Lire</mat-checkbox>
+            </div>   
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="ADD_TRANSFERT_PARC_VERS_MAGASIN_CTRL">Ajout</mat-checkbox>
+            </div>      
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="MODIFY_TRANSFERT_PARC_VERS_MAGASIN_CTRL">Modifier</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="DELETE_TRANSFERT_PARC_VERS_MAGASIN_CTRL">Supprimer</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="CONFIRM_TRANSFERT_PARC_VERS_MAGASIN_CTRL">Confirmer</mat-checkbox>
+            </div>
+            <div class="col singleAuthorityCheckbox m-0 p-0">
+              <mat-checkbox [formControl]="VALID_TRANSFERT_PARC_VERS_MAGASIN_CTRL">Valider</mat-checkbox>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    
+    </div>
+    <div class="offset-6 col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onConfirm()" style="width: 100%">
+          Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader></ngx-ui-loader>

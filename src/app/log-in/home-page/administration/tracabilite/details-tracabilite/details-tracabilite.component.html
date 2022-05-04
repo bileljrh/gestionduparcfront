@@ -1,0 +1,41 @@
+<div class="container-fluid m-0 p-0 frame">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 title">
+      <span class="float-left">
+        <mat-icon class="mr-2">read_more</mat-icon>
+        Details de traçabilité sélectionnée</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-3 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Utilisateur</mat-label>
+        <input matInput type="text" [value]="nomPrenom" readonly>
+        <mat-hint align="end">{{data.element.user.matricule}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-3 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Module</mat-label>
+        <input matInput type="text" [value]="data.element.nomModule" readonly>
+      </mat-form-field>
+    </div>
+    <div class="col-3 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Opération</mat-label>
+        <input matInput type="text" [value]="data.element.operation" readonly>
+      </mat-form-field>
+    </div>
+    <div class="col-3 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Date</mat-label>
+        <input matInput type="text" [value]="data.element.dateOperation|date: 'dd-MM-yyyy'" readonly>
+      </mat-form-field>
+    </div>
+    <div class="col-12 mt-4">
+      <mat-form-field class="example-full-width mb-2" appearance="outline">
+        <mat-label>Détails opération</mat-label>
+        <textarea matInput [value]="data.element.detailsOperation" rows="1" readonly></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+</div>

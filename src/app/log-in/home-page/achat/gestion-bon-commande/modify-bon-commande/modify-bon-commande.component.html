@@ -1,0 +1,330 @@
+<div class="container-fluid m-0 p-0 frame" style="min-height: 570px" [formGroup]="modifyBonCommandeForm">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 title">
+      <span class="float-left">
+        <mat-icon class="mr-2">fiber_new</mat-icon>
+        <span>Modification du commande</span>
+            </span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-12 mt-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <mat-tab-group mat-align-tabs="center">
+              <mat-tab label="Bon de commande">
+                <div class="container-fluid mt-4">
+                  <div class="row">
+                    <div class="col-6">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Parc</mat-label>
+                        <mat-select formControlName="parc">
+                          <mat-option *ngFor="let parc of Parc" [value]="parc">
+                            {{parc}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="col-6">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Fournisseur</mat-label>
+                        <mat-select formControlName="fournisseur">
+                          <mat-option *ngFor="let fournisseur of ListFournisseur" [value]="fournisseur">
+                            {{fournisseur.designation}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-hint align="end">{{codeFournisseur}}</mat-hint>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                      <mat-form-field class="example-full-width" appearance="outline"
+                                      [formGroup]="commandeCalculationForm">
+                        <mat-label>Montant</mat-label>
+                        <input matInput type="number" formControlName="ttcCommande" readonly>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+              <!--
+              <mat-tab label="Marché">
+                <div class="container-fluid mt-4">
+                  <div class="row">
+                    <div class="col-6">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Marché</mat-label>
+                        <mat-select formControlName="marche">
+                          <mat-option *ngFor="let marche of ListMarche" [value]="marche">
+                            {{marche.nomMarche}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-hint align="end">{{referenceMarche}}</mat-hint>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Budget</mat-label>
+                        <input matInput type="number" [value]="budget" disabled>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+            -->
+            <!--
+              <mat-tab label="Suivit">
+                <div class="container-fluid mt-4">
+                  <div class="row">
+                    <div class="col-12">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Montant livré</mat-label>
+                        <input matInput type="number" formControlName="montantLivre">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Montant facturé</mat-label>
+                        <input matInput type="number" formControlName="montantFacture">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Date facture</mat-label>
+                        <input matInput [matDatepicker]="picker2" formControlName="dateFacture">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Référence facturé</mat-label>
+                        <input matInput type="number" formControlName="referenceFacture">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Montant régelement</mat-label>
+                        <input matInput type="number" formControlName="montantReglement">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Date réglement</mat-label>
+                        <input matInput [matDatepicker]="picker3" formControlName="dateReglement">
+                        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                        <mat-datepicker #picker3></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Référence réglement</mat-label>
+                        <input matInput type="number" formControlName="referenceReglement">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+            -->
+              <mat-tab label="Articles">
+                <div class="container-fluid mt-4">
+                  <div class="row">
+                    <table *ngIf="articleTab.length>0" mat-table
+                           [dataSource]="dataSource" multiTemplateDataRows
+                           class="col-12">
+
+                      <ng-container matColumnDef="index">
+                        <th mat-header-cell *matHeaderCellDef>N°</th>
+                        <td mat-cell *matCellDef="let element; let i = renderIndex">{{i + 1}}</td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="codeArticle">
+                        <th mat-header-cell *matHeaderCellDef>Code</th>
+                        <td mat-cell *matCellDef="let element">{{element.article.codeArticle}}</td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="designation">
+                        <th mat-header-cell *matHeaderCellDef>Désignation</th>
+                        <td mat-cell *matCellDef="let element">{{element.article.designation}}</td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="plus">
+                        <th mat-header-cell *matHeaderCellDef>Plus</th>
+                        <td mat-cell *matCellDef="let element; let i=index">
+                          <mat-icon class="mouseUp">do_not_disturb_on</mat-icon>
+                          <!--                            <mat-icon *ngIf="!expandedElement" class="mouseUp">add_circle</mat-icon>-->
+                        </td>
+                      </ng-container>
+
+
+                      <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+                      <ng-container matColumnDef="expandedDetail">
+                        <td style="margin: 0;padding: 0" mat-cell *matCellDef="let element; let i=index"
+                            [attr.colspan]="displayedColumns.length">
+                          <div class="example-element-detail"
+                               [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                            <div class="container-fluid mt-3 ml-0 mr-0 pr-0 pl-0">
+                              <div class="row ml-0 mr-0 pr-0 pl-0">
+                                <div class="col">
+                                  <mat-form-field class="example-full-width1" appearance="outline">
+                                    <mat-label>Quantité demandée</mat-label>
+                                    <input matInput type="number" [value]="element.quantiteCommandee" disabled>
+                                  </mat-form-field>
+                                </div>
+                                <!--
+                                <div class="col">
+                                  <mat-form-field class="example-full-width1" class="example-full-width"
+                                                  appearance="outline">
+                                    <mat-label>Quantité livrée</mat-label>
+                                    <input matInput type="number" [value]="element.quantiteLivree">
+                                  </mat-form-field>
+                                </div>
+                                -->
+                                <div class="col">
+                                  <mat-form-field class="example-full-width1" class="example-full-width"
+                                                  appearance="outline">
+                                    <mat-label>Prix</mat-label>
+                                    <input matInput type="number" [value]="element.article.prix" disabled>
+                                  </mat-form-field>
+                                </div>
+                                <div class="col">
+                                  <mat-form-field class="example-full-width1" class="example-full-width"
+                                                  appearance="outline">
+                                    <mat-label>Remise</mat-label>
+                                    <input matInput type="number" [value]="element.article.remise" disabled>
+                                  </mat-form-field>
+                                </div>
+                                <div class="col">
+                                  <mat-form-field class="example-full-width1" class="example-full-width"
+                                                  appearance="outline">
+                                    <mat-label>TVA</mat-label>
+                                    <input matInput type="number" [value]="element.article.tva" disabled>
+                                  </mat-form-field>
+                                </div>
+                                <div class="col">
+                                  <mat-icon class="mouseUp pt-2 pl-3" (click)="deleteRow(i)"
+                                            style="transform: scale(1.3)">delete
+                                  </mat-icon>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+                          class="example-element-row"
+                          [class.example-expanded-row]="expandedElement === element"
+                          (click)="expandedElement = expandedElement === element ? null : element">
+                      </tr>
+                      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+                    </table>
+                    <button class="col-12 mt-5 mb-3" mat-raised-button (click)="ajouterNouvelArticle()">Nouvel article
+                    </button>
+                  </div>
+                </div>
+              </mat-tab>
+              <!--
+              <mat-tab label="Sommes">
+                <div class="container-fluid mt-4">
+                  <div class="row">
+                    <div class="col-12 mt-2 mb-4" *ngIf="articleTab.length>0">
+                      Commande
+                      <mat-divider></mat-divider>
+                    </div>
+                    <div class="container-fluid" *ngIf="articleTab.length>0">
+                      <div class="row" [formGroup]="commandeCalculationForm">
+                        <div class="col">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>HT brut</mat-label>
+                            <input matInput type="number" formControlName="htBrutCommande" readonly>
+                          </mat-form-field>
+                        </div>
+                        <div class="col">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>HT net</mat-label>
+                            <input matInput type="number" formControlName="htNetCommande" readonly>
+                          </mat-form-field>
+                        </div>
+                        <div class="col">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>TVA</mat-label>
+                            <input matInput type="number" formControlName="tvaCommande" readonly>
+                          </mat-form-field>
+                        </div>
+                        <div class="col">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Timbre fiscale</mat-label>
+                            <input matInput type="number" [formControl]="timbreFixCommande" readonly>
+                          </mat-form-field>
+                        </div>
+                        <div class="col">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>TTC</mat-label>
+                            <input matInput type="number" formControlName="ttcCommande" readonly>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 mt-2 mb-4" *ngIf="articleTab.length>0">
+                      Livraison
+                      <mat-divider></mat-divider>
+                    </div>
+                    <div class="container-fluid" *ngIf="articleTab.length>0">
+                      <div class="row" [formGroup]="livraisonCalculationForm">
+                        <div class="col">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>HT brut</mat-label>
+                            <input matInput type="number" formControlName="htBrutLivraison" readonly>
+                          </mat-form-field>
+                        </div>
+                        <div class="col">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>HT net</mat-label>
+                            <input matInput type="number" formControlName="htNetLivraison" readonly>
+                          </mat-form-field>
+                        </div>
+                        <div class="col">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>TVA</mat-label>
+                            <input matInput type="number" formControlName="tvaLivraison" readonly>
+                          </mat-form-field>
+                        </div>
+                        <div class="col">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Timbre fiscale</mat-label>
+                            <input matInput type="number" [formControl]="timbreFixLivraison" readonly>
+                          </mat-form-field>
+                        </div>
+                        <div class="col">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>TTC</mat-label>
+                            <input matInput type="number" formControlName="ttcLivraison" readonly>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+            -->
+            </mat-tab-group>
+          </div>
+          <div class="offset-6 col-3">
+            <div class="float-right mt-4 mb-3">
+              <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="float-right mt-4 mb-3">
+              <button mat-raised-button (click)="onConfirm()" style="width: 100%">Confirmer
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

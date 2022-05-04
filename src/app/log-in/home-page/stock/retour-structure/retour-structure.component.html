@@ -1,0 +1,129 @@
+<div class="container-fluid" ngxUiLoaderBlurred>
+
+    <div class="row frame">
+        <div class="col-12">
+          retour d'une structure
+          <mat-divider class="mb-4"></mat-divider>
+        </div>
+        <div class="col-12">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label> Filtrer les les données de retour d'une structure</mat-label>
+            <input matInput (keyup)="applyFilter($event)" #input>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>UGP</mat-label>
+            <mat-select [formControl]="UgpControl">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let ugp of ugps" [value]="ugp">
+                {{ugp.designation}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>magasin</mat-label>
+              <mat-select [formControl]="MagasinControl">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let magasin of magasins" [value]="magasin">
+                  {{magasin.designation}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+      
+      </div>
+      <!--Start List des articles dans le magasing virtuelle-->
+      <div class="row frame">
+        <div class="col-12" *ngIf="VIEW_Retour_Structure">
+          Régulation du stock
+          <mat-divider class="mb-4"></mat-divider>
+        </div>
+        <div class="col-12">
+          <div *ngFor="let item of numberToTable(paginConfig.totalItems) | paginate: paginConfig"></div>
+          <table mat-table [dataSource]="dataSource" matSort>
+    
+    
+            <ng-container matColumnDef="index">
+              <th mat-header-cell *matHeaderCellDef>N°</th>
+              <td mat-cell *matCellDef="let row; let i=index"> {{i + 1}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="structure">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Structure</th>
+                <td mat-cell *matCellDef="let row">
+                  {{row.structure}}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+                <td mat-cell *matCellDef="let row">
+                  {{row.dateSortie}}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="details">
+                <th mat-header-cell *matHeaderCellDef>details</th>
+                <td mat-cell *matCellDef="let row; let i=index">
+                  <mat-icon class="mouseUp" (click)="modifyRow(i)"  *ngIf="DETAILS_Retour_Structure">details</mat-icon>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="supprimer">
+                <th mat-header-cell *matHeaderCellDef>supprimer</th>
+                <td mat-cell *matCellDef="let row; let i=index">
+                  <mat-icon class="mouseUp" (click)="deleteRow(row.id)" *ngIf="DELETE_Retour_Structure">delete</mat-icon>
+                </td>
+              </ng-container>
+      
+      
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="itemPerPage">
+            <mat-label>Elements par page</mat-label>
+            <mat-select [formControl]="itemPerPage">
+              <mat-option *ngFor="let item of ItemPerPage" [value]="item">
+                {{item}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-6 mt-5">
+          <pagination-template class="d-flex justify-content-end" #p="paginationApi" [id]="paginConfig.id"
+                               (pageChange)="paginConfig.currentPage = $event" maxSize="5"
+                               (click)="displayPageContent(paginConfig)">
+            <div class="custom-pagination">
+              <button mat-flat-button class="pagination-previous" [disabled]="p.isFirstPage()"
+                      (click)="p.previous()">
+                <span class="previous"></span>Previous
+              </button>
+              <div class="page-number" *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+                <button (click)="p.setCurrent(page.value)"
+                        *ngIf="p.getCurrent() !== page.value">{{ page.label }}</button>
+                <button class="current" *ngIf="p.getCurrent() === page.value">
+                  <span>{{ page.label }}</span>
+                </button>
+              </div>
+              <button mat-flat-button class="pagination-next" [disabled]="p.isLastPage()"
+                      (click)="p.next()">
+                Next<span class="next">></span>
+              </button>
+            </div>
+          </pagination-template>
+        </div>
+        <button class="col-12 mt-5 mb-3 addButton" mat-raised-button (click)="ajouterBonRetour()" *ngIf="ADD_Retour_Structure">+bon de retour
+        </button>
+      </div>
+      
+      </div>
+      
+      <ngx-ui-loader></ngx-ui-loader>
+    

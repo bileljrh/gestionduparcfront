@@ -1,0 +1,70 @@
+<div *ngIf="VIEW_EXPERTS" class="container-fluid" ngxUiLoaderBlurred>
+  <div class="row frame">
+    <div class="col-12">
+      Filtrage de la liste experts
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-12">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Filtrer les données du tableau ci-dessous</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
+      </mat-form-field>
+    </div>
+    <div class="col-12">
+      <div class="row">
+        <div class="col-12 mt-3 mb-2">
+          Liste experts
+          <mat-divider></mat-divider>
+        </div>
+        <div class="col-12">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+            <ng-container matColumnDef="index">
+              <th mat-header-cell *matHeaderCellDef>N°</th>
+              <td mat-cell *matCellDef="let element;let i=index">{{i + 1}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="code">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Code</th>
+              <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="designation">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Désignation</th>
+              <td mat-cell *matCellDef="let element"> {{element.designation}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tel">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Tel</th>
+              <td mat-cell *matCellDef="let element"> {{element.telephone}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container *ngIf="MODIFY_EXPERTS" matColumnDef="modifier">
+              <th mat-header-cell *matHeaderCellDef>Modifier</th>
+              <td mat-cell *matCellDef="let element; let i=index">
+                <mat-icon class="mouseUp" (click)="modifyRow(i)">edit</mat-icon>
+              </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container *ngIf="DELETE_EXPERTS" matColumnDef="supprimer">
+              <th mat-header-cell *matHeaderCellDef>Supprimer</th>
+              <td mat-cell *matCellDef="let element">
+                <mat-icon class="mouseUp" (click)="deleteRow(element.id)">delete</mat-icon>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+        <div *ngIf="ADD_EXPERTS" class="col-12 mt-5 mb-3">
+          <button class="addButton" mat-raised-button (click)="ajouterNouvelExpert()">Nouvel expert
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader></ngx-ui-loader>

@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="row frame">
+    <div class="col-12">
+      <mat-tab-group>
+        <mat-tab *ngIf="VIEW_FAMILLES_OPERATIONS_REPARATION" label="Familles opérations de réparation">
+          <app-famille-operation-reparation></app-famille-operation-reparation>
+        </mat-tab>
+        <mat-tab *ngIf="VIEW_OPERATIONS_REPARATION" label="Liste opérations de réparation">
+          <app-liste-operation-reparation></app-liste-operation-reparation>
+        </mat-tab>
+        <mat-tab *ngIf="VIEW_PROGRAMMES_ENTRETIENS_PREVENTIFS" label="Programmes entretiens préventifs">
+          <app-programme-entretiens-preventifs></app-programme-entretiens-preventifs>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
+

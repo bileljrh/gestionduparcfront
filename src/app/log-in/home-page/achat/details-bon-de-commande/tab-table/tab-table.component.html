@@ -1,0 +1,99 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 mt-4">
+      <mat-divider class="mb-5"></mat-divider>
+    </div>
+    <div class="col-12">
+      <table matSort (matSortChange)="sortData($event)">
+        <tr>
+          <th mat-sort-header="numero">Numéro</th>
+          <th mat-sort-header="designation">Désignation</th>
+          <th mat-sort-header="quantitecommandee">Quantité commandée</th>
+          <th mat-sort-header="quantitelivree">Quantité livrée</th>
+          <th mat-sort-header="prixUnitaire">Prix unitaire</th>
+          <th mat-sort-header="tva">TVA</th>
+          <th mat-sort-header="remise">Remise</th>
+          <th>Modifier</th>
+          <th>Supprimer</th>
+        </tr>
+        <tr *ngFor="let detail of sortedData">
+          <td>{{detail.numero}}</td>
+          <td>{{detail.designation}}</td>
+          <td>{{detail.quantitecommandee}}</td>
+          <td>{{detail.quantitelivree}}</td>
+          <td>{{detail.prixUnitaire}}</td>
+          <td>{{detail.tva}}</td>
+          <td>{{detail.remise}}</td>
+          <td>
+            <mat-icon>edit</mat-icon>
+          </td>
+          <td>
+            <mat-icon>delete</mat-icon>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class=" offset-10 col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="primary">Nouvel article
+      </button>
+    </div>
+    <div class="col-12 mt-4">
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-12">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="htBrut">
+          <th mat-header-cell *matHeaderCellDef>HT Brut</th>
+          <td mat-cell *matCellDef="let element"> {{element.htBrut}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="htNat">
+          <th mat-header-cell *matHeaderCellDef>HT Nat</th>
+          <td mat-cell *matCellDef="let element"> {{element.htNat}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tva">
+          <th mat-header-cell *matHeaderCellDef>TVA</th>
+          <td mat-cell *matCellDef="let element"> {{element.tva}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="timbreFixale">
+          <th mat-header-cell *matHeaderCellDef>Timbre fixale</th>
+          <td mat-cell *matCellDef="let element"> {{element.timbreFixale}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ttc">
+          <th mat-header-cell *matHeaderCellDef>TTC</th>
+          <td mat-cell *matCellDef="let element"> {{element.ttc}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    <div class="offset-6 col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="secondary">Imprimer
+      </button>
+    </div>
+    <div class="col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="secondary">Annuler
+      </button>
+    </div>
+    <div class="col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="primary">Enregistrer
+      </button>
+    </div>
+  </div>
+</div>
+
+
+

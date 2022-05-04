@@ -1,0 +1,107 @@
+<div class="container-fluid m-0 p-0 frame" [formGroup]="newCartePlafondForm" ngxUiLoaderBlurred>
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 header">
+      <span class="float-left">
+        <mat-icon class="mr-2">fiber_new</mat-icon>
+        Ajouter une nouvelle carte Plafond</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <!--
+    <div class="col-12 mt-3">
+      Données véhicules
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Véhicule
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <mat-select formControlName="numeroPlaque">
+          <mat-option *ngFor="let vehicule of listVehicule" [value]="vehicule">
+            {{vehicule.numeroPlaque}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Bénéficiaire</mat-label>
+        <input matInput [value]="nomBeneficiaire" readonly>
+        <mat-hint align="end">{{matriculeBeneficiaire}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Structure</mat-label>
+        <input matInput [value]="designationStructure" readonly>
+        <mat-hint align="end">{{codeStructure}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Type carburant</mat-label>
+        <input matInput [value]="typeCarburant" readonly>
+      </mat-form-field>
+    </div>
+    -->
+    <div class="col-12 mt-3">
+      Données cartes Plafond
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-6 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Numéro de carte
+          <mat-icon class="required"  matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="text" formControlName="numeroCarte">
+        <mat-error *ngIf="f.numeroCarte.invalid">Numero Carte est requis</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="col-6 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Montant
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="number" formControlName="montant">
+        <mat-error *ngIf="f.montant.invalid">Montant est requis</mat-error>   
+      </mat-form-field>
+    </div>
+
+    <div class="col-6 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let status of statusCarte" [value]="status" >
+            {{status}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.status.invalid">Le Status est requis</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="col-6 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Date validitée
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateValidite">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="f.dateValidite.invalid">Date de Validitée est requise</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="offset-6 col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onConfirm()" style="width: 100%" [disabled]="!newCartePlafondForm.valid">
+          Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader></ngx-ui-loader>
+

@@ -1,0 +1,143 @@
+<div class="container-fluid m-0 p-0 frame"  ngxUiLoaderBlurred [formGroup]="nouvelArticleForm">
+    <div class="row m-0 p-0">
+      <div class="col-12 m-0 p-0 title">
+        <span class="float-left">
+          <mat-icon class="mr-2">fiber_new</mat-icon>
+          <span>Nouvel article</span>
+              </span>
+        <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+      </div>
+      <div class="col-12 mt-3">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              Sélection d'articles
+              <mat-divider class="mb-4"></mat-divider>
+            </div>
+            <div class="col">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>famille</mat-label>
+                  <mat-select [formControl]="familleControl"  #familleValue  (selectionChange)="changeArticle(familleValue.value)"> 
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let famille of listFamille" [value]="famille">
+                    {{famille.famille}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            
+            <div class="col">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Sous famille</mat-label>
+      <mat-select [formControl]="sousFamilleControl"  #sousFamilleValue  (selectionChange)="changeArticle(sousFamilleValue.value)"> 
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let sousFamille of listSousFamille" [value]="sousFamille">
+                    {{sousFamille.sousFamille}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Genre</mat-label>
+                <mat-select [formControl]="genreControl"  #genreValue  (selectionChange)="changeArticle(genreValue.value)">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let genre of listGenre" [value]="genre">
+                    {{genre.designation}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Marque</mat-label>
+                <mat-select [formControl]="marqueControl"  #marqueValue  (selectionChange)="changeArticle(marqueValue.value)">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let marque of listMarque" [value]="marque">
+                    {{marque.designation}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Type</mat-label>
+                <mat-select [formControl]="typeControl" #typeValue  (selectionChange)="changeArticle(typeValue.value)">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let type of listType" [value]="type">
+                    {{type.designation}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+           
+        
+          
+            <div class="col-12">
+              Ajouter article
+              <mat-divider class="mb-4"></mat-divider>
+            </div>
+            <div class="col-6">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Code article</mat-label>
+                <mat-select formControlName="codeArticle">
+                  <mat-option *ngFor="let article of listArticle" [value]="article">
+                    {{article.codeArticle}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            
+            <div class="col">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Quantité</mat-label>
+                  <input matInput type="number" formControlName="quantiteStock" [value]="quantiteStock"  >
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-6">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Désignation</mat-label>
+                <mat-select formControlName="designation">
+                  <mat-option *ngFor="let article of listArticle" [value]="article">
+                    {{article.designation}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+           
+          
+            <div class="col">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Prix unitaire</mat-label>
+                <input matInput type="number" [value]="prixUnitaire"  disabled>
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Prix total</mat-label>
+                  <input matInput type="number" [value]="prixTotal" disabled>
+                </mat-form-field>
+              </div>
+           
+          </div>
+          <div class="row">
+            <div class="offset-6 col-3">
+              <div class="float-right mt-4 mb-3">
+                <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="float-right mt-4 mb-3">
+                <button mat-raised-button (click)="onConfirm()" style="width: 100%">Confirmer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

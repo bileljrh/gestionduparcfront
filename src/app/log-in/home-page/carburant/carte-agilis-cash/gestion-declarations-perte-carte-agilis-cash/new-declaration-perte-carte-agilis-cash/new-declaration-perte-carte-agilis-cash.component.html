@@ -1,0 +1,136 @@
+<!--<div class="container-fluid m-0 p-0 frame" [formGroup]="newCarteAgilisCashForm">-->
+<!--  <div class="row m-0 p-0">-->
+<!--    <div class="col-12 m-0 p-0 header">-->
+<!--      <span class="float-left">-->
+<!--        <mat-icon class="mr-2">fiber_new</mat-icon>-->
+<!--        Ajouter une nouvelle carte Agilis Cash</span>-->
+<!--      <span class="float-right closeDialog" (click)="closeDialog()">X</span>-->
+<!--    </div>-->
+<!--    <div class="col-12">-->
+<!--      Identité du demandeur-->
+<!--      <mat-divider class="mb-4"></mat-divider>-->
+<!--    </div>-->
+<!--    <mat-radio-group formControlName="typeDeclarant" class="example-full-width col-12 mb-3 mt-2">-->
+<!--      <div class="d-flex justify-content-center">-->
+<!--        <mat-radio-button class="mr-3" value="Physique">Personne physique</mat-radio-button>-->
+<!--        <mat-radio-button value="Morale">Personne morale</mat-radio-button>-->
+<!--      </div>-->
+<!--    </mat-radio-group>-->
+<!--    <div class="col-4">-->
+<!--      <mat-form-field class="example-full-width">-->
+<!--        <mat-label>Nom</mat-label>-->
+<!--        <input matInput type="text" formControlName="nomDeclarant">-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--      <mat-form-field class="example-full-width">-->
+<!--        <mat-label>Prénom</mat-label>-->
+<!--        <input matInput type="text" formControlName="prenomDeclarant">-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--      <mat-form-field class="example-full-width">-->
+<!--        <mat-label>Sexe</mat-label>-->
+<!--        <mat-select formControlName="sexeDeclarant">-->
+<!--          <mat-option value="Mâle">Mâle</mat-option>-->
+<!--          <mat-option value="Femelle">Femelle</mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--      <mat-form-field class="example-full-width">-->
+<!--        <mat-label>Date de naissance</mat-label>-->
+<!--        <input matInput [matDatepicker]="picker1" formControlName="dateNaissanceDeclarant">-->
+<!--        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>-->
+<!--        <mat-datepicker #picker1></mat-datepicker>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--      <mat-form-field class="example-full-width">-->
+<!--        <mat-label>Lieu de naissance</mat-label>-->
+<!--        <input matInput type="text" formControlName="lieuNaissanceDeclarant">-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--      <mat-form-field class="example-full-width">-->
+<!--        <mat-label>Numéro CIN</mat-label>-->
+<!--        <input matInput type="text" formControlName="numeroCINDeclarant">-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="col-12 mt-4">-->
+<!--      Information carte Agilis Cash-->
+<!--      <mat-divider class="mb-4"></mat-divider>-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--      <mat-form-field class="example-full-width">-->
+<!--        <mat-label>Numéro carte</mat-label>-->
+<!--        <mat-select formControlName="numeroCarte">-->
+<!--          <mat-option *ngFor="let numeroCarte of rechargeCarteAgilisCash" [value]="numeroCarte">-->
+<!--            {{numeroCarte.numeroCarte}}-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--      <mat-form-field class="example-full-width">-->
+<!--        <mat-label>Type carburant</mat-label>-->
+<!--        <input matInput type="text" [value]="typeCarburant" disabled>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--      <mat-form-field class="example-full-width">-->
+<!--        <mat-label>Structure</mat-label>-->
+<!--        <input matInput type="text" [value]="structure" disabled>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--      <mat-form-field class="example-full-width">-->
+<!--        <mat-label>Numéro de série</mat-label>-->
+<!--        <mat-select formControlName="numero_plaque">-->
+<!--          <mat-option *ngFor="let numeroPlaque of rechargeCarteAgilisCash" [value]="numeroPlaque">-->
+<!--            {{numeroPlaque.numero_plaque}}-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--      <mat-form-field class="example-full-width">-->
+<!--        <mat-label>Matricule bénéficiaire</mat-label>-->
+<!--        <mat-select formControlName="matriculeBeneficiaire">-->
+<!--          <mat-option *ngFor="let matriculeBeneficiaire of rechargeCarteAgilisCash" [value]="matriculeBeneficiaire">-->
+<!--            {{matriculeBeneficiaire.matriculeBeneficiaire}}-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--        <mat-hint align="end">{{nomBeneficiaire}}</mat-hint>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--      <mat-form-field class="example-full-width">-->
+<!--        <mat-label>soldeRestant</mat-label>-->
+<!--        <input matInput type="text" [value]="soldeRestant" disabled>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="col-12 mt-4">-->
+<!--      Annulation-->
+<!--      <mat-divider class="mb-4"></mat-divider>-->
+<!--    </div>-->
+<!--    <div class="col-12">-->
+<!--      <mat-form-field class="example-full-width">-->
+<!--        <mat-label>Cause d'annulation</mat-label>-->
+<!--        <textarea matInput rows="2" formControlName="causeAnnulation"></textarea>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="offset-6 col-3">-->
+<!--      <div class="float-right mt-4 mb-3">-->
+<!--        <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-3">-->
+<!--      <div class="float-right mt-4 mb-3">-->
+<!--        <button mat-raised-button (click)="onConfirm()" style="width: 100%" [disabled]="!newCarteAgilisCashForm.valid">-->
+<!--          Confirmer-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

@@ -1,0 +1,25 @@
+<div class="row frame">
+  <div class="col-6">
+    <mat-form-field>
+      <mat-label>UGP</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let ugp of UGP" [value]="ugp">
+          {{ugp}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-form-field>
+      <mat-label>Mois & Année</mat-label>
+      <input matInput [matDatepicker]="dp" [formControl]="date">
+      <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+      <mat-datepicker #dp
+                      startView="multi-year"
+                      (yearSelected)="chosenYearHandler($event)"
+                      (monthSelected)="chosenMonthHandler($event, dp)"
+                      panelClass="example-month-picker">
+      </mat-datepicker>
+    </mat-form-field>
+  </div>
+</div>

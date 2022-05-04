@@ -1,0 +1,86 @@
+<div class="container-fluid">
+  <div class="row frame" [formGroup]="validatedEtatMensuelForm">
+    <div class="col-12">
+      Véhicule
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-3">
+      <mat-form-field>
+        <mat-label>Bénéficiare</mat-label>
+        <mat-select formControlName="matriculeBeneficiaire">
+          <mat-option *ngFor="let matriculeBeneficiaire of MatriculeBeneficiaire" [value]="matriculeBeneficiaire">
+            {{matriculeBeneficiaire}}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="end">{{nomBeneficiaire}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field>
+        <mat-label>N° véhicule</mat-label>
+        <mat-select formControlName="numero_plaque">
+          <mat-option *ngFor="let numeroPlaque of NumeroPlaque" [value]="numeroPlaque">
+            {{numeroPlaque}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width">
+        <mat-label>Structure</mat-label>
+        <input matInput type="text" formControlName="structure">
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field>
+        <mat-label>Mois de distribution</mat-label>
+        <mat-select formControlName="moisEtat">
+          <mat-option *ngFor="let yearAndMonth of listMonthsAndYears" [value]="yearAndMonth.numericFormat">
+            {{yearAndMonth.stringFormat}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-12 mt-4">
+      Distribution
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Carburant</mat-label>
+        <input matInput type="number" formControlName="quantiteCarburant">
+        <mat-hint align="end">{{typeCarburant}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre de bons</mat-label>
+        <input matInput type="number" formControlName="quantiteAccordee">
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Source carburant</mat-label>
+        <mat-select formControlName="sourceCarburant">
+          <mat-option *ngFor="let source of Source" [value]="source">
+            {{source}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="offset-8 col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="secondary" (click)="onCancel()">Annuler
+      </button>
+    </div>
+    <div class="col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="primary" (click)="onConfirm()">Valider
+      </button>
+    </div>
+  </div>
+</div>
+
+

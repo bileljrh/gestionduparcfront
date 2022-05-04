@@ -1,0 +1,81 @@
+<div class="container-fluid">
+  <div class="row frame">
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>UGP</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let ugp of UGP" [value]="ugp">
+            {{ugp}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Mois de distribution</mat-label>
+        <mat-select [formControl]="monthForm">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let yearAndMonth of listMonthsAndYears" [value]="yearAndMonth.numericFormat">
+            {{yearAndMonth.stringFormat}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row frame" *ngIf="VIEW_DISTRIBUTION_CARBURANT_VEHICULE" >
+    <div class="col-12" #elementContainer style="min-height: 370px">
+      <table class="col-12" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="matricule">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Matricule</th>
+          <td mat-cell *matCellDef="let element"> {{element.matriculeBeneficiaire }} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="beneficiaire">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Bénéficiaire</th>
+          <td mat-cell *matCellDef="let element"> {{element.nomBeneficiaire}} </td>
+        </ng-container>
+
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="typeCarburant">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Carburant</th>
+          <td mat-cell *matCellDef="let element"> {{element.quantiteCarburant}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="nombre2Bons">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre de bons</th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre2Bons}} </td>
+        </ng-container>
+
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="supprimer">
+          <th mat-header-cell *matHeaderCellDef>Supprimer</th>
+          <td mat-cell *matCellDef="let element">
+            <div *ngIf="DELETE_DISTRIBUTION_CARBURANT_VEHICULE">
+            <mat-icon class="mouseUp" (click)="deleteRow(element.idDistribution)">delete</mat-icon>
+          </div> </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="modifier">
+          <th mat-header-cell *matHeaderCellDef>Modifier</th>
+          <td mat-cell *matCellDef="let element;let i =index">
+            <div *ngIf="MODIFY_DISTRIBUTION_CARBURANT_VEHICULE">
+            <mat-icon class="mouseUp" (click)="modifyRow(element.idDistribution,i)">edit</mat-icon>
+       </div>   </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <button class="col-12 mt-5 mb-3"  *ngIf="ADD_DISTRIBUTION_CARBURANT_VEHICULE" mat-raised-button (click)="createNewDistribution()">Nouvelle distribution
+      </button>
+    </div>
+  </div>
+</div>

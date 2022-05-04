@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row pt-3">
+    <div class="col-3">
+      <mat-form-field class="example-full-width">
+        <mat-label>Montant livré</mat-label>
+        <input matInput placeholder="" value="" type="number">
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width">
+        <mat-label>Montant facturé</mat-label>
+        <input matInput placeholder="" value="" type="number">
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field>
+        <mat-label>Date facture</mat-label>
+        <input matInput [matDatepicker]="picker2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width">
+        <mat-label>Référence facture</mat-label>
+        <input matInput placeholder="" value="" type="text">
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width">
+        <mat-label>Montant de réglement</mat-label>
+        <input matInput placeholder="" value="" type="number">
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field>
+        <mat-label>Date réglement</mat-label>
+        <input matInput [matDatepicker]="picker3">
+        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width">
+        <mat-label>Référence réglement</mat-label>
+        <input matInput placeholder="" value="" type="number">
+      </mat-form-field>
+    </div>
+    <app-tab-table></app-tab-table>
+  </div>
+</div>

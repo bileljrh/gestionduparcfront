@@ -1,0 +1,15 @@
+<div class="container-fluid notificationElement">
+  <div class="row" >
+    <div class="col-12 notificationText">
+      <p  style="size: 200px ;color :rgb(243, 14, 14)"> {{t}}demande(s) en cours </p>
+      <p *ngIf="compensation"  style="color: blue;" routerLink="carburant/gestion_des_recharge_de_compensation"  (click)="notifCompensation()">Consulter</p>
+      <p *ngIf="souscompte"  style="color: blue;" routerLink="carburant/recharge_sous_compte" (click)="notifSousCompte()">Consulter</p>
+      <p *ngIf="complementaire"  style="color: blue;" routerLink="carburant/gestion_des_recharge_complementaire" (click)="notifComplementaire()">Consulter</p>
+      <p *ngIf="quotamensuel"  style="color: blue;" routerLink="carburant/recharge_quota_mensuel" (click)="notifQuotaMensuel()">Consulter</p>
+      <p *ngIf="maintenance"  style="color: blue;" routerLink="maintenance_et_réparation/gestion_demande_d'intervention" (click)="notifMaintenance()">Consulter</p>
+
+    </div>
+    
+  </div>
+<br>
+  </div>

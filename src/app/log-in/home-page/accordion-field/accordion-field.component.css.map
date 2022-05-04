@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "sourceRoot": "",
+  "sources": [
+    "accordion-field.component.scss"
+  ],
+  "names": [],
+  "mappings": "AAAA;EACE",
+  "file": "accordion-field.component.css"
+}

@@ -1,0 +1,54 @@
+<div class="row frame">
+
+  <div id="ask4deleteParent" *ngIf="ask4Delete" [ngClass]="{top: containerX, left:containerY}">
+    <div class="row" id="ask4deleteChild">
+      <p class="col-12">Voulez vous supprimer cette ligne? cette action est
+        irréversible si vous enregistrer vos modifications !</p>
+      <div class="offset-6 col-3">
+        <button mat-stroked-button class="secondary" (click)="onDenyDelete()">Annuler</button>
+      </div>
+      <div class="col-3">
+        <button
+          mat-raised-button class="primary" (click)="onConfirmDelete()">Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <table matSort (matSortChange)="sortData($event)" class="col-12">
+    <tr>
+      <th mat-sort-header="matricule">Matricule</th>
+      <th mat-sort-header="beneficiaire">Bénéficiaire</th>
+      <th mat-sort-header="vehicule">Véhicule</th>
+      <th mat-sort-header="carburant">Carburant</th>
+      <th mat-sort-header="nbrDeBons">Nbre de bons</th>
+      <th>Supprimer</th>
+      <th>Modifier</th>
+    </tr>
+
+    <tr *ngFor="let dcfTab of sortedData ; let i = index">
+      <td>{{dcfTab.matricule}}</td>
+      <td>{{dcfTab.beneficiaire}}</td>
+      <td>{{dcfTab.vehicule}}</td>
+      <td>{{dcfTab.carburant}}</td>
+      <td>{{dcfTab.nbrDeBons}}</td>
+      <td>
+        <mat-icon class="mouseUp" style="cursor: pointer">delete</mat-icon>
+      </td>
+      <td>
+        <mat-icon>edit</mat-icon>
+      </td>
+    </tr>
+  </table>
+  <div class="offset-8 col-2 mb-2 mt-5">
+    <button
+      mat-raised-button class="secondary">Imprimer
+    </button>
+  </div>
+  <div class="col-2 mb-2 mt-5">
+    <button
+      mat-raised-button class="primary">Nouvelle distribution
+    </button>
+  </div>
+</div>

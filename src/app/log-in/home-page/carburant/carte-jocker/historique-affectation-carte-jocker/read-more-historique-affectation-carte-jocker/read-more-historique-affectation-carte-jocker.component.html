@@ -1,0 +1,73 @@
+<div class="container-fluid m-0 p-0">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 header">
+      <span class="float-left">
+        <mat-icon class="mr-2">library_books</mat-icon>
+        Historique d'affectation sélectionné</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-12 mt-3">
+      <div class="container-fluid frame">
+        <div class="row">
+          <div class="col-12">
+            Information générale de véhicule
+            <mat-divider class="mb-4"></mat-divider>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Numéro de série</mat-label>
+              <input matInput type="text" [value]="data.carteJocker.numero_plaque" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Type carburant</mat-label>
+              <input matInput type="text" [value]="data.carteJocker.typeCarburant" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Matricule bénéficiaire</mat-label>
+              <input matInput type="text" [value]="data.carteJocker.matriculeBeneficiaire" disabled>
+              <mat-hint align="end">{{data.carteJocker.nomBeneficiaire}}</mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Structure</mat-label>
+              <input matInput type="text" [value]="data.carteJocker.structure" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-12 mt-2">
+            Information générale de la carte et l'affectation
+            <mat-divider class="mb-4"></mat-divider>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Date affectation</mat-label>
+              <input matInput type="text" [value]="data.carteJocker.dateAffectation" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Date demande d'affectation</mat-label>
+              <input matInput type="text" [value]="data.carteJocker.dateDemandeAffectation" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Nmbre d'affectation</mat-label>
+              <input matInput type="text" [value]="data.carteJocker.nombreAffectation" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Solde</mat-label>
+              <input matInput type="text" [value]="data.carteJocker.solde" disabled>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

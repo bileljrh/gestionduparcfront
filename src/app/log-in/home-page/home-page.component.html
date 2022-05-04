@@ -1,0 +1,669 @@
+<div ngxUiLoaderBlurred class="container-fluid m-0 p-0">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0">
+      <mat-drawer-container id="myElementId" class="example-container">
+        <mat-drawer #drawer class="example-sidenav" mode="side" [(opened)]="opened">
+          <div class="GesParC" (click)="SideNavtoggle()">
+            <mat-icon class="carIcon">directions_car</mat-icon>
+            <span>GesPARC TT</span>
+          </div>
+          <mat-accordion>
+            <div class="d-flex align-content-center">
+              <img class="imageProfile"
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDI4LjA1NSAyOC4wNTUiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxjaXJjbGUgcj0iMTQuMDI3NSIgY3g9IjE0LjAyNzUiIGN5PSIxNC4wMjc1IiBmaWxsPSIjZjVmNWY1IiBzaGFwZT0iY2lyY2xlIiB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwxLDAsMCkiPjwvY2lyY2xlPjxnIHRyYW5zZm9ybT0ibWF0cml4KDAuNiwwLDAsMC42LDUuNjExMDAwMDYxMDM1MTUxLDUuNjEwNzgwNjY4MjU4NjY4KSI+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+Cgk8cGF0aCBkPSJNMTQuMjQ5LDEuMDI3Yy0wLjAzNiwwLTAuMDcsMC4wMDktMC4xMDQsMC4wMDljLTAuMTA2LTAuMDAzLTAuMjExLTAuMDEtMC4zMTgtMC4wMDlIMTQuMjQ5eiBNMTQuMDg1LDE3LjMwMSAgIGMtMC4wMTksMC0wLjAzNi0wLjAwMy0wLjA1NS0wLjAwM2MtMC4wMTQsMC0wLjAyNywwLjAwMy0wLjA0MSwwLjAwM0gxNC4wODV6IE04LjEzNywxMS4zMTNjMC4wMTUtMC4wMDMsMC4wMjYtMC4wMTksMC4wNDItMC4wMjMgICBjMC45NDEsMy40MDUsMy4zNzcsNS45NTMsNS44NTIsNi4wMDdjMi4yNTQtMC4xMDQsNS4wMjItMi42MDYsNS45NDQtNS45OTRjMC40MjQsMC4wMjYsMC44NDgtMC40NzQsMC45NjctMS4xNyAgIGMwLjEyMy0wLjcyNi0wLjEzNS0xLjM3NC0wLjU3Mi0xLjQ0OWMtMC4wMjgtMC4wMDUtMC4wNTcsMC4wMTMtMC4wODQsMC4wMTRjLTAuMTI3LTUuNjAzLTIuNzg5LTcuNTc5LTYuMTQxLTcuNjY0ICAgQzEwLjY4OCwxLjA1MSw3LjU5MywzLjQ1Myw3Ljc4OSw4LjdjLTAuMDMzLDAtMC4wNjQtMC4wMjEtMC4wOTYtMC4wMTVDNy4yNTQsOC43Niw2Ljk5OCw5LjQwOCw3LjEyMSwxMC4xMzQgICBDNy4yNDEsMTAuODU4LDcuNjk3LDExLjM4Niw4LjEzNywxMS4zMTN6IE0xOC42ODgsMTguMjdsLTMuMTQxLDYuMTQ2bC0wLjQ5Ni0zLjk5N2wwLjc3NS0wLjYzNmgtMS44NzhoLTEuNzE3bDAuNzc2LDAuNjM2ICAgbC0wLjQ5NywzLjk5N0w5LjM3MywxOC4yN0MzLjkxNywxOS4wMDUsMCwyMS4zNDMsMCwyNy4wMjdoMjguMDU1QzI4LjA1NywyMS4zNDIsMjQuMTQxLDE5LjAwNiwxOC42ODgsMTguMjd6IiBmaWxsPSIjMDAwMDAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPC9nPjwvc3ZnPg==" />
+            </div>
+            <mat-expansion-panel
+              *ngIf="VIEW_VEHICULE || VIEW_TAXE_CIRCULATION || VIEW_ASSURANCE || VIEW_VISITE_TECHNIQUE || VIEW_REFORME || VIEW_GPS"
+              (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header class="mat-expansion-panel-header-odd">
+                <mat-panel-title>
+                  <mat-icon mat-icon class="matIconPanel">emoji_transportation</mat-icon>
+                  <span>Administratif</span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+
+              <ng-template class="mat-expansion-panel-body" matExpansionPanelContent>
+                <div *ngIf="VIEW_VEHICULE" class="firstSubPanel" routerLink="administratif/véhicules"
+                  (click)="getActualPath(1)">Gestion des
+                  véhicules
+                </div>
+                <div *ngIf="VIEW_TAXE_CIRCULATION" class="firstSubPanel" routerLink="administratif/taxe_de_circulation"
+                  (click)="getActualPath(2)">
+                  Gestion des taxes de circulation
+                </div>
+                <mat-expansion-panel *ngIf=" VIEW_EXPERTS " (opened)="panelOpenState = true"
+                  (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header class="mat-expansion-sub-panel-header-even">
+                    <mat-panel-title>
+                      <span>Gestion des assurances</span>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <div *ngIf="VIEW_EXPERTS" class="secondSubPanel" routerLink="reférentiel/général/experts"
+                    (click)="getActualPath(72)">
+                    Experts
+                  </div>
+                </mat-expansion-panel>
+                <div *ngIf="VIEW_VISITE_TECHNIQUE" class="firstSubPanel" routerLink="administratif/visite_technique"
+                  (click)="getActualPath(4)">
+                  Gestion des visites techniques
+                </div>
+                <div *ngIf="VIEW_REFORME" class="firstSubPanel" routerLink="administratif/réforme_et_sortie_de_compte"
+                  (click)="getActualPath(5)">Gestion des réformes
+                </div>
+                <div *ngIf="VIEW_GPS" class="firstSubPanel" routerLink="administration/gps" (click)="getActualPath(89)">
+                  Gestion des GPS
+                </div>
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+
+                <mat-expansion-panel-header class="mat-expansion-sub-panel-header-even">
+                  <mat-panel-title>
+                    <span>Gestion de fichier</span>
+                  </mat-panel-title>
+                  <mat-panel-description>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="secondSubPanel" routerLink="carburant/import_fichier_excel">
+                  Importer un Fichier Excel
+                </div>
+
+                <div class="secondSubPanel" routerLink="carburant/modify_price_carburant">
+                  mettre à jour les prix du carburant 
+                </div>
+              </mat-expansion-panel>
+
+              </ng-template>
+
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header class="mat-expansion-panel-header-even">
+                <mat-panel-title>
+                  <mat-icon mat-icon class="matIconPanel">book_online</mat-icon>
+                  <span class="">Exploitation</span>
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div *ngIf="VIEW_RESERVATION" class="firstSubPanel" routerLink="exploitation/gestion_des_réservations"
+                (click)="getActualPath(6)">
+                Gestion des réservations
+              </div>
+              <div *ngIf="VIEW_LOCATION" class="firstSubPanel" routerLink="exploitation/gestion_des_locations"
+                (click)="getActualPath(7)">
+                Gestion des locations
+              </div>
+              <div *ngIf="VIEW_VEHICULE_SINISTRE" class="firstSubPanel" routerLink="exploitation/gestion_des_sinistres"
+                (click)="getActualPath(8)">
+                Gestion des sinistres
+              </div>
+              <div *ngIf="VIEW_EMPRUNT" class="firstSubPanel" routerLink="exploitation/gestion_des_emprunts"
+                (click)="getActualPath(9)">
+                Gestion des Emprunts
+              </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header class="mat-expansion-panel-header-odd">
+                <mat-panel-title>
+                  <mat-icon class="matIconPanel">addchart</mat-icon>
+                  <span class="">Ordres de mission</span>
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="firstSubPanel" routerLink="ordres_de_mission/gestion_ordres_de_mission"
+                (click)="getActualPath(10)">Gestion des ordres de
+                mission
+              </div>
+              <div class="firstSubPanel" routerLink="ordres_de_mission/véhicules_qui_ont_dépassés_la_date_de_retour"
+                (click)="getActualPath(11)">
+                Véhicules dépassant date de retour
+              </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header class="mat-expansion-panel-header-even">
+                <mat-panel-title>
+                  <mat-icon class="matIconPanel">local_gas_station</mat-icon>
+                  <span class="">Carburant</span>
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+             
+              <!--<div class="firstSubPanel" routerLink="carburant/gestion_des_cartes">
+                Gestion des cartes
+              </div>
+              <div class="firstSubPanel" routerLink="carburant/gestion_des_affectations">
+                Gestion des affectations
+              </div>
+              <div class="firstSubPanel" routerLink="carburant/gestion_des_annulations">
+                Gestion des annulations
+              </div>
+              <div class="firstSubPanel" routerLink="carburant/gestion_des_pertes">
+                Gestion des pertes
+              </div>-->
+              
+            
+             
+              <!--<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header class="mat-expansion-sub-panel-header-even">
+                  <mat-panel-title>
+                   <span>Distribution de carburant</span>
+                  </mat-panel-title>
+                  <mat-panel-description>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div *ngIf="VIEW_DISTRIBUTION_CARBURANT_FONCTION" class="secondSubPanel"
+                  routerLink="carburant/distribution_de_carburant_de_fonction" (click)="getActualPath(12)">Distribution
+                  de
+                  carburant de fonction
+                </div>
+                <div *ngIf="VIEW_DISTRIBUTION_CARBURANT_VEHICULE" class="secondSubPanel"
+                  routerLink="carburant/distribution_de_carburant_de_fonction_(véhicule_personelle)"
+                  (click)="getActualPath(13)">Distribution de
+                  carburant de fonction (Véhicule personelle)
+                </div>
+                <div *ngIf="VIEW_DESTRIBUTION_CARBURANT_COMPENSATION" class="secondSubPanel"
+                  routerLink="carburant/distribution_de_carburant_de_fonction_(compensation)"
+                  (click)="getActualPath(14)">
+                  Distribution de carburant de fonction (Compensation)
+                </div>
+                <div *ngIf="VIEW_DESTRIBUTION_CARBURANT_SERVICE" class="secondSubPanel"
+                  routerLink="carburant/distribution_de_carburant_de_service" (click)="getActualPath(15)">Distribution
+                  de
+                  carburant de service
+                </div>
+                <div class="secondSubPanel"
+                  routerLink="carburant/distribution_de_carburant_de_service_(structure_administrative)"
+                  (click)="getActualPath(16)">Distribution
+                  de carburant de service (Structure administrative)
+                </div>
+                <div class="secondSubPanel"
+                  routerLink="carburant/distribution_de_carburant_de_service_(quota_complémentaire)"
+                  (click)="getActualPath(17)">Distribution de
+                  carburant de service (Quota complémentaire)
+                </div>
+                <div *ngIf="VIEW_TRANSFERT_PARC" class="secondSubPanel" routerLink="carburant/transfert_de_parc_à_parc"
+                  (click)="getActualPath(18)">
+                  Transfert de parc à parc
+                </div>
+                <div class="secondSubPanel" routerLink="carburant/réception_des_bons_de_carburants"
+                  (click)="getActualPath(19)">Réception des bons
+                  de carburant
+                </div>
+                <div class="secondSubPanel" routerLink="carburant/transfert_vers_structure" (click)="getActualPath(20)">
+                  Transfert vers Structure
+                </div>
+                <div class="secondSubPanel" routerLink="carburant/consommation_du_carburant"
+                  (click)="getActualPath(21)">Consommation du carburant
+                </div>
+                <div *ngIf="VIEW_RETOUR_CARBURANT" class="secondSubPanel" routerLink="carburant/retour_de_carburant"
+                  (click)="getActualPath(22)">
+                  Retour de carburant
+                </div>
+                <div *ngIf="VIEW_ETAT_MENSUEL" class="secondSubPanel" routerLink="carburant/etat_mensuel_(16_auto)"
+                  (click)="getActualPath(23)">
+                  Etat mensuel
+                </div>
+                <div *ngIf="VIEW_BON_CARBURANT_BON" class="secondSubPanel"
+                  routerLink="carburant/bon_de_commande_des_bons" (click)="getActualPath(24)">
+                  Bon de commande des bons
+                </div>
+                <div class="secondSubPanel" routerLink="carburant/recherche_affectation_des_bons"
+                  (click)="getActualPath(25)">Recherche affectation
+                  des bons
+                </div>
+                <div class="secondSubPanel" routerLink="carburant/inventaire" (click)="getActualPath(26)">Inventaire
+                </div>
+                <div *ngIf="VIEW_SUIVI" class="secondSubPanel" routerLink="carburant/suivi" (click)="getActualPath(27)">
+                  Suivi</div>
+              </mat-expansion-panel>-->
+
+
+              
+              <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header class="mat-expansion-sub-panel-header-even">
+                  <mat-panel-title>
+                    <span>Carte Plafond</span>
+                  </mat-panel-title>
+                  <mat-panel-description>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="secondSubPanel" *ngIf="VIEW_CARTE_PLAFOND"
+                  routerLink="carburant/gestion_des_cartes_plafond">Gestion des cartes
+                  Plafond
+                </div>
+                <!--
+                <div class="secondSubPanel" routerLink="carburant/nouvelle_demande_affectation_carte_plafond">Nouvelle
+                  demande affectation
+                </div>
+                -->
+                <div class="secondSubPanel" *ngIf="VIEW_DEMANDE_AFFECTATION_CARTE_PLAFOND"
+                  routerLink="carburant/gestion_des_demandes_affectations_carte_plafond">
+                  Gestion des demandes d'affectations
+                </div>
+                <div class="secondSubPanel" *ngIf="VIEW_HISTORIQUE_DEMANDE_AFFECTATION_CARTE_PLAFOND"
+                  routerLink="carburant/historique_des_affectations_carte_plafond">Historique
+                  des affectations
+                </div>
+                <div class="secondSubPanel" *ngIf="VIEW_DECLARATION_PERTE_CARTE_PLAFOND"
+                  routerLink="carburant/gestion_des_déclarations_de_perte_carte_plafond">
+                  Gestion des déclarations de perte
+                </div>
+                <div class="secondSubPanel" *ngIf="VIEW_HISTORIQUE_DECLARATION_PERTE_CARTE_PLAFOND"
+                  routerLink="carburant/historique_des_déclarations_de_perte_carte_plafond">
+                  Historique des déclarations de perte
+                </div>
+                <div class="secondSubPanel" *ngIf="ADD_DEMANDE_ANNULATION_CARTE_PLAFOND"
+                  routerLink="carburant/nouvelle_demande_d'annulation_carte_plafond">Nouvelle
+                  demande d'annulation
+                </div>
+                <div class="secondSubPanel" *ngIf="VIEW_DEMANDE_ANNULATION_CARTE_PLAFOND"
+                  routerLink="carburant/gestion_des_annulations_carte_plafond">Gestion des
+                  demandes d'annulations
+                </div>
+                <div class="secondSubPanel" *ngIf="VIEW_HISTORIQUE_DEMANDE_ANNULATION_CARTE_PLAFOND"
+                  routerLink="carburant/historique_des_demandes_d'annulation_perte_carte_plafond">Historique des
+                  demandes d'annulation
+                </div>
+              </mat-expansion-panel>
+
+              <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header class="mat-expansion-sub-panel-header-even">
+                  <mat-panel-title>
+                    <span>Carte Agilis Cash</span>
+                  </mat-panel-title>
+                  <mat-panel-description>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div *ngIf="VIEW_AGILIS_CASH" class="secondSubPanel"
+                  routerLink="carburant/gestion_des_cartes_agilis_cash">Gestion des cartes
+                  Agilis Cash
+                </div>
+                <div *ngIf="VIEW_RECHARGE_AGILIS" class="secondSubPanel"
+                  routerLink="carburant/gestion_des_demandes_recharge_carte_agilis_cash">
+                  Gestion des recharges
+                </div>
+                <div *ngIf="VIEW_DECLARATION_PERTE_AGILIS" class="secondSubPanel"
+                  routerLink="carburant/gestion_des_déclarations_de_perte_carte_agilis_cash">
+                  Gestion des déclarations de perte
+                </div>
+                <div *ngIf="VIEW_HISTORIQUE_PERTE_AGILIS" class="secondSubPanel"
+                  routerLink="carburant/historique_des_déclarations_de_perte_carte_agilis_cash">
+                  Historique des déclarations de perte
+                </div>
+                <div *ngIf="VIEW_ANNULATION_AGILIS" class="secondSubPanel"
+                  routerLink="carburant/gestion_des_demandes_annulation_carte_agilis_cash">
+                  Gestion des demandes d'annulation
+                </div>
+              </mat-expansion-panel>
+              <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header class="mat-expansion-sub-panel-header-even">
+                  <mat-panel-title>
+                    <span>Carte Jocker</span>
+                  </mat-panel-title>
+                  <mat-panel-description>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div *ngIf="VIEW_CARTE_JOCKER" class="secondSubPanel" routerLink="carburant/gestion_des_cartes_jocker">
+                  Gestion des cartes Jocker
+                </div>
+                <div *ngIf="VIEW_DEMANDE_AFFECTATION_CARTE_JOCKER" class="secondSubPanel"
+                  routerLink="carburant/gestion_affectation_des_cartes_jocker">Gestion des
+                  demandes affectation
+                </div>
+                <div *ngIf="VIEW_DEMANDE_DESAFFECTATION_CARTE_JOCKER" class="secondSubPanel"
+                  routerLink="carburant/gestion_demande_désaffectation_des_cartes_jocker">
+                  Gestion des demandes désaffectation
+                </div>
+                <div *ngIf="VIEW_DECLARATION_PERTE_CARTE_JOCKER" class="secondSubPanel"
+                  routerLink="carburant/gestion_des_déclarations_de_perte_carte_jocker">
+                  Gestion des déclarations de perte
+                </div>
+                <div *ngIf="VIEW_DECLARATION_PERTE_CARTE_JOCKER" class="secondSubPanel"
+                  routerLink="carburant/historique_des_déclarations_de_perte_carte_jocker">
+                  Historique des déclarations de perte
+                </div>
+                <div *ngIf="VIEW_DEMANDE_QUOTA_CARTE_JOCKER" class="secondSubPanel"
+                  routerLink="carburant/gestion_demande_quota_des_cartes_jocker">
+                  Gestion des demandes quota carte jocker
+                </div>
+              </mat-expansion-panel> 
+              <mat-expansion-panel  (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header class="mat-expansion-sub-panel-header-even">
+                  <mat-panel-title>
+                    <span>Recharge des carburants de fonction</span>
+                  </mat-panel-title>
+                  <mat-panel-description>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div *ngIf="VIEW_DEMANDE_RECHARGE_SOUS_COMPTE" class="secondSubPanel" routerLink="carburant/recharge_sous_compte">
+                  Gestion des recharges sous compte
+                </div>
+                <div  *ngIf="VIEW_HISTORIQUE_DEMANDE_RECHARGE_SOUS_COMPTE"class="firstSubPanel" routerLink="carburant/historique_recharge_sous_compte">
+                  Historique des recharges sous compte
+                </div>
+                <div *ngIf="VIEW_RECHARGE_QUOTA_MENSUEL" class="secondSubPanel" routerLink="carburant/recharge_quota_mensuel">
+                  Recharge de quota mensuel
+                </div>
+                <div *ngIf="VIEW_HISTORIQUE_RECHARGE_QUOTA_MENSUEL" class="secondSubPanel" routerLink="carburant/historique_recharge_quota_mensuel">
+                  Historique de recharge de quota mensuel
+                </div>
+                <div  *ngIf="VIEW_DEMANDE_RECHARGE_CARBURANT_COMPENSATION"  class="secondSubPanel" routerLink="carburant/gestion_des_recharge_de_compensation">
+                  Recharge de carburant de cempensation
+                </div>
+                <div *ngIf="VIEW_DEMANDE_RECHARGE_COMPLEMENTAIRE" class="secondSubPanel" routerLink="carburant/gestion_des_recharge_complementaire">
+                  Recharge complementaire
+                </div>
+                <div  class="secondSubPanel" routerLink="carburant/historique_gestion_des_recharge_complementaire">
+                  Historique Recharge complementaire
+                  </div>
+                  <div  class="secondSubPanel" routerLink="carburant/historique_gestion_des_recharge_de_compensation">
+                    Historique Recharge de carburant de cempensation
+                  </div>
+                
+              </mat-expansion-panel>
+
+
+
+            </mat-expansion-panel>
+            <mat-expansion-panel *ngIf="VIEW_BON_COMMANDE" (opened)="panelOpenState = true"
+              (closed)="panelOpenState = false">
+              <mat-expansion-panel-header class="mat-expansion-panel-header-odd">
+                <mat-panel-title>
+                  <mat-icon class="matIconPanel">add_shopping_cart</mat-icon>
+                  <span class="">Achat</span>
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <ng-template class="mat-expansion-panel-body" matExpansionPanelContent>
+                <div class="firstSubPanel" routerLink="achat/gestion_bons_commande">Gestion des commandes</div>
+                <!--<div class="firstSubPanel" routerLink="achat/marchés">Marchés</div>
+                <div class="firstSubPanel" routerLink="achat/budget">Budget</div>-->
+              </ng-template>
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header class="mat-expansion-panel-header-even">
+                <mat-panel-title>
+                  <mat-icon class="matIconPanel">table_view</mat-icon>
+                  <span class="">Stock</span>
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <ng-template *ngIf="VIEW_Bon_Travail_Sortie" class="mat-expansion-panel-body" matExpansionPanelContent>
+                <div class="firstSubPanel" routerLink="stock/bon_de_sortie_pour_bon_de_travail">Bon de sortie pour bon
+                  de travail
+                </div>
+                <div *ngIf="VIEW_Bon_Transfert_vers_magasin" class="firstSubPanel"
+                  routerLink="stock/transfert_du_magasin">Transfert du vers magasin (rotation null)</div>
+                <div *ngIf="VIEW_Bon_Sortie_Structure" class="firstSubPanel"
+                  routerLink="stock/bon_de_sortie_pour_structure">Bon de sortie pour structure
+                </div>
+                <div *ngIf="VIEW_Reception_Fournisseur" class="firstSubPanel"
+                  routerLink="stock/réception_des_fournisseurs">
+                  Réception des fournisseurs
+                </div>
+                <div *ngIf="VIEW_Reception_Atelier" class="firstSubPanel" routerLink="stock/réception_d'un_atelier">
+                  Réception d'un atelier</div>
+                <!--<div *ngIf="VIEW_Bon_Transfert_vers_magasin" class="firstSubPanel">Transfert du magasin</div>-->
+                <!--<div *ngIf="VIEW_Retour_Structure" class="firstSubPanel" routerLink="stock/retour_d'une_structure">Retour d'une structure</div>-->
+                <div *ngIf="VIEW_Regulation_Stock" class="firstSubPanel" routerLink="stock/régulation_du_stock">Régulation du stock</div>
+                <div *ngIf="VIEW_Inventaire_Stock" class="firstSubPanel" routerLink="stock/inventaire_du_stock">Inventaire du stock</div>
+                <div  *ngIf="VIEW_TRANSFERT_PARC_VERS_MAGASIN" class="firstSubPanel" routerLink="stock/transfert_parc_vers_parc">Transfert d'article de parc vers magasin</div>
+              </ng-template>
+            
+              <ng-template *ngIf="VIEW_Regulation_Stock" class="mat-expansion-panel-body" matExpansionPanelContent>
+                <div *ngIf="VIEW_Regulation_Stock" class="firstSubPanel" routerLink="stock/régulation_du_stock">
+                  Régulation du stock</div>
+  
+
+                  <div class="firstSubPanel" routerLink="stock/historique_regulation" *ngIf="VIEW_HISTORIQUE_REGULATION">
+                    Historique régulation du stock
+                  </div>
+              
+                </ng-template>
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header class="mat-expansion-panel-header-odd">
+                <mat-panel-title>
+                  <mat-icon class="matIconPanel">handyman</mat-icon>
+                  <span class="">Maintenance et réparation</span>
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <ng-template class="mat-expansion-panel-body" matExpansionPanelContent>
+                <div class="firstSubPanel" routerLink="maintenance_et_réparation/gestion_demande_d'intervention">Gestion
+                  des demandes d'intervention
+                </div>
+                <div class="firstSubPanel" routerLink="maintenance_et_réparation/gestion_bons_travail">Gestion des bons
+                  de travail
+                </div>
+                <div class="firstSubPanel" routerLink="maintenance_et_réparation/sorties_des_véhicules">Sorties des
+                  véhicules
+                </div>
+                <div class="firstSubPanel" routerLink="maintenance_et_réparation/historique_vehicule" *ngIf="VIEW_HISTORIQUE_MAINTENANCE_VEHICULE">Historique maintenance des
+                  véhicules
+                </div>
+              </ng-template>
+            </mat-expansion-panel>
+            <mat-expansion-panel
+              *ngIf="VIEW_ARTICLES_SUB_MODULE || VIEW_DECOUPAGE_ADMINISTRATIF_SUB_MODULE || VIEW_EXPERTS || VIEW_FOURNISSEURS || VIEW_LIEUX_PARKING || VIEW_OPERATIONS_REPARATIONS_SUB_MODULE || VIEW_PARAMETRES_GENERAUX_SUB_MODULE || VIEW_PARAMETRES_VEHICULES_SUB_MODULE || VIEW_STRUCTURE_ADMINISTRATIVE || VIEW_UNITE_GESTION_PARC || VIEW_DETAILS_PERSONNELS || VIEW_ETATS_STOCK || VIEW_BENEFICIAIRES_EMPRUNTS"
+              (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header class="mat-expansion-panel-header-even">
+                <mat-panel-title>
+                  <mat-icon class="matIconPanel">miscellaneous_services</mat-icon>
+                  <span class="">Reférentiel</span>
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <ng-template class="mat-expansion-panel-body" matExpansionPanelContent>
+                <mat-expansion-panel
+                  *ngIf="VIEW_ARTICLES_SUB_MODULE || VIEW_DECOUPAGE_ADMINISTRATIF_SUB_MODULE || VIEW_EXPERTS || VIEW_FOURNISSEURS || VIEW_LIEUX_PARKING || VIEW_OPERATIONS_REPARATIONS_SUB_MODULE || VIEW_PARAMETRES_GENERAUX_SUB_MODULE || VIEW_PARAMETRES_VEHICULES_SUB_MODULE"
+                  (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header class="mat-expansion-sub-panel-header-even">
+                    <mat-panel-title>
+                      <span>Général</span>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <div *ngIf="VIEW_ARTICLES_SUB_MODULE" class="secondSubPanel" routerLink="reférentiel/général/articles"
+                    (click)="getActualPath(70)">
+                    Articles
+                  </div>
+                  <div *ngIf="VIEW_DECOUPAGE_ADMINISTRATIF_SUB_MODULE" class="secondSubPanel"
+                    routerLink="reférentiel/général/découpage_administratif" (click)="getActualPath(71)">Découpage
+                    administratif
+                  </div>
+
+                  <div *ngIf="VIEW_FOURNISSEURS" class="secondSubPanel" routerLink="reférentiel/général/fournisseurs"
+                    (click)="getActualPath(73)">
+                    Fournisseurs
+                  </div>
+                  <!--<div *ngIf="VIEW_LIEUX_PARKING" class="secondSubPanel" routerLink="reférentiel/général/lieuParking"
+                    (click)="getActualPath(74)">Lieux de parking
+                  </div>-->
+                  <div *ngIf="VIEW_OPERATIONS_REPARATIONS_SUB_MODULE" class="secondSubPanel"
+                    routerLink="reférentiel/général/opérations_réparation" (click)="getActualPath(75)">Opérations de
+                    réparation
+                  </div>
+                  <div *ngIf="VIEW_PARAMETRES_GENERAUX_SUB_MODULE" class="secondSubPanel"
+                    routerLink="reférentiel/général/paramètres_généraux" (click)="getActualPath(76)">Paramètres généraux
+                  </div>
+                  <div *ngIf="VIEW_PARAMETRES_VEHICULES_SUB_MODULE" class="secondSubPanel"
+                    routerLink="reférentiel/général/paramètres_véhicules" (click)="getActualPath(77)">Paramètres
+                    véhicules
+                  </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel
+                  *ngIf="VIEW_STRUCTURE_ADMINISTRATIVE || VIEW_UNITE_GESTION_PARC || VIEW_DETAILS_PERSONNELS || VIEW_ETATS_STOCK || VIEW_BENEFICIAIRES_EMPRUNTS"
+                  (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header class="mat-expansion-sub-panel-header-even">
+                    <mat-panel-title>
+                      <span>Spécifique</span>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <div *ngIf="VIEW_STRUCTURE_ADMINISTRATIVE" class="secondSubPanel"
+                    routerLink="reférentiel/spécifique/structure_administrative" (click)="getActualPath(78)">
+                    Structure administrative
+                  </div>
+                  <div *ngIf="VIEW_UNITE_GESTION_PARC" class="secondSubPanel"
+                    routerLink="reférentiel/spécifique/unite_gestion_parc" (click)="getActualPath(79)">Unité de
+                    gestion du parc
+                  </div>
+                  <div *ngIf="VIEW_DETAILS_PERSONNELS" class="secondSubPanel"
+                    routerLink="reférentiel/spécifique/details_personnel" (click)="getActualPath(80)">Détails des
+                    personnels
+                  </div>
+                  <div *ngIf="VIEW_ETATS_STOCK" class="secondSubPanel" routerLink="reférentiel/spécifique/etat_de_stock"
+                    (click)="getActualPath(81)">Etat de stock
+                  </div>
+                  <div *ngIf="VIEW_BENEFICIAIRES_EMPRUNTS" class="secondSubPanel"
+                    routerLink="reférentiel/spécifique/bénéficiaire_des_emprunts" (click)="getActualPath(82)">
+                    Bénéficiaire des emprunts
+                  </div>
+                </mat-expansion-panel>
+              </ng-template>
+            </mat-expansion-panel>
+            <mat-expansion-panel
+              *ngIf="VIEW_USERS || VIEW_GROUPES_USERS || VIEW_MESSAGES_APPLICATIFS || VIEW_ALERTES || VIEW_TRACABILITES || VIEW_PARAMETRES_APPLICATION"
+              (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header class="mat-expansion-panel-header-odd">
+                <mat-panel-title>
+                  <mat-icon class="matIconPanel">security</mat-icon>
+                  <span class="">Administration</span>
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <ng-template class="mat-expansion-panel-body" matExpansionPanelContent>
+                <div class="firstSubPanel" *ngIf="VIEW_USERS" routerLink="administration/création_des_utilisateurs"
+                  (click)="getActualPath(83)">Création des
+                  utilisateurs
+                </div>
+                <div *ngIf="VIEW_GROUPES_USERS" class="firstSubPanel"
+                  routerLink="administration/groupes_des_utilisateurs" (click)="getActualPath(84)">Groupes des
+                  utilisateurs
+                </div>
+                <div *ngIf="VIEW_MESSAGES_APPLICATIFS" class="firstSubPanel"
+                  routerLink="stock/alerting_stock" (click)="getActualPath(85)">
+                  Messages applicatifs
+                </div>
+                <div *ngIf="VIEW_ALERTES" class="firstSubPanel" routerLink="administration/alertes"
+                  (click)="getActualPath(86)">Alertes
+                </div>
+                <div *ngIf="VIEW_TRACABILITES" class="firstSubPanel" routerLink="administration/traçabilité"
+                  (click)="getActualPath(87)">
+                  Traçabilités
+                </div>
+                <div *ngIf="VIEW_PARAMETRES_APPLICATION" class="firstSubPanel"
+                  routerLink="administration/parametres_application" (click)="getActualPath(88)">Paramètres
+                  d'application
+                </div>
+              </ng-template>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-drawer>
+        <mat-drawer-content>
+          <div class="container-fluid">
+            <div class="row homeNavbar">
+              <div class="col-3 pl-0">
+                <button class="drawerBtn" [ngClass]="opened?'openedSideNav':'closedSideNav'">
+                  <mat-icon (click)="SideNavtoggle()" [style.transform]="opened?'rotate(0deg)':'rotate(180deg)'">
+                    menu_open
+                  </mat-icon>
+                </button>
+              </div>
+              <div class="col-9">
+                <div class="d-flex justify-content-end">
+                  <!--                  <div class="ml-4 header2">-->
+                  <!--                    <mat-icon (click)="toggleFullscreen()">fit_screen</mat-icon>-->
+                  <!--                  </div>-->
+                  <div>
+                    <button class="header1" mat-button disableRipple>
+                      <mat-icon (click)="handleNotification()" [matBadge]="t" matBadgeColor="warn" matBadgeSize="small">
+                        notifications
+                      </mat-icon>
+                      <div class="notification" *ngIf="notification">
+                        <div class="container-fluid m-0 p-0">
+                          <div class="row m-0 p-0">
+                            <div  class="col-12 m-0 p-0">
+                              <app-notification-element></app-notification-element>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+
+                  </div>
+                  <div *ngIf="isAdministrator">
+                    <button routerLink="/messages" (click)="getActualPath(90)" class="header1" mat-button disableRipple>
+                      <mat-icon [matBadge]="" matBadgeColor="warn" matBadgeSize="small">
+                        mark_email_unread
+                      </mat-icon>
+                    </button>
+                  </div>
+                 
+               
+                  <div >
+                    <button routerLink="stock/alerting-vehicule"  class="header1" mat-button disableRipple>
+                      <mat-icon [matBadge]="nbV" matBadgeColor="warn" matBadgeSize="small">
+                        directions_car
+                      </mat-icon>
+                    </button>
+                  </div>
+
+                  <div >
+                    <button routerLink="stock/alerting-stock"  class="header1" mat-button disableRipple>
+                      <mat-icon [matBadge]="nbM" matBadgeColor="warn" matBadgeSize="small">
+                        details
+                      </mat-icon>
+                    </button>
+                  </div>
+
+                  
+                  
+                  <div class="ml-4">
+                    <span class="d-flex justify-content-end">
+                      <button class="header3">
+                        <button mat-button disableRipple [matMenuTriggerFor]="menu" style="padding:0px 10px 0px 0px">
+                          <mat-icon class="mr-1">account_box</mat-icon>
+                          <span>{{nomPrenom}}</span>
+                          <mat-icon>keyboard_arrow_down</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                          <button mat-menu-item>Alertes</button>
+                          <button *ngIf="isAdministrator" mat-menu-item routerLink="messages"
+                            (click)="getActualPath(90)">Messages</button>
+                          <button (click)="logOut()" mat-menu-item>Déconnexion </button>
+                        </mat-menu>
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="title col-12">{{path}}</div>
+              <!--              <div class="entete col-3">{{entete}}</div>-->
+              <div class="col-12" style="padding-top: 20px">
+                <!--        <div class="windowsContainer">-->
+                <router-outlet></router-outlet>
+
+              </div>
+            </div>
+          </div>
+        </mat-drawer-content>
+      </mat-drawer-container>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader></ngx-ui-loader>

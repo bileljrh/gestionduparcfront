@@ -1,0 +1,279 @@
+@import "src/assets/Scss/Variables";
+@import "src/assets/Scss/Shared Classes";
+
+
+.container {
+  border: 2px solid $First_Color;
+  border-radius: 5px;
+  height: 630px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+span.float-right {
+  font-size: 15px;
+  font-weight: 500;
+  color: $First_Color;
+}
+
+
+.title {
+  height: 38px;
+  background-color: $First_Color;
+}
+
+
+div > div > span.float-right.closeDialog {
+  margin-top: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  color: $First_Color;
+  background-color: white;
+  padding: 0px 3px 3px 3px;
+  width: 17px;
+  height: 17px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 50%;
+
+
+  &:hover {
+    color: $First_Color;
+  }
+}
+
+div > span.float-left {
+  color: white;
+  padding-left: 10px;
+  vertical-align: middle;
+  display: flex !important;
+  align-items: center;
+  padding-top: 7px;
+}
+
+div > span.float-left > mat-icon {
+  transform: scale(0.7);
+}
+
+button {
+  vertical-align: middle;
+  display: flex !important;
+  align-items: center;
+  outline: none;
+}
+
+button > span > mat-icon {
+  transform: scale(0.6);
+}
+
+.float-right > button:nth-child(1) {
+  background-color: white;
+  color: $First_Color;
+
+}
+
+.float-right > button:nth-child(1) {
+  background-color: white;
+  color: $First_Color;
+  border: 1px solid $First_Color;
+  font-size: 12px;
+}
+
+
+div.offset-6.col-3 > div > button {
+  background-color: white;
+  color: $First_Color;
+  border: 1px solid $First_Color;
+  font-size: 12px;
+}
+
+
+div.col-3 > div > button {
+  background-color: $First_Color;
+  color: white;
+  border: none;
+  font-size: 12px;
+}
+
+.example-full-width {
+  width: 100%;
+  font-size: 11px;
+}
+
+
+.example-card {
+  margin-top: 2px;
+  height: 284px;
+}
+
+.personnel_image {
+  height: 250px;
+}
+
+
+.custom-file-label {
+  font-size: 15px;
+  color: black;
+}
+
+label.custom-file-label > span {
+  color: black;
+  position: absolute;
+  top: 8px;
+  left: 44px;
+  font-size: 14px
+}
+
+.custom-file {
+  position: relative;
+  width: 100%;
+  height: 34px;
+  background-color: white;
+  color: black;
+}
+
+.custom-file > mat-icon {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  color: #717171;
+}
+
+.custom-file > input[type="file"] {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  z-index: 2;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.custom-file span {
+  color: black;
+  position: absolute;
+  top: 8px;
+  left: 48px;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+}
+
+.mat-card-actions {
+  margin-left: -22px;
+  margin-right: -8px;
+  padding: 0px 0;
+}
+
+.mat-card {
+  padding: 16px 16px 0px 16px !important;
+}
+
+
+.mat-card-image:first-child {
+  margin-bottom: 0px;
+}
+
+//=======================================
+
+//html {
+//  overflow: auto;
+//}
+//
+//body {
+//  position: absolute;
+//  top: 20px;
+//  left: 20px;
+//  bottom: 20px;
+//  right: 20px;
+//  padding: 30px;
+//  overflow-y: scroll;
+//  overflow-x: hidden;
+//}
+//
+///* Let's get this party started */
+//::-webkit-scrollbar {
+//  width: 6px;
+//}
+//
+///* Track */
+//::-webkit-scrollbar-track {
+//  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+//  -webkit-border-radius: 10px;
+//  border-radius: 10px;
+//}
+//
+///* Handle */
+//::-webkit-scrollbar-thumb {
+//  -webkit-border-radius: 10px;
+//  border-radius: 10px;
+//  background: $First_Color;
+//  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+//}
+//
+//::-webkit-scrollbar-thumb:window-inactive {
+//  background: rgba(255, 0, 0, 0.4);
+//}
+
+
+.custom-file-label {
+  font-size: 15px;
+  color: black;
+}
+
+label.custom-file-label > span {
+  color: black;
+  position: absolute;
+  top: 8px;
+  left: 44px;
+  font-size: 14px
+}
+
+.custom-file {
+  position: relative;
+  width: 100%;
+  height: 34px;
+  background-color: white;
+  border: 1px solid #ececec;
+  color: black;
+  border-radius: 4px;
+}
+
+.custom-file > mat-icon {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  color: #717171;
+}
+
+.custom-file > input[type="file"] {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.custom-file span {
+  color: black;
+  position: absolute;
+  top: 8px;
+  left: 44px;
+  font-size: 14px
+}
+
+.selectImage {
+  position: absolute;
+  height: 100%;
+  width: 10%;
+  top: 0px;
+  right: 0px;
+  background-color: $First_Color;
+  color: #717171;
+  z-index: 1;
+}

@@ -1,0 +1,10 @@
+@import "src/assets/Scss/Variables";
+@import "src/assets/Scss/Shared Classes";
+
+table mat-form-field {
+  max-width: 120px;
+}
+
+table tr:hover {
+  background-color: white;
+}

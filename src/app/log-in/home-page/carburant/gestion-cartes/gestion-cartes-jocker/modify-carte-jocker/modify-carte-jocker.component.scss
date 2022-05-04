@@ -1,0 +1,101 @@
+@import "src/assets/Scss/Variables";
+@import "src/assets/Scss/Shared Classes";
+
+
+div.container-fluid.m-0.m-0 {
+  border: 2px solid $First_Color;
+  border-radius: 5px;
+}
+
+span.float-right {
+  font-size: 15px;
+  font-weight: 500;
+  color: $First_Color;
+}
+
+
+.header {
+  height: 38px;
+  background-color: $First_Color;
+}
+
+
+div > div > span.float-right.closeDialog {
+  margin-top: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  color: $First_Color;
+  background-color: white;
+  padding: 0px 3px 3px 3px;
+  width: 17px;
+  height: 17px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 50%;
+
+
+  &:hover {
+    color: $First_Color;
+  }
+}
+
+div > span.float-left {
+  color: white;
+  padding-left: 10px;
+  vertical-align: middle;
+  display: flex !important;
+  align-items: center;
+  padding-top: 7px;
+}
+
+div > span.float-left > mat-icon {
+  transform: scale(0.7);
+}
+
+button {
+  vertical-align: middle;
+  display: flex !important;
+  align-items: center;
+  outline: none;
+}
+
+button > span > mat-icon {
+  transform: scale(0.6);
+}
+
+.float-right > button:nth-child(1) {
+  background-color: white;
+  color: $First_Color;
+
+}
+
+.float-right > button:nth-child(1) {
+  background-color: white;
+  color: $First_Color;
+  border: 1px solid $First_Color;
+  font-size: 12px;
+}
+
+
+div.offset-6.col-3 > div > button {
+  background-color: white;
+  color: $First_Color;
+  border: 1px solid $First_Color;
+  font-size: 12px;
+}
+
+
+div.col-3 > div > button {
+  background-color: $First_Color;
+  color: white;
+  border: none;
+  font-size: 12px;
+}
+
+th {
+  font-size: 11px;
+}
+
+.example-full-width {
+  font-size: 12px;
+}

@@ -1,0 +1,11 @@
+@import "src/assets/Scss/Shared Classes";
+@import "src/assets/Scss/Variables";
+
+
+.mat-sort-header-container {
+  align-items: center;
+}
+
+table td:nth-child(4), table td:nth-child(5) {
+  cursor: pointer;
+}

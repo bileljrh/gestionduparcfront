@@ -1,0 +1,245 @@
+<div *ngIf="VIEW_STRUCTURE_ADMINISTRATIVE" ngxUiLoaderBlurred class="container-fluid frame">
+  <div class="row">
+    <div class="col-12 mt-3 mb-2">
+      Structure administrative de société
+      <mat-divider></mat-divider>
+    </div>
+    <div class="col-12 mt-3">
+      <div class="parent" *ngFor="let parent of mystructureFilles">----<i *ngIf="parent.collapsed"
+                                                                          class="fa fa-folder-open showLessMore"
+                                                                          (click)="parent.collapsed=!parent.collapsed"></i><i
+        *ngIf="!parent.collapsed" class="fa fa-folder showLessMore"
+        (click)="parent.collapsed=!parent.collapsed"></i><span class="detailsElement" (click)="modifyStructure(parent)"
+                                                               (mouseover)="parent.square=!parent.square">{{parent.designation}}</span>
+        <i *ngIf="ADD_STRUCTURE_ADMINISTRATIVE && parent.square" class="fa fa-plus-square"
+           (click)="addChildStructure(parent)"></i>
+        <i *ngIf="DELETE_STRUCTURE_ADMINISTRATIVE && DELETE_STRUCTURE_ADMINISTRATIVE && parent.square"
+           class="fa fa-minus-square" (click)="deleteSelectedStrcuture(parent.id)"></i>
+        <ng-container *ngIf="parent.collapsed">
+
+
+          <div class="child" *ngFor="let child1 of parent.structureFilles">----<i *ngIf="child1.collapsed"
+                                                                                  class="fa fa-folder-open showLessMore"
+                                                                                  (click)="child1.collapsed=!child1.collapsed"></i><i
+            *ngIf="!child1.collapsed" class="fa fa-folder showLessMore"
+            (click)="child1.collapsed=!child1.collapsed"></i><span class="detailsElement"
+                                                                   (click)="modifyStructure(child1,parent)"
+                                                                   (mouseover)="child1.square=!child1.square">{{child1.designation}}</span>
+            <i *ngIf="ADD_STRUCTURE_ADMINISTRATIVE && child1.square" class="fa fa-plus-square"
+               (click)="addChildStructure(child1)"></i>
+            <i *ngIf="DELETE_STRUCTURE_ADMINISTRATIVE && child1.square" class="fa fa-minus-square"
+               (click)="deleteSelectedStrcuture(child1.id)"></i>
+            <ng-container *ngIf="child1.collapsed">
+
+
+              <div class="child" *ngFor="let child2 of child1.structureFilles">----<i *ngIf="child2.collapsed"
+                                                                                      class="fa fa-folder-open showLessMore"
+                                                                                      (click)="child2.collapsed=!child2.collapsed"></i><i
+                *ngIf="!child2.collapsed" class="fa fa-folder showLessMore"
+                (click)="child2.collapsed=!child2.collapsed"></i><span class="detailsElement"
+                                                                       (click)="modifyStructure(child2,child1)"
+                                                                       (mouseover)="child2.square=!child2.square">{{child2.designation}}</span>
+                <i *ngIf="ADD_STRUCTURE_ADMINISTRATIVE && child2.square" class="fa fa-plus-square"
+                   (click)="addChildStructure(child2)"></i>
+                <i *ngIf="DELETE_STRUCTURE_ADMINISTRATIVE && child2.square" class="fa fa-minus-square"
+                   (click)="deleteSelectedStrcuture(child2.id)"></i>
+                <ng-container *ngIf="child2.collapsed">
+
+
+                  <div class="child" *ngFor="let child3 of child2.structureFilles">----<i *ngIf="child3.collapsed"
+                                                                                          class="fa fa-folder-open showLessMore"
+                                                                                          (click)="child3.collapsed=!child3.collapsed"></i><i
+                    *ngIf="!child3.collapsed" class="fa fa-folder showLessMore"
+                    (click)="child3.collapsed=!child3.collapsed"></i><span class="detailsElement"
+                                                                           (click)="modifyStructure(child3,child2)"
+                                                                           (mouseover)="child3.square=!child3.square">{{child3.designation}}</span>
+                    <i *ngIf="ADD_STRUCTURE_ADMINISTRATIVE && child3.square" class="fa fa-plus-square"
+                       (click)="addChildStructure(child3)"></i>
+                    <i *ngIf="DELETE_STRUCTURE_ADMINISTRATIVE && child3.square" class="fa fa-minus-square"
+                       (click)="deleteSelectedStrcuture(child3.id)"></i>
+                    <ng-container *ngIf="child3.collapsed">
+
+
+                      <div class="child" *ngFor="let child4 of child3.structureFilles">----<i *ngIf="child4.collapsed"
+                                                                                              class="fa fa-folder-open showLessMore"
+                                                                                              (click)="child4.collapsed=!child4.collapsed"></i><i
+                        *ngIf="!child4.collapsed" class="fa fa-folder showLessMore"
+                        (click)="child4.collapsed=!child4.collapsed"></i><span class="detailsElement"
+                                                                               (click)="modifyStructure(child4,child3)"
+                                                                               (mouseover)="child4.square=!child4.square">{{child4.designation}}</span>
+                        <i *ngIf="ADD_STRUCTURE_ADMINISTRATIVE && child4.square" class="fa fa-plus-square"
+                           (click)="addChildStructure(child4)"></i>
+                        <i *ngIf="DELETE_STRUCTURE_ADMINISTRATIVE && child4.square" class="fa fa-minus-square"
+                           (click)="deleteSelectedStrcuture(child4.id)"></i>
+                        <ng-container *ngIf="child4.collapsed">
+
+
+                          <div class="child" *ngFor="let child5 of child4.structureFilles">----<i
+                            *ngIf="child5.collapsed"
+                            class="fa fa-folder-open showLessMore"
+                            (click)="child5.collapsed=!child5.collapsed"></i><i
+                            *ngIf="!child5.collapsed" class="fa fa-folder showLessMore"
+                            (click)="child5.collapsed=!child5.collapsed"></i><span class="detailsElement"
+                                                                                   (click)="modifyStructure(child5,child4)"
+                                                                                   (mouseover)="child5.square=!child5.square">{{child5.designation}}</span>
+                            <i *ngIf="ADD_STRUCTURE_ADMINISTRATIVE && child5.square" class="fa fa-plus-square"
+                               (click)="addChildStructure(child5)"></i>
+                            <i *ngIf="child5.square" class="fa fa-minus-square"
+                               (click)="DELETE_STRUCTURE_ADMINISTRATIVE && deleteSelectedStrcuture(child5.id)"></i>
+                            <ng-container *ngIf="child5.collapsed">
+
+
+                              <div class="child" *ngFor="let child6 of child5.structureFilles">----<i
+                                *ngIf="child6.collapsed"
+                                class="fa fa-folder-open showLessMore"
+                                (click)="child6.collapsed=!child6.collapsed"></i><i
+                                *ngIf="!child6.collapsed" class="fa fa-folder showLessMore"
+                                (click)="child6.collapsed=!child6.collapsed"></i><span class="detailsElement"
+                                                                                       (click)="modifyStructure(child6,child5)"
+                                                                                       (mouseover)="child6.square=!child6.square">{{child6.designation}}</span>
+                                <i *ngIf="ADD_STRUCTURE_ADMINISTRATIVE && child6.square" class="fa fa-plus-square"
+                                   (click)="addChildStructure(child6)"></i>
+                                <i *ngIf="child6.square" class="fa fa-minus-square"
+                                   (click)="DELETE_STRUCTURE_ADMINISTRATIVE && deleteSelectedStrcuture(child6.id)"></i>
+                                <ng-container *ngIf="child6.collapsed">
+
+
+                                  <div class="child" *ngFor="let child7 of child6.structureFilles">----<i
+                                    *ngIf="child7.collapsed"
+                                    class="fa fa-folder-open showLessMore"
+                                    (click)="child7.collapsed=!child7.collapsed"></i><i
+                                    *ngIf="!child7.collapsed" class="fa fa-folder showLessMore"
+                                    (click)="child7.collapsed=!child7.collapsed"></i><span class="detailsElement"
+                                                                                           (click)="modifyStructure(child7,child6)"
+                                                                                           (mouseover)="child7.square=!child7.square">{{child7.designation}}</span>
+                                    <i *ngIf="ADD_STRUCTURE_ADMINISTRATIVE && child7.square" class="fa fa-plus-square"
+                                       (click)="addChildStructure(child7)"></i>
+                                    <i *ngIf="child7.square" class="fa fa-minus-square"
+                                       (click)="DELETE_STRUCTURE_ADMINISTRATIVE && deleteSelectedStrcuture(child7.id)"></i>
+                                    <ng-container *ngIf="child7.collapsed">
+
+
+                                      <div class="child" *ngFor="let child8 of child7.structureFilles">----<i
+                                        *ngIf="child8.collapsed"
+                                        class="fa fa-folder-open showLessMore"
+                                        (click)="child8.collapsed=!child8.collapsed"></i><i
+                                        *ngIf="!child8.collapsed" class="fa fa-folder showLessMore"
+                                        (click)="child8.collapsed=!child8.collapsed"></i><span class="detailsElement"
+                                                                                               (click)="modifyStructure(child8,child7)"
+                                                                                               (mouseover)="child8.square=!child8.square">{{child8.designation}}</span>
+                                        <i *ngIf="ADD_STRUCTURE_ADMINISTRATIVE && child8.square"
+                                           class="fa fa-plus-square"
+                                           (click)="addChildStructure(child8)"></i>
+                                        <i *ngIf="child8.square" class="fa fa-minus-square"
+                                           (click)="DELETE_STRUCTURE_ADMINISTRATIVE && deleteSelectedStrcuture(child8.id)"></i>
+                                        <ng-container *ngIf="child8.collapsed">
+
+                                          <div class="child" *ngFor="let child9 of child8.structureFilles">----<i
+                                            *ngIf="child9.collapsed"
+                                            class="fa fa-folder-open showLessMore"
+                                            (click)="child9.collapsed=!child9.collapsed"></i><i
+                                            *ngIf="!child9.collapsed" class="fa fa-folder showLessMore"
+                                            (click)="child9.collapsed=!child9.collapsed"></i><span
+                                            class="detailsElement" (click)="modifyStructure(child9,child8)"
+                                            (mouseover)="child9.square=!child9.square">{{child9.designation}}</span>
+                                            <i *ngIf="ADD_STRUCTURE_ADMINISTRATIVE && child9.square"
+                                               class="fa fa-plus-square"
+                                               (click)="addChildStructure(child9)"></i>
+                                            <i *ngIf="child9.square" class="fa fa-minus-square"
+                                               (click)="DELETE_STRUCTURE_ADMINISTRATIVE && deleteSelectedStrcuture(child9.id)"></i>
+                                            <ng-container *ngIf="child9.collapsed">
+
+
+                                              <div class="child" *ngFor="let child10 of child9.structureFilles">----<i
+                                                *ngIf="child10.collapsed"
+                                                class="fa fa-folder-open showLessMore"
+                                                (click)="child10.collapsed=!child10.collapsed"></i><i
+                                                *ngIf="!child10.collapsed" class="fa fa-folder showLessMore"
+                                                (click)="child10.collapsed=!child10.collapsed"></i><span
+                                                class="detailsElement" (click)="modifyStructure(child10,child9)"
+                                                (mouseover)="child10.square=!child10.square">{{child10.designation}}</span>
+                                                <i *ngIf="ADD_STRUCTURE_ADMINISTRATIVE && child10.square"
+                                                   class="fa fa-plus-square"
+                                                   (click)="addChildStructure(child10)"></i>
+                                                <i *ngIf="child10.square" class="fa fa-minus-square"
+                                                   (click)="DELETE_STRUCTURE_ADMINISTRATIVE && deleteSelectedStrcuture(child10.id)"></i>
+                                                <ng-container *ngIf="child10.collapsed">
+
+                                                  <div class="child" *ngFor="let child11 of child10.structureFilles">
+                                                    ----<i
+                                                    *ngIf="child11.collapsed"
+                                                    class="fa fa-folder-open showLessMore"
+                                                    (click)="child11.collapsed=!child11.collapsed"></i><i
+                                                    *ngIf="!child11.collapsed" class="fa fa-folder showLessMore"
+                                                    (click)="child11.collapsed=!child11.collapsed"></i><span
+                                                    class="detailsElement" (click)="modifyStructure(child11,child10)"
+                                                    (mouseover)="child11.square=!child11.square">{{child11.designation}}</span>
+                                                    <i *ngIf="ADD_STRUCTURE_ADMINISTRATIVE && child11.square"
+                                                       class="fa fa-plus-square"
+                                                       (click)="addChildStructure(child11)"></i>
+                                                    <i *ngIf="DELETE_STRUCTURE_ADMINISTRATIVE && child11.square"
+                                                       class="fa fa-minus-square"
+                                                       (click)="deleteSelectedStrcuture(child11.id)"></i>
+
+
+                                                  </div>
+
+                                                </ng-container>
+
+                                              </div>
+
+
+                                            </ng-container>
+
+                                          </div>
+
+
+                                        </ng-container>
+
+                                      </div>
+
+
+                                    </ng-container>
+
+                                  </div>
+
+
+                                </ng-container>
+
+                              </div>
+
+
+                            </ng-container>
+
+                          </div>
+
+
+                        </ng-container>
+
+                      </div>
+
+
+                    </ng-container>
+
+                  </div>
+
+
+                </ng-container>
+
+              </div>
+
+
+            </ng-container>
+
+          </div>
+
+        </ng-container>
+      </div>
+    </div>
+    <div *ngIf="ADD_STRUCTURE_ADMINISTRATIVE" class="col-12 mt-5 mb-3">
+      <button class="addButton" mat-raised-button (click)="ajouterStructureMere()">Nouvelle structure mère</button>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader></ngx-ui-loader>
+

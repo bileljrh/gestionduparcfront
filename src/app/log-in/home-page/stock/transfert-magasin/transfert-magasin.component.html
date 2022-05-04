@@ -1,0 +1,156 @@
+<div class="container-fluid" ngxUiLoaderBlurred>
+
+<div class="row frame">
+    <div class="col-12">
+      Filtrage de la liste des bons de commande
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-12 ">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label> Filtrer les données de réceptions de fournisseur</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
+      </mat-form-field>
+    </div>
+
+    <<!-- div class="col-2">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>UGP</mat-label>
+        <mat-select [formControl]="UgpControl">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let ugp of listUGP" [value]="ugp">
+            {{ugp.designation}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div> -->
+  </div>
+  <!--Start List des articles dans le magasing virtuelle-->
+  <div class="row frame" > 
+    <div class="col-12">
+      Liste des Articles dans le magasin virtuelle
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-12"*ngIf="VIEW_Bon_Transfert_vers_magasin"pp >
+      <div *ngFor="let item of numberToTable(paginConfig.totalItems) | paginate: paginConfig"></div>
+      <table mat-table [dataSource]="dataSource" matSort>
+
+
+        <ng-container matColumnDef="index">
+          <th mat-header-cell *matHeaderCellDef>N°</th>
+          <td mat-cell *matCellDef="let row; let i=index"> {{i + 1}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="codeArticle">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Code Article</th>
+          <td mat-cell *matCellDef="let row">
+            {{row.codeArticle}}
+          </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="quantiteStock">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>quantiteStock</th>
+          <td mat-cell *matCellDef="let row">
+            {{row.quantiteStock}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="prix">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>prix</th>
+          <td mat-cell *matCellDef="let row">
+            {{row.prix}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="designation">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>designation</th>
+          <td mat-cell *matCellDef="let row">
+            {{row.designation}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="creationDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>dateTransfert</th>
+          <td mat-cell *matCellDef="let row">
+            {{row.creationDate}}
+          </td>
+        </ng-container>
+      <!-- ID Column -->
+      <ng-container matColumnDef="confirmed" *ngIf="CONFIRM_Bon_Transfert_vers_magasin">
+        <th mat-header-cell *matHeaderCellDef >Confirmer</th>
+        <td mat-cell *matCellDef="let row">
+          <mat-icon *ngIf="!row.confirmed" (click)="confirmRow(row.id)"
+                    style="color: green;cursor: pointer" >done
+          </mat-icon>
+          <mat-icon *ngIf="row.confirmed" style="color: red;cursor: not-allowed">done</mat-icon>
+        </td>
+      </ng-container>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="validated" *ngIf="VALIDER_Bon_Transfert_vers_magasin">
+        <th mat-header-cell *matHeaderCellDef>Valider</th>
+        <td mat-cell *matCellDef="let row">
+          <div *ngIf="row.confirmed">
+          <mat-icon *ngIf="!row.validated" (click)="validateRow(row.id)"
+                    style="color: green;cursor: pointer">done_all
+          </mat-icon>
+          <mat-icon *ngIf="row.validated" style="color: red;cursor: not-allowed">done_all</mat-icon>
+        </div>
+        </td>
+      </ng-container>
+
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="supprimer">
+          <th mat-header-cell *matHeaderCellDef>Supprimer</th>
+          <td mat-cell *matCellDef="let row">
+            <mat-icon class="mouseUp" (click)="deleteRow(row.id)"*ngIf="DELETE_Bon_Transfert_vers_magasin">delete</mat-icon>
+          </td>
+        </ng-container>
+ 
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="itemPerPage">
+        <mat-label>Elements par page</mat-label>
+        <mat-select [formControl]="itemPerPage">
+          <mat-option *ngFor="let item of ItemPerPage" [value]="item">
+            {{item}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-6 mt-5">
+      <pagination-template class="d-flex justify-content-end" #p="paginationApi" [id]="paginConfig.id"
+                           (pageChange)="paginConfig.currentPage = $event" maxSize="5"
+                           (click)="displayPageContent(paginConfig)">
+        <div class="custom-pagination">
+          <button mat-flat-button class="pagination-previous" [disabled]="p.isFirstPage()"
+                  (click)="p.previous()">
+            <span class="previous"></span>Previous
+          </button>
+          <div class="page-number" *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+            <button (click)="p.setCurrent(page.value)"
+                    *ngIf="p.getCurrent() !== page.value">{{ page.label }}</button>
+            <button class="current" *ngIf="p.getCurrent() === page.value">
+              <span>{{ page.label }}</span>
+            </button>
+          </div>
+          <button mat-flat-button class="pagination-next" [disabled]="p.isLastPage()"
+                  (click)="p.next()">
+            Next<span class="next">></span>
+          </button>
+        </div>
+      </pagination-template>
+    </div>
+    <button class="col-12 mt-5 mb-3" mat-raised-button (click)="TrasfertNvArticle()" *ngIf="ADD_Bon_Transfert_vers_magasin">Tranfert Nouvel Article
+    </button>
+
+  </div>
+  
+  </div>
+  <ngx-ui-loader></ngx-ui-loader>

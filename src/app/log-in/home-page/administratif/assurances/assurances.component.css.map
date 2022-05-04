@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "sourceRoot": "",
+  "sources": [
+    "assurances.component.scss"
+  ],
+  "names": [],
+  "mappings": "AAEA;EACE",
+  "file": "assurances.component.css"
+}

@@ -1,0 +1,83 @@
+<div class="container-fluid m-0 p-0 frame" [formGroup]="modifiedCarteAgilisCashForm">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 header">
+      <span class="float-left">
+        <mat-icon class="mr-2">fiber_new</mat-icon>
+        Modifier la carte Agilis Cash sélectionnée</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-12 mt-3">
+      Données de véhicule
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Numéro plaque</mat-label>
+        <input matInput [value]="data.element.numeroPlaque" readonly>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Bénéficiaire</mat-label>
+        <input matInput [value]="data.element.nomBeneficiaire" readonly>
+        <mat-hint align="end">{{data.element.matriculeBeneficiaire}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Structure</mat-label>
+        <input matInput [value]="data.element.designationStructure" readonly>
+        <mat-hint align="end">{{data.element.codeStructure}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Type carburant</mat-label>
+        <input matInput [value]="data.element.typeCarburant" readonly>
+      </mat-form-field>
+    </div>
+    <div class="col-12">
+      Données du nouvelle carte Agilis Cash
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Numéro de carte
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="text" formControlName="numeroCarte">
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Montant
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="number" formControlName="montant">
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Date fin validité
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateFinValidite">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="offset-6 col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onConfirm()" style="width: 100%"
+                [disabled]="!modifiedCarteAgilisCashForm.valid">
+          Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

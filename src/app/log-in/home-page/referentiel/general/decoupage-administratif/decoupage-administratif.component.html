@@ -1,0 +1,16 @@
+<div *ngIf="((VIEW_GOUVERNORATS) || (VIEW_STATIONS_PEAGE))" class="container-fluid" ngxUiLoaderBlurred>
+  <div class="row frame">
+    <div class="col-12">
+      <mat-tab-group>
+        <mat-tab *ngIf="VIEW_GOUVERNORATS" label="Gouvernorats">
+          <app-gouvernorat></app-gouvernorat>
+        </mat-tab>
+        <mat-tab *ngIf="VIEW_STATIONS_PEAGE" label="Stations de péage">
+          <app-station-peage></app-station-peage>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader></ngx-ui-loader>
+

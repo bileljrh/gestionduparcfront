@@ -1,0 +1,82 @@
+<div class="container-fluid">
+
+
+  <div class="row frame">
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>UGP</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let ugp of UGP" [value]="ugp">
+            {{ugp}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Année</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let annee of Annee" [value]="annee">
+            {{annee}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <div class="col-12"  *ngIf="VIEW_BON_CARBURANT_BON"  >
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+        <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="fournisseur">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fournisseur</th>
+        <td mat-cell *matCellDef="let element"> {{element.fournisseur}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="affectation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Affectation</th>
+        <td mat-cell *matCellDef="let element"> {{element.affectation}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="montant">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Montant</th>
+        <td mat-cell *matCellDef="let element"> {{element.montant}} </td>
+      </ng-container>
+
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="modifier">
+        <th mat-header-cell *matHeaderCellDef>Modifier</th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon routerLink="/carburant/details-bon-commande-des_bons">edit</mat-icon>
+        </td>
+      </ng-container>
+
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="supprimer">
+        <th mat-header-cell *matHeaderCellDef>Supprimer</th>
+        <td mat-cell *matCellDef="let element;let i = index ">
+          <mat-icon class="mouseUp" style="cursor: pointer" (click)="deleteBonCommande(i)">delete</mat-icon>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <div>
+    <button class="col-12 mt-5 mb-3"
+    *ngIf="ADD_BON_CARBURANT_BON"   mat-raised-button>Nouvelle commande
+    </button>
+  </div>
+</div>

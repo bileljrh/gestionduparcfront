@@ -1,0 +1,129 @@
+<div class="container-fluid m-0 p-0 frame" [formGroup]="newAssuranceForm">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 title">
+      <span class="float-left">
+        <mat-icon class="mr-2">fiber_new</mat-icon>
+        <span>Ajouter une nouvelle assurance</span>
+            </span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-12">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Numéro de plaque
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <mat-select formControlName="numeroPlaque" multiple>
+          <mat-option *ngFor="let vehicule of ListVehicules" [value]="vehicule.id">
+            {{vehicule.numeroPlaque}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.numeroPlaque.invalid">Numero de Plaque est requis</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="col-4 mt-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Numéro contrat
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput formControlName="numeroContrat">
+        <mat-error *ngIf="f.numeroContrat.invalid">Numero de Contrat est requis</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="col-4 mt-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Compagnie d'assurance
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput formControlName="compagnieAssurance">
+        <mat-error *ngIf="f.compagnieAssurance.invalid">Compagnie Assurance est requise</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="col-4 mt-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Montant
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput formControlName="montantAssurance" type="number">
+        <mat-error *ngIf="f.montantAssurance.invalid">Montant Assurance est requis</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Nombre de place
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput formControlName="nombreplaces" type="number">
+        <mat-error *ngIf="f.nombreplaces.invalid">Montant Assurance est requis</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Puissance fixale
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput formControlName="puissanceFiscale" type="number">
+        <mat-error *ngIf="f.puissanceFiscale.invalid">Puissance Fiscale est requise</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Assurance SP
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput formControlName="assuranceSP" type="text">
+        <mat-error *ngIf="f.assuranceSP.invalid">Assurance SP est requise</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Date PMC
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="datePMC">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+        <mat-error *ngIf="f.datePMC.invalid">Date PMC est requise</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Date de début validité
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="dateDebutValidite">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+        <mat-error *ngIf="f.dateDebutValidite.invalid">Date Début Validite est requise</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Date de fin validité
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput [matDatepicker]="picker3" formControlName="dateFinValidite">
+        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+        <mat-error *ngIf="f.dateFinValidite.invalid">Date Fin Validite est requise</mat-error>   
+      </mat-form-field>
+    </div>
+   
+    <div class="offset-6 col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onConfirm()" style="width: 100%" [disabled]="!newAssuranceForm.valid">
+          Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

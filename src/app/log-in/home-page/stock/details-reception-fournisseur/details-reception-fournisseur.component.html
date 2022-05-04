@@ -1,0 +1,80 @@
+<div class="container-fluid">
+  <div class="row pt-3 frame">
+    <div class="col-12 mt-4">
+      Bon de reception
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="example-full-width">
+        <mat-label>Magasin</mat-label>
+        <input matInput placeholder="" value="" type="text">
+        <mat-hint align="end">Nom du magasin</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="example-full-width">
+        <mat-label>Fournisseur</mat-label>
+        <input matInput placeholder="" value="" type="text" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Code</mat-label>
+        <input matInput placeholder="" value="" type="text" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Date</mat-label>
+        <input matInput placeholder="" value="" type="date">
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Total</mat-label>
+        <input matInput placeholder="" value="" type="text" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-12 mt-4">
+      Détails
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-12">
+      <table matSort (matSortChange)="sortData($event)">
+        <tr>
+          <th mat-sort-header="codeArticle">Code article</th>
+          <th mat-sort-header="designation">Désignation</th>
+          <th mat-sort-header="cmd">CMD</th>
+          <th mat-sort-header="quantiteRecue">Quantité reçue</th>
+          <th mat-sort-header="restante">Restante</th>
+          <th>Supprimer</th>
+        </tr>
+        <tr *ngFor="let details of sortedData">
+          <td>{{details.codeArticle}}</td>
+          <td>{{details.designation}}</td>
+          <td>{{details.cmd}}</td>
+          <td>{{details.quantiteRecue}}</td>
+          <td>{{details.restante}}</td>
+          <td>
+            <mat-icon>delete</mat-icon>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="offset-6 col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="primary">Details commande
+      </button>
+    </div>
+    <div class="col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="primary">Annuler
+      </button>
+    </div>
+    <div class="col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="primary">Enregistrer
+      </button>
+    </div>
+  </div>
+</div>

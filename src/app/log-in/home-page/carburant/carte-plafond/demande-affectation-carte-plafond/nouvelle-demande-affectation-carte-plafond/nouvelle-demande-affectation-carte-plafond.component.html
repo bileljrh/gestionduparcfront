@@ -1,0 +1,87 @@
+<div class="container-fluid" ngxUiLoaderBlurred [formGroup]="newDemandeAffectationCartePlafondForm">
+  <div class="row frame">
+    <div class="col-12">
+      Liste des cartes Plafond prêt à être effectuées
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width">
+        <mat-label>Véhicule</mat-label>
+        <mat-select formControlName="numeroPlaque">
+          <mat-option *ngFor="let vehicule of listVehicule" [value]="vehicule">
+            {{vehicule.numeroPlaque}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width">
+        <mat-label>Bénéficiaire</mat-label>
+        <input matInput [value]="nomBeneficiaire" readonly>
+        <mat-hint>{{matriculeBeneficiaire}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width">
+        <mat-label>Structure</mat-label>
+        <input matInput [value]="designationStructure" disabled>
+        <mat-hint>{{codeStructure}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width">
+        <mat-label>Type carburant</mat-label>
+        <input matInput [value]="typeCarburantVehicule" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-12 mt-4">
+      Liste des cartes Plafond
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width">
+        <mat-label>Numero de carte</mat-label>
+        <mat-select formControlName="cartePlafond">
+          <mat-option *ngFor="let cartePlafond of cartePlafondList" [value]="cartePlafond">
+            {{cartePlafond.numeroCarte}} <span class="typeCarburant">({{cartePlafond.typeCarburant}})</span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width">
+        <mat-label>Montant</mat-label>
+        <input matInput [value]="montant" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width">
+        <mat-label>Type carburant</mat-label>
+        <input matInput [value]="typeCarburantCarte" disabled>
+      </mat-form-field>
+    </div>
+    <!--
+    <div class="col-3">
+      <mat-form-field class="example-full-width">
+        <mat-label>Date d'ajout</mat-label>
+        <input matInput [value]="dateAjout" disabled>
+      </mat-form-field>
+    </div>
+    -->
+
+  </div>
+  <div class="row">
+    <div class="offset-8 col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="secondary" (click)="denyCreatingNewDemandAffectation()">Annuler
+      </button>
+    </div>
+    <div class="col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="primary" (click)="createNewDemandAffectation()"
+        [disabled]=" !isSameEnergy()">Confirmer
+      </button>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader></ngx-ui-loader>

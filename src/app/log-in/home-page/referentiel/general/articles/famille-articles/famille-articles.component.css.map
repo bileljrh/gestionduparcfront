@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "sourceRoot": "",
+  "sources": [
+    "tab1-articles.component.scss"
+  ],
+  "names": [],
+  "mappings": "AAEA;EACE",
+  "file": "tab1-articles.component.css"
+}

@@ -1,0 +1,17 @@
+<div class="container-fluid m-0 p-0 frame container" ngxUiLoaderBlurred>
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 title">
+      <span class="float-left">
+        <mat-icon class="mr-2">file_present</mat-icon>
+        Lire fichier PDF</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-12 m-0 p-0">
+      <pdf-viewer [src]="source"
+                  [render-text]="true"
+                  style="display: block;"
+      ></pdf-viewer>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader></ngx-ui-loader>

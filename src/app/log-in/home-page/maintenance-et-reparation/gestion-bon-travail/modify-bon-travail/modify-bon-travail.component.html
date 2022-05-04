@@ -1,0 +1,455 @@
+
+<div class="container-fluid m-0 p-0 frame" [formGroup]="modifyBonTravailForm" style="min-height:450px ;">
+    <div class="row m-0 p-0">
+      <div class="col-12 m-0 p-0 titleHeader">
+        <span class="float-left">
+          <mat-icon class="mr-2">fiber_new</mat-icon>
+          Details du bon travail sélectionné
+        </span>
+        <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+      </div>
+      <div class="col-12 mt-3">
+        <div class="container-fluid">
+          <div class="row">
+              <div class="col-12">
+              
+<mat-tab-group mat-align-tabs="center" md-no-pagination>
+
+
+    <!-- Article De Stock-->
+     <!--start article externe-->
+
+
+     <mat-tab label="Articles Externe"  *ngIf="!checkBonTravailMode()">
+        <div class="container-fluid mt-4">
+          <div class="row">
+            <table *ngIf="externeTab.length>0" mat-table
+                   [dataSource]="secondDataSource" multiTemplateDataRows
+                   class="col-12">
+  
+              <ng-container matColumnDef="index">
+                <th mat-header-cell *matHeaderCellDef>N°</th>
+                <td mat-cell *matCellDef="let element; let i = renderIndex">{{i + 1}}</td>
+              </ng-container>
+  
+              <ng-container matColumnDef="codeArticle">
+                <th mat-header-cell *matHeaderCellDef>Code</th>
+                <td mat-cell *matCellDef="let element">{{element.article.codeArticle}}</td>
+              </ng-container>
+  
+              <ng-container matColumnDef="designation">
+                <th mat-header-cell *matHeaderCellDef>Désignation</th>
+                <td mat-cell *matCellDef="let element">{{element.article.designation}}</td>
+              </ng-container>
+  
+              <ng-container matColumnDef="plus">
+                <th mat-header-cell *matHeaderCellDef>Plus</th>
+                <td mat-cell *matCellDef="let element; let i=index">
+                  <mat-icon class="mouseUp">do_not_disturb_on</mat-icon>
+                  <!--                            <mat-icon *ngIf="!expandedElement" class="mouseUp">add_circle</mat-icon>-->
+                </td>
+              </ng-container>
+  
+  
+              <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+              <ng-container matColumnDef="expandedDetail">
+                <td style="margin: 0;padding: 0" mat-cell *matCellDef="let element; let i=index"
+                    [attr.colspan]="displayedColumns.length">
+                  <div class="example-element-detail"
+                       [@detailExpand]="element == secondExpandedElement ? 'expanded' : 'collapsed'">
+                    <div class="container-fluid mt-3 ml-0 mr-0 pr-0 pl-0">
+                      <div class="row ml-0 mr-0 pr-0 pl-0">
+                        <div class="col">
+                          <mat-form-field class="example-full-width1" appearance="outline">
+                            <mat-label>Quantité demandée</mat-label>
+                            <input matInput type="number" [value]="element.quantite" disabled>
+                          </mat-form-field>
+                        </div>
+                       
+                        <div class="col">
+                          <mat-form-field class="example-full-width1" class="example-full-width"
+                                          appearance="outline">
+                            <mat-label>Remise</mat-label>
+                            <input matInput type="number" [value]="element.article.remise" disabled>
+                          </mat-form-field>
+                        </div>
+                        <div class="col">
+                          <mat-form-field class="example-full-width1" class="example-full-width"
+                                          appearance="outline">
+                            <mat-label>TVA</mat-label>
+                            <input matInput type="number" [value]="element.article.tva" disabled>
+                          </mat-form-field>
+                        </div>
+                        <div class="col">
+                          <mat-icon class="mouseUp pt-2 pl-3" 
+                                    style="transform: scale(1.3)">delete
+                          </mat-icon>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </ng-container>
+  
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+                  class="example-element-row"
+                  [class.example-expanded-row]="secondExpandedElement === element"
+                  (click)="secondExpandedElement = secondExpandedElement === element ? null : element">
+              </tr>
+              <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+            </table>
+            <button class="col-12 mt-5 mb-3" mat-raised-button >Nouvel article
+            </button>
+          </div>
+        </div>
+      </mat-tab>
+
+    <!--//end article externes-->
+
+       <!--Start OPeration-->
+
+       <mat-tab label="Opérations"> 
+        <ng-template mat-tab-label>
+          <mat-icon>brightness_high</mat-icon> Opérations
+        </ng-template>
+        <div class="container-fluid mt-4">
+          <div class="row">
+            <table *ngIf="operationTab.length>0" mat-table
+                   [dataSource]="firstDataSource" multiTemplateDataRows
+                   class="col-12">
+
+              <ng-container matColumnDef="index">
+                <th mat-header-cell *matHeaderCellDef>N°</th>
+                <td mat-cell *matCellDef="let element; let i = renderIndex">{{i + 1}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="codeArticle">
+                <th mat-header-cell *matHeaderCellDef>Code</th>
+                <td mat-cell *matCellDef="let element">{{element.operation.code}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="designation">
+                <th mat-header-cell *matHeaderCellDef>Désignation</th>
+                <td mat-cell *matCellDef="let element">{{element.operation.designation}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="plus">
+                <th mat-header-cell *matHeaderCellDef>Plus</th>
+                <td mat-cell *matCellDef="let element; let i=index">
+                  <mat-icon class="mouseUp">do_not_disturb_on</mat-icon>
+                </td>
+              </ng-container>
+
+
+              <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+              <ng-container matColumnDef="expandedDetail">
+                <td style="margin: 0;padding: 0" mat-cell *matCellDef="let element; let i=index"
+                    [attr.colspan]="displayedColumns.length">
+                  <div class="example-element-detail"
+                       [@detailExpand]="element == firstExpandedElement ? 'expanded' : 'collapsed'">
+                    <div class="container-fluid mt-3 ml-0 mr-0 pr-0 pl-0">
+                      <div class="row ml-0 mr-0 pr-0 pl-0">
+                    
+                        
+                        <div class="col">
+                          <mat-form-field class="example-full-width1" class="example-full-width"
+                                          appearance="outline">
+                            <mat-label>Prix</mat-label>
+                            <input matInput type="number" [value]="element.prix" disabled>
+                          </mat-form-field>
+                        </div>
+                       
+                        <div class="col">
+                          <mat-icon class="mouseUp pt-2 pl-3" 
+                                    style="transform: scale(1.3)">delete
+                          </mat-icon>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+                  class="example-element-row"
+                  [class.example-expanded-row]="firstExpandedElement === element"
+                  (click)="firstExpandedElement = firstExpandedElement === element ? null : element">
+              </tr>
+              <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+            </table>
+            <button class="col-12 mt-5 mb-3" mat-raised-button >Nouvel article Externe
+            </button>
+          </div>
+        </div>
+      </mat-tab>
+
+    <!--//end operation-->
+<!--Start Observation-->
+<mat-tab label="Observations"> 
+    <ng-template mat-tab-label>
+      <mat-icon>mms</mat-icon> Observations
+    </ng-template>
+    <div class="col-12 mt-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Observations</mat-label>
+        <textarea matInput type="textarea" rows="4" formControlName="observatioMode" [value]="data.element.observatioMode" ></textarea><!--formControlName="observationMode"-->
+      </mat-form-field>
+    </div>
+  </mat-tab>
+
+<!--// End Observation-->
+
+ <!--Start Details stock-->
+
+ <mat-tab label="Detail de stock">
+    <ng-template mat-tab-label>
+      <mat-icon>article</mat-icon>Detail de stock
+    </ng-template>
+    <div class="row mt-3 mb-4">
+        <div class="col-6">
+            <mat-form-field class="example-full-width"  appearance="outline">
+              <mat-label>Magasin</mat-label>
+              <input matInput type="text" value="Centre Mecanique Auto"  readonly>
+            </mat-form-field>
+          </div>
+
+          <div class="col-6">
+            <mat-form-field class="example-full-width"  appearance="outline">
+              <mat-label>Atelier</mat-label>
+              <input matInput type="text" value="--" readonly>
+            </mat-form-field>
+          </div>
+ 
+      <div class="col-6">
+        <mat-form-field class="example-full-width"  appearance="outline">
+          <mat-label>Date piece</mat-label>
+          <input matInput type="text"  readonly>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="example-full-width"  appearance="outline">
+          <mat-label>Montant</mat-label>
+          <input matInput type="number" readonly>
+        </mat-form-field>
+
+      </div>
+    </div>
+  </mat-tab>
+<!--//end details stock-->
+
+
+    <!--Fin Article De Stock-->
+    <mat-tab label="Articles De Stock">
+        <ng-template mat-tab-label>
+            <mat-icon>article</mat-icon>Detail de stock
+          </ng-template>
+      <div class="container-fluid mt-4">
+        <div class="row">
+          <table *ngIf="articleTab.length>0" mat-table
+                 [dataSource]="dataSource" multiTemplateDataRows
+                 class="col-12">
+
+            <ng-container matColumnDef="index">
+              <th mat-header-cell *matHeaderCellDef>N°</th>
+              <td mat-cell *matCellDef="let element; let i = renderIndex">{{i + 1}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="codeArticle">
+              <th mat-header-cell *matHeaderCellDef>Code</th>
+              <td mat-cell *matCellDef="let element">{{element.articles.codeArticle}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="designation">
+              <th mat-header-cell *matHeaderCellDef>Désignation</th>
+              <td mat-cell *matCellDef="let element">{{element.articles.designation}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="plus">
+              <th mat-header-cell *matHeaderCellDef>Plus</th>
+              <td mat-cell *matCellDef="let element; let i=index">
+                <mat-icon class="mouseUp">do_not_disturb_on</mat-icon>
+                <!--                            <mat-icon *ngIf="!expandedElement" class="mouseUp">add_circle</mat-icon>-->
+              </td>
+            </ng-container>
+
+
+            <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+            <ng-container matColumnDef="expandedDetail">
+              <td style="margin: 0;padding: 0" mat-cell *matCellDef="let element; let i=index"
+                  [attr.colspan]="displayedColumns.length">
+                <div class="example-element-detail"
+                     [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                  <div class="container-fluid mt-3 ml-0 mr-0 pr-0 pl-0">
+                    <div class="row ml-0 mr-0 pr-0 pl-0">
+                      <div class="col">
+                        <mat-form-field class="example-full-width1" appearance="outline">
+                          <mat-label>Quantité demandée</mat-label>
+                          <input matInput type="number" [value]="element.quantite" disabled>
+                        </mat-form-field>
+                      </div>
+                      <div class="col">
+                        <mat-form-field class="example-full-width1" class="example-full-width"
+                                        appearance="outline">
+                          <mat-label>Quantité livrée</mat-label>
+                          <input matInput type="number" [value]="element.quantiteLivree" disabled>
+                        </mat-form-field>
+                      </div>
+                      <div class="col">
+                        <mat-form-field class="example-full-width1" class="example-full-width"
+                                        appearance="outline">
+                          <mat-label>Prix</mat-label>
+                          <input matInput type="number" [value]="element.articles.prix" disabled>
+                        </mat-form-field>
+                      </div>
+                      <div class="col">
+                        <mat-form-field class="example-full-width1" class="example-full-width"
+                                        appearance="outline">
+                          <mat-label>Remise</mat-label>
+                          <input matInput type="number" [value]="element.articles.remise" disabled>
+                        </mat-form-field>
+                      </div>
+                      <div class="col">
+                        <mat-form-field class="example-full-width1" class="example-full-width"
+                                        appearance="outline">
+                          <mat-label>TVA</mat-label>
+                          <input matInput type="number" [value]="element.articles.tva" disabled>
+                        </mat-form-field>
+                      </div>
+                      <div class="col">
+                        <mat-icon class="mouseUp pt-2 pl-3" 
+                                  style="transform: scale(1.3)">delete
+                        </mat-icon>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+                class="example-element-row"
+                [class.example-expanded-row]="expandedElement === element"
+                (click)="expandedElement = expandedElement === element ? null : element">
+            </tr>
+            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+          </table>
+          <button class="col-12 mt-5 mb-3" mat-raised-button >Nouvel article
+          </button><!---->
+        </div>
+      </div>
+    </mat-tab>
+
+
+ 
+   
+
+    <!--Facturation-->
+    <mat-tab label="Facturation" *ngIf="!checkBonTravailMode()">
+      <ng-template mat-tab-label>
+        <mat-icon>price_change</mat-icon> Facturation
+      </ng-template>
+      <div class="row mt-3 mb-4" >
+        
+      <div class="col-12 ">
+   
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Fournisseur</mat-label>
+          <mat-select formControlName="fournisseur">
+            <mat-option *ngFor="let fournisseur of ListFournisseur" [value]="fournisseur">
+              {{fournisseur.designation}}
+            </mat-option>
+          </mat-select>
+        
+        </mat-form-field>
+
+      </div>
+      <div class="col-4">
+      <mat-form-field class="example-full-width"  appearance="outline">
+        <mat-label>numero Commande</mat-label>
+        <input matInput type="number" formControlName="numeroCommande">
+      </mat-form-field>
+      
+      </div>
+      <div class="col-4">
+        <mat-form-field class="example-full-width"  appearance="outline">
+          <mat-label>Date Commande</mat-label>
+          <input matInput type="text" formControlName="dateCommande">
+        </mat-form-field>
+        
+        </div>
+        <div class="col-4">
+          <mat-form-field class="example-full-width"  appearance="outline">
+            <mat-label>Montant Commande</mat-label>
+            <input matInput type="number" formControlName="montantCommande">
+          </mat-form-field>
+          
+          </div>
+          <div class="col-4">
+            <mat-form-field class="example-full-width"  appearance="outline">
+              <mat-label>Numero Facture</mat-label>
+              <input matInput type="number" formControlName="numeroFacturation">
+            </mat-form-field>
+            
+            </div>
+            <div class="col-4">
+              <mat-form-field class="example-full-width"  appearance="outline">
+                <mat-label>Date Facture</mat-label>
+                <input matInput type="text" formControlName="dateFacturation">
+              </mat-form-field>
+              
+              </div>
+              <div class="col-4">
+                <mat-form-field class="example-full-width"  appearance="outline">
+                  <mat-label>Montant Facture</mat-label>
+                  <input matInput type="number" formControlName="montantFacturation">
+                </mat-form-field>
+                
+                </div>
+                <div class="col-4">
+                  <mat-form-field class="example-full-width"  appearance="outline">
+                    <mat-label>Numero Reglement</mat-label>
+                    <input matInput type="number" formControlName="numeroReglement">>
+                  </mat-form-field>
+                  
+                  </div>
+                  <div class="col-4">
+                    <mat-form-field class="example-full-width"  appearance="outline">
+                      <mat-label>Date reglement</mat-label>
+                      <input matInput type="text" formControlName="dateReglement">>
+                    </mat-form-field>
+                    
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="example-full-width"  appearance="outline">
+                        <mat-label>Montant Reglement</mat-label>
+                        <input matInput formControlName="montantReglement">>
+                      </mat-form-field>
+                      
+                      </div>
+
+    </div>
+
+      
+    </mat-tab>
+    
+    <!--// end facturation-->
+    
+   
+</mat-tab-group>
+</div></div></div>
+</div>
+<div class="offset-6 col-3">
+    <div class="float-right mt-4 mb-3">
+      <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="float-right mt-4 mb-3">
+      <button mat-raised-button  style="width: 100%">Confirmer
+      </button><!--(click)="onConfirm3()"-->
+    </div>
+  </div>
+</div>

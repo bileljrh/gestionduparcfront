@@ -1,0 +1,103 @@
+.upTitle {
+  background-color: #e8e8e8;
+  color: black;
+  width: available;
+  height: 40px;
+  text-align: center;
+  padding-top: 8px;
+  font-size: 16px;
+}
+
+body {
+  outline: none;
+  background-color: transparent;
+}
+
+.frame {
+  padding: 15px;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  background-color: #f8f7f7;
+  box-shadow: inset -1px 3px 40px -38px #3f51b5;
+}
+
+button {
+  width: 140px;
+  min-height: 30px;
+  font-size: 12px;
+  line-height: 5px;
+}
+
+button:focus {
+  outline: none;
+}
+
+.primary {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.secondary {
+  background-color: #e8e8e8;
+  color: black;
+  border: 0.5mm solid #3f51b5;
+}
+
+div [class="example-container mat-elevation-z8"], table {
+  background-color: #f8f7f7;
+  box-shadow: none;
+  width: 100%;
+}
+
+table td {
+  font-size: 13px;
+}
+
+table tr {
+  transition: all 0.12s ease-in-out;
+}
+
+table tr:nth-child(odd) {
+  background-color: #e8e8e8;
+}
+
+table tr:hover {
+  background-color: rgba(63, 81, 181, 0.4);
+}
+
+table th {
+  background-color: #f8f7f7;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+button:focus {
+  outline: none;
+}
+
+.isActif {
+  color: #3f51b5;
+  cursor: pointer;
+}
+
+.isntActiif {
+  color: #f8f7f7;
+  cursor: not-allowed;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+::ng-deep .mat-sort-header-arrow {
+  color: dimgray;
+}
+
+.mouseUp:hover {
+  color: #3f51b5;
+}
+
+/*# sourceMappingURL=Shared%20Classes.css.map */

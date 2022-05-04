@@ -1,0 +1,21 @@
+<div *ngIf="VIEW_PARAMETRES_GENERAUX_SUB_MODULE" class="container-fluid">
+  <div class="row frame">
+    <div class="col-12">
+      <mat-tab-group>
+        <!--<mat-tab *ngIf="VIEW_ANNEES" label="Années">
+          <app-annee></app-annee>
+        </mat-tab>-->
+        <mat-tab *ngIf="VIEW_ENERGIES" label="Energies">
+          <app-energie></app-energie>
+        </mat-tab>
+        <mat-tab *ngIf="VIEW_TVA" label="TVA">
+          <app-tva></app-tva>
+        </mat-tab>
+        <mat-tab *ngIf="VIEW_UNITES" label="Unités">
+          <app-unite></app-unite>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
+

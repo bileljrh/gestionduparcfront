@@ -1,0 +1,79 @@
+<div class="container-fluid m-0 p-0">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 header">
+      <span class="float-left">
+        <mat-icon class="mr-2">edit</mat-icon>
+        Modification de distribution de service sélectionnée</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-12 mt-3" [formGroup]="modifyDistribution2ServiceForm">
+      <div class="container-fluid frame">
+        <div class="row">
+          <div class="col-12">
+            Véhicule
+            <mat-divider class="mb-4"></mat-divider>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Bénéficiare</mat-label>
+              <input matInput type="text" [value]="data.tabData.matriculeBeneficiaire" disabled>
+              <mat-hint align="end">{{data.tabData.nomBeneficiaire}}</mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>N° véhicule</mat-label>
+              <input matInput type="text" [value]="data.tabData.numero_plaque" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Structure</mat-label>
+              <input matInput type="text" [value]="data.tabData.structure" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Mois de distribution</mat-label>
+              <input matInput type="text" [value]="data.tabData.moisEtat|date: 'dd-MM-yyyy'" disabled>
+            </mat-form-field>
+          </div>
+          <div class=" col-12 mt-4">
+            Distribution
+            <mat-divider class="mb-4"></mat-divider>
+          </div>
+          <div class="col-4">
+            <mat-form-field class="example-full-width">
+              <mat-label>Carburant</mat-label>
+              <input matInput type="number" [value]="data.tabData.quantiteCarburant">
+              <mat-hint align="end">{{data.tabData.typeCarburant}}</mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="col-4">
+            <mat-form-field class="example-full-width">
+              <mat-label>Nombre de bons</mat-label>
+              <input matInput type="number" [value]="data.tabData.quantiteAccordee">
+            </mat-form-field>
+          </div>
+          <div class="col-4">
+            <mat-form-field class="example-full-width">
+              <mat-label>Source carburant</mat-label>
+              <input matInput type="text" [value]="data.tabData.sourceCarburant" disabled>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="offset-6 col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onCancelModification()" style="width: 90%">Annuler</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onConfirmModification()" style="width: 100%">Confirmer</button>
+      </div>
+    </div>
+  </div>
+
+</div>

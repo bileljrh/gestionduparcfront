@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <div class="row pt-3 frame">
+    <div class="col-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Véhicule</mat-label>
+        <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-icon matSuffix style="cursor: pointer">directions_car</mat-icon>
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Date</mat-label>
+        <input type="date" matInput placeholder="" value="xx-xx-xxxx" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Structure</mat-label>
+        <input matInput placeholder="" value="Type du structure" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Demandeur</mat-label>
+        <input matInput placeholder="" value="Nom du demandeur" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Bénéficiaire</mat-label>
+        <input matInput placeholder="" value="Nom du bénéficiaire" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Favorite food</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let ugp of UGP" [value]="ugp">
+            {{ugp}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Index Km</mat-label>
+        <input matInput placeholder="" value="Nom du bénéficiaire">
+      </mat-form-field>
+    </div>
+    <div class="col-8">
+      <mat-form-field class="example-full-width">
+        <mat-label>Description de l'intervention</mat-label>
+        <textarea matInput placeholder=""></textarea>
+      </mat-form-field>
+    </div>
+    <div class="offset-8 col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="primary">Annuler
+      </button>
+    </div>
+    <div class="col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="primary">Enregistrer
+      </button>
+    </div>
+  </div>
+</div>

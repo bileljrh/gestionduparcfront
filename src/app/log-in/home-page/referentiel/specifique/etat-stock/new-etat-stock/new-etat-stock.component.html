@@ -1,0 +1,81 @@
+<div class="container-fluid m-0 p-0 frame" [formGroup]="newEtatStockForm">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 title">
+      <span class="float-left">
+        <mat-icon class="mr-2">fiber_new</mat-icon>
+        Ajouter un nouveau état</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-4 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Chapitre
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="text" formControlName="chapitre">
+        <mat-error *ngIf="f.chapitre.invalid">Chapitre est requis</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="col-4 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Time
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="text" formControlName="time">
+        <mat-error *ngIf="f.time.invalid">Temps est requis</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="col-4 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Article
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <mat-select formControlName="article">
+          <mat-option *ngFor="let article of ListArticle" [value]="article">
+            {{article.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="end">{{codeArticle}}</mat-hint>
+        <mat-error *ngIf="f.article.invalid">Article est requise</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Paragraphe
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="text" formControlName="paragraphe">
+        <mat-error *ngIf="f.paragraphe.invalid">Paragraphe est requise</mat-error>   
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Sous paragraphe
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="text" formControlName="sousParagraphe">
+        <mat-error *ngIf="f.sousParagraphe.invalid">Sous Paragraphe est requise</mat-error>    
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Région
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="text" formControlName="region">
+        <mat-error *ngIf="f.region.invalid">Région est requise</mat-error>    
+      </mat-form-field>
+    </div>
+    <div class="offset-6 col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onConfirm()" style="width: 100%" [disabled]="!newEtatStockForm.valid">
+          Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div *ngIf="VIEW_PARAMETRES_VEHICULES_SUB_MODULE" class="container-fluid">
+  <div class="row frame">
+    <div class="col-12">
+      <mat-tab-group>
+        <mat-tab *ngIf="VIEW_CAUSES_SINISTRES" label="Causes sinistres">
+          <app-cause-sinistre></app-cause-sinistre>
+        </mat-tab>
+        <mat-tab *ngIf="VIEW_GENRES_VEHICULE" label="Genres véhicules">
+          <app-genre-vehicule></app-genre-vehicule>
+        </mat-tab>
+        <mat-tab *ngIf="VIEW_MARQUES_VEHICULE" label="Marques véhicules">
+          <app-marque-vehicule></app-marque-vehicule>
+        </mat-tab>
+        <mat-tab *ngIf="VIEW_TYPES_VEHICULE" label="Types véhicules">
+          <app-type-vehicule></app-type-vehicule>
+        </mat-tab>
+        <mat-tab *ngIf="VIEW_USAGES_VEHICULES" label="Usages véhicules">
+          <app-usage-vehicule></app-usage-vehicule>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

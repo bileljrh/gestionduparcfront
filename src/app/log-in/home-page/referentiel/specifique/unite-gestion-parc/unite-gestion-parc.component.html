@@ -1,0 +1,116 @@
+<div *ngIf="VIEW_UNITE_GESTION_PARC" ngxUiLoaderBlurred class="container-fluid frame">
+  <div class="row">
+    <div class="col-12 mt-3 mb-2">
+      Unités de gestion de parc
+      <mat-divider></mat-divider>
+    </div>
+    <div class="offset-9 col-3">
+      <i class="fa fa-plus-square" style="color:red"></i> <span class="indicator">Atelier</span>
+      <i class="fa fa-plus-square" style="color:green"></i> <span class="indicator">Magasin</span>
+      <i class="fa fa-plus-square" style="color:blue"></i> <span class="indicator">Ressource</span>
+    </div>
+    <div class="col-12 mt-3">
+      <div class="parent" *ngFor="let parent of listUGP">----<i *ngIf="parent.collapsed"
+                                                                class="fa fa-folder-open showLessMore"
+                                                                (click)="parent.collapsed=!parent.collapsed"></i><i
+        *ngIf="!parent.collapsed" class="fa fa-folder showLessMore"
+        (click)="parent.collapsed=!parent.collapsed"></i><span class="detailsElement"
+                                                               (click)="modifyUGP(parent)"
+                                                               (mouseover)="parent.square=!parent.square">{{parent.designation}}</span>
+        <i *ngIf="ADD_UNITE_GESTION_PARC && parent.square" class="fa fa-plus-square" (click)="addNewAtelier(parent)"
+           style="color: red"></i>
+        <i *ngIf="ADD_UNITE_GESTION_PARC && parent.square" class="fa fa-plus-square" (click)="addNewMagasin(parent)"
+           style="color: green"></i>
+        <i *ngIf="ADD_UNITE_GESTION_PARC &&parent.square" class="fa fa-plus-square" (click)="addNewRessource(parent)"
+           style="color: blue"></i>
+        <i *ngIf="DELETE_UNITE_GESTION_PARC && parent.square" class="fa fa-minus-square"
+           (click)="deleteSelectedUGP(parent.id)"></i>
+        <ng-container *ngIf="parent.collapsed">
+
+          <div class="child" *ngFor="let magasin of parent.magasins">----
+            <i *ngIf="magasin.collapsed" class="fa fa-folder-open showLessMore"
+               (click)="magasin.collapsed=!magasin.collapsed"></i>
+            <i *ngIf="!magasin.collapsed" class="fa fa-folder showLessMore"
+               (click)="magasin.collapsed=!magasin.collapsed"></i>
+            <span class="detailsElement" (mouseover)="magasin.square=!magasin.square"
+                  (click)="modifyMagasin(magasin,parent)">{{magasin.designation}}</span>
+            <i *ngIf="ADD_UNITE_GESTION_PARC && magasin.square" class="fa fa-plus-square"
+               (click)="addNewSection(true,false,false,magasin,null,null)"></i>
+            <i *ngIf="DELETE_UNITE_GESTION_PARC && magasin.square" class="fa fa-minus-square"
+               (click)="deleteMagasin(magasin.id)"></i>
+
+            <ng-container *ngIf="magasin.collapsed">
+              <div class="child" *ngFor="let section of magasin.sections">----
+                <i class="fa fa-folder showLessMore"></i>
+                <span class="detailsElement"
+                      (mouseover)="section.square=!section.square"
+                      (click)="modifySection(true,false,false,magasin,null,null,section)">{{section.designation}}</span>
+                <i *ngIf="DELETE_UNITE_GESTION_PARC && section.square" class="fa fa-minus-square"
+                   (click)="deleteSection(section.id)"></i>
+              </div>
+            </ng-container>
+
+          </div>
+
+          <div class="child" *ngFor="let atelier of parent.ateliers">----
+            <i *ngIf="atelier.collapsed" class="fa fa-folder-open showLessMore"
+               (click)="atelier.collapsed=!atelier.collapsed"></i>
+            <i *ngIf="!atelier.collapsed" class="fa fa-folder showLessMore"
+               (click)="atelier.collapsed=!atelier.collapsed"></i>
+            <span class="detailsElement" (mouseover)="atelier.square=!atelier.square"
+                  (click)="modifyAtelier(atelier,parent)">{{atelier.designation}}</span>
+            <i *ngIf="ADD_UNITE_GESTION_PARC && atelier.square" class="fa fa-plus-square"
+               (click)="addNewSection(false,true,false,null,atelier,null)"></i>
+            <i *ngIf="DELETE_UNITE_GESTION_PARC && atelier.square" class="fa fa-minus-square"
+               (click)="deleteAtelier(atelier.id)"></i>
+
+            <ng-container *ngIf="atelier.collapsed">
+              <div class="child" *ngFor="let section of atelier.sections">----
+                <i class="fa fa-folder showLessMore"></i>
+                <span class="detailsElement"
+                      (mouseover)="section.square=!section.square"
+                      (click)="modifySection(false,true,false,null,atelier,null,section)">{{section.designation}}</span>
+                <i *ngIf="DELETE_UNITE_GESTION_PARC && section.square" class="fa fa-minus-square"
+                   (click)="deleteSection(section.id)"></i>
+              </div>
+            </ng-container>
+
+          </div>
+
+          <div class="child" *ngFor="let ressource of parent.ressources">----
+            <i *ngIf="ressource.collapsed" class="fa fa-folder-open showLessMore"
+               (click)="ressource.collapsed=!ressource.collapsed"></i>
+            <i *ngIf="!ressource.collapsed" class="fa fa-folder showLessMore"
+               (click)="ressource.collapsed=!ressource.collapsed"></i>
+            <span class="detailsElement"
+                  (mouseover)="ressource.square=!ressource.square"
+                  (click)="modifyRessource(ressource,parent)">{{ressource.designation}}</span>
+            <i *ngIf="ADD_UNITE_GESTION_PARC && ressource.square" class="fa fa-plus-square"
+               (click)="addNewSection(false,false,true,null,null,ressource)"></i>
+            <i *ngIf="DELETE_UNITE_GESTION_PARC && ressource.square" class="fa fa-minus-square"
+               (click)="deleteRessource(ressource.id)"></i>
+
+            <ng-container *ngIf="ressource.collapsed">
+              <div class="child" *ngFor="let section of ressource.sections">----
+                <i class="fa fa-folder showLessMore"></i>
+                <span class="detailsElement"
+                      (mouseover)="section.square=!section.square"
+                      (click)="modifySection(false,false,true,null,null,ressource,section)">{{section.designation}}</span>
+                <i *ngIf="DELETE_UNITE_GESTION_PARC && section.square" class="fa fa-minus-square"
+                   (click)="deleteSection(section.id)"></i>
+              </div>
+            </ng-container>
+
+          </div>
+
+
+        </ng-container>
+      </div>
+    </div>
+    <div *ngIf="ADD_UNITE_GESTION_PARC" class="col-12 mt-5 mb-3">
+      <button class="addButton" mat-raised-button (click)="ajouterUGP()">Nouvelle unité de gestion de parc</button>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader></ngx-ui-loader>
+

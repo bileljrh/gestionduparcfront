@@ -1,0 +1,145 @@
+<div class="container-fluid m-0 p-0 frame" [formGroup]="declarationPerteForm">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 header">
+      <span class="float-left">
+        <mat-icon class="mr-2">edit</mat-icon>
+        Modifier la déclaration de perte sélectionnée</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <!--
+    <div class="col-12 mt-3">
+      Identité déclarant
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <mat-radio-group formControlName="typeDeclarant" class="col-12 mb-2 mt-2">
+      <div class="d-flex justify-content-center">
+        <mat-radio-button class="mr-3" value="Physique">Personne physique</mat-radio-button>
+        <mat-radio-button value="Morale">Personne morale</mat-radio-button>
+      </div>
+    </mat-radio-group>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Nom
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="text" formControlName="nomDeclarant">
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Prénom
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="text" formControlName="prenomDeclarant">
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Sexe
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <mat-select formControlName="sexeDeclarant">
+          <mat-option value="Mâle">Mâle</mat-option>
+          <mat-option value="Femelle">Femelle</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Date de naissance</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="dateNaissanceDeclarant">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Lieu de naissance</mat-label>
+        <input matInput type="text" formControlName="lieuNaissanceDeclarant">
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Numéro CIN</mat-label>
+        <input matInput type="text" formControlName="numeroCINDeclarant">
+      </mat-form-field>
+    </div>
+    -->
+    <div class="col-12 mt-4">
+      Information carte Plafond
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Numéro carte</mat-label>
+        <input matInput type="text" [value]="data.element.carteagilis.numeroCarte" readonly>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>typeCarburant</mat-label>
+        <input matInput type="text" [value]="data.element.carteagilis.typeCarburant" readonly>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Structure</mat-label>
+        <input matInput type="text" [value]="data.element.structure" disabled />
+      </mat-form-field>
+    </div>
+    
+    <div class="col-12 mt-4">
+      Déclaration
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Type déclaration
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <mat-select formControlName="typeDeclaration">
+          <mat-option value="Perte">Perte</mat-option>
+          <mat-option value="Vol">Vol</mat-option>
+          <mat-option value="Autre">Autre</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Date perte
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput [matDatepicker]="picker3" formControlName="datePerte">
+        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Lieu perte
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="text" formControlName="lieuPerte">
+      </mat-form-field>
+    </div>
+    <div class="col-12">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Circonstances</mat-label>
+        <textarea matInput rows="1" formControlName="circonstances"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="offset-6 col-3">
+      <div class="float-right mt-1 mb-2">
+        <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right mt-1 mb-2">
+        <button mat-raised-button (click)="onConfirm()" style="width: 100%">
+          Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

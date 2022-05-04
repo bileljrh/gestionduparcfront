@@ -1,0 +1,26 @@
+@import "src/assets/Scss/Shared Classes";
+@import "src/assets/Scss/Variables";
+
+
+table td:nth-child(8), table td:nth-child(9), table td:nth-child(10), table td:nth-child(11) {
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+div.col-12 > button {
+  width: 100%;
+  background-color: $Third_Color;
+  border: 1px solid white;
+}

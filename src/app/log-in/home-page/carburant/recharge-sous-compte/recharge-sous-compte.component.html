@@ -1,0 +1,150 @@
+<div class="container-fluid" ngxUiLoaderBlurred>
+    <div class="row frame">
+      <div class="col-12">
+        Filtrage des demandes de recharge des sous comptes
+        <mat-divider class="mb-4"></mat-divider>
+      </div>
+      <div class="col-12">
+        <div class="col-12">
+          <mat-form-field appearance="outline">
+            <mat-label>Filtrer les données du tableau ci-dessous</mat-label>
+            <input matInput (keyup)="applyFilter($event)" #input>
+          </mat-form-field>
+        </div>
+      </div>
+    <div class="row frame">
+      <div class="col-12">
+        Liste demandes des recharges des sous comptes
+        <mat-divider class="mb-4"></mat-divider>
+      </div>
+      <div class="col-12" >
+        <div *ngFor="let item of numberToTable(paginConfig.totalItems) | paginate: paginConfig"></div>
+        <!--      <some-element *ngFor="let item of numberToTable(paginConfig.totalItems) | paginate: paginConfig"></some-element>-->
+        <table mat-table [dataSource]="dataSource" matSort>
+  
+          <!-- ID Column -->
+          <ng-container matColumnDef="index">
+            <th mat-header-cell *matHeaderCellDef>N°</th>
+            <td mat-cell *matCellDef="let row;let i=index"> {{i + 1}} </td>
+          </ng-container>
+          
+           <!-- ID Column -->
+           <ng-container matColumnDef="numCarte">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Numéro de sous compte</th>
+            <td mat-cell *matCellDef="let row"> {{row.numCarte}} </td>
+          </ng-container>
+
+           <!-- ID Column -->
+           <ng-container matColumnDef="demandeur">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Demandeur</th>
+            <td mat-cell *matCellDef="let row"> {{row.demandeur}} </td>
+          </ng-container>
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="typeCarburant">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Type Carburant</th>
+            <td mat-cell *matCellDef="let row"> {{row.typeCarburant}} </td>
+          </ng-container>
+  
+         
+  
+          <!-- ID Column -->
+          <ng-container matColumnDef="quantiteDemande">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Montant Demandé</th>  
+            <td mat-cell *matCellDef="let row"> {{row.quantiteDemande}} </td>
+          </ng-container>
+
+           <!-- ID Column -->
+           <ng-container matColumnDef="creationDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Date de demande</th>
+            <td mat-cell *matCellDef="let row"> {{row.creationDate}}</td>
+          </ng-container>
+
+           <!-- ID Column -->
+           <ng-container matColumnDef="confirmed">
+            <th mat-header-cell *matHeaderCellDef>Confirmer</th>
+            <td mat-cell *matCellDef="let row">
+            <div  *ngIf="CONFIRM_DEMANDE_RECHARGE_SOUS_COMPTE">
+              <mat-icon *ngIf="!row.confirmed" (click)="confirmRow(row.id)"
+                        style="color: green;cursor: pointer">done
+              </mat-icon>
+              <mat-icon *ngIf="row.confirmed" style="color: red;cursor: not-allowed">done</mat-icon>
+            </div>
+            </td>
+          </ng-container>
+  
+          <!-- ID Column -->
+          <ng-container matColumnDef="validated">
+            <th mat-header-cell *matHeaderCellDef>Valider</th>
+            <td mat-cell *matCellDef="let row">
+              <div *ngIf="row.confirmed" >
+                <div  *ngIf="VALID_DEMANDE_RECHARGE_SOUS_COMPTE">
+              <mat-icon *ngIf="!row.validated" (click)="validateRow(row.id)"
+                        style="color: green;cursor: pointer" >done_all
+              </mat-icon>
+              <mat-icon *ngIf="row.validated" style="color: red;cursor: not-allowed" >done_all</mat-icon>
+            </div>
+          </div>
+            </td>
+          </ng-container>
+  
+        
+          <ng-container matColumnDef="supprimer">
+            <th mat-header-cell *matHeaderCellDef>Supprimer</th>
+            <td mat-cell *matCellDef="let row">
+              <mat-icon class="mouseUp"  (click)="deleteRow(row.id)"  *ngIf="DELETE_DEMANDE_RECHARGE_SOUS_COMPTE">delete</mat-icon>
+            </td>
+          </ng-container>
+  
+          <!-- ID Column -->
+        
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="itemPerPage">
+          <mat-label>Elements par page</mat-label>
+          <mat-select [formControl]="itemPerPage">
+            <mat-option *ngFor="let item of ItemPerPage" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-6 mt-5">
+        <pagination-template class="d-flex justify-content-end" #p="paginationApi" [id]="paginConfig.id"
+                             (pageChange)="paginConfig.currentPage = $event" maxSize="5"
+                             (click)="displayPageContent(paginConfig)">
+          <div class="custom-pagination">
+            <button mat-flat-button class="pagination-previous" [disabled]="p.isFirstPage()"
+                    (click)="p.previous()">
+              <span class="previous"><</span>Previous
+            </button>
+            <div class="page-number" *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+              <button (click)="p.setCurrent(page.value)"
+                      *ngIf="p.getCurrent() !== page.value">{{ page.label }}</button>
+              <button class="current" *ngIf="p.getCurrent() === page.value">
+                <span>{{ page.label }}</span>
+              </button>
+            </div>
+            <button mat-flat-button class="pagination-next" [disabled]="p.isLastPage()"
+                    (click)="p.next()">
+              Next<span class="next">></span>
+            </button>
+          </div>
+        </pagination-template>
+      </div>
+      <button class="col-12 mt-5 mb-3"  mat-raised-button (click)="ajouterNouvelleDemandeRecharge()" *ngIf="ADD_DEMANDE_RECHARGE_SOUS_COMPTE">Nouvelle
+        demande de recharge de sous compte
+      </button>
+    </div>
+  </div>
+  <ngx-ui-loader></ngx-ui-loader>
+  

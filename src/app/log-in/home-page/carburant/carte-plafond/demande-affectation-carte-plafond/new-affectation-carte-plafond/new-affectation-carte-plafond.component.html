@@ -1,0 +1,115 @@
+
+  <div class="container-fluid m-0 p-0 frame" ngxUiLoaderBlurred [formGroup]="newDemandeAffectationCartePlafondForm">
+    <div class="row m-0 p-0">
+      <div class="col-12 m-0 p-0 header">
+        <span class="float-left">
+          <mat-icon class="mr-2">fiber_new</mat-icon>
+          Ajouter une nouvelle carte Plafond</span>
+        <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+      </div>
+      <div class="col-12 mt-3">
+        Données de véhicule
+        <mat-divider class="mb-4"></mat-divider>
+      </div>
+
+
+      <div class="col-4">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Véhicule
+            <mat-icon class="required" matSuffix>star</mat-icon>
+          </mat-label>
+          <mat-select formControlName="numeroPlaque">
+            <mat-option *ngFor="let vehicule of listVehicule" [value]="vehicule">
+              {{vehicule.numeroPlaque}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="f.numeroPlaque.invalid">Numero de Plaque est requis</mat-error>
+        </mat-form-field>
+      </div>
+
+
+
+
+
+      
+
+      <div class="col-4">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Bénéficiaire</mat-label>
+          <input matInput [value]="nomBeneficiaire" formControlName="nomBeneficiaire" readonly>
+          <mat-hint>{{matriculeBeneficiaire}}</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Structure</mat-label>
+          <input matInput [value]="designationStructure" formControlName="structure" disabled>
+          <mat-hint>{{codeStructure}}</mat-hint>
+        </mat-form-field>
+      </div>
+
+
+
+      <div class="col-12 mt-4">
+        Données de carte Jocker
+        <mat-divider class="mb-4"></mat-divider>
+      </div>
+      
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Numero de carte
+            <mat-icon class="required" matSuffix>star</mat-icon>
+          </mat-label>
+          <mat-select formControlName="numeroCarte">
+            <mat-option *ngFor="let cartePlafond of cartePlafondList" [value]="cartePlafond">
+              {{cartePlafond.numeroCarte}} 
+              <span class="typeCarburant">({{cartePlafond.typeCarburant}})</span>
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="f.numeroCarte.invalid">Numero de Carte est requis</mat-error> 
+        </mat-form-field>
+      </div>
+
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Montant</mat-label>
+          <input matInput [value]="montant" formControlName="montant" disabled>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Type carburant</mat-label>
+          <input matInput [value]="typeCarburantVehicule"  disabled>
+        </mat-form-field>
+      </div>
+      
+   
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Date d'affectation
+            <mat-icon class="required" matSuffix>star</mat-icon>
+          </mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dateAffectation">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="f.dateAffectation.invalid">Date d'affectation est requise</mat-error>   
+        </mat-form-field>
+      </div>
+
+
+      <div class="offset-6 col-3">
+        <div class="float-right mt-4 mb-3">
+          <button mat-raised-button (click)="onCancelAdding()" style="width: 90%">Annuler</button>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="float-right mt-4 mb-3">
+          <button mat-raised-button (click)="onConfirmAdding()" style="width: 100%"
+                >Confirmer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ngx-ui-loader></ngx-ui-loader>
+  

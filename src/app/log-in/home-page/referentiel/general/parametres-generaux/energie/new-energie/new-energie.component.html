@@ -1,0 +1,64 @@
+<div class="container-fluid m-0 p-0 frame" [formGroup]="nouvelleEnergieForm">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0">
+      <span class="float-left">
+        <mat-icon class="mr-2">fiber_new</mat-icon>
+        Ajouter une nouvelle énergie</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-3 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Code
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput placeholder type="text" formControlName="code">
+        <mat-error *ngIf="f.code.invalid">Code est requis</mat-error>
+      </mat-form-field>
+    </div>
+    <!--
+    <div class="col-3 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Description
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput placeholder type="text" formControlName="description">
+        <mat-error *ngIf="f.description.invalid">Description est requise</mat-error>
+      </mat-form-field>
+    </div>
+    -->
+    <div class="col-3 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Description
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput placeholder type="text" formControlName="description">
+        <mat-error *ngIf="f.description.invalid">Description est requise</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-3 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Prix unitaire</mat-label>
+        <input matInput placeholder (keydown)="numberOnly($event)" type="text" formControlName="prixUnitaire">
+      </mat-form-field>
+    </div>
+    <div class="col-3 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>TVA</mat-label>
+        <input matInput placeholder (keydown)="numberOnly($event)" type="text" formControlName="tva">
+      </mat-form-field>
+    </div>
+    <div class="offset-6 col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onConfirm()" style="width: 100%" [disabled]="!nouvelleEnergieForm.valid">
+          Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

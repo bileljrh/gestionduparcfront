@@ -1,0 +1,143 @@
+<div class="container-fluid m-0 p-0 frame" [formGroup]="newPersonnelForm">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 title">
+      <span class="float-left">
+        <mat-icon class="mr-2">fiber_new</mat-icon>
+        Ajouter un nouveau personnel
+      </span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+
+    
+    <div class="col-9 p-0">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-4 mt-4">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Immatriculation unique</mat-label>
+              <input matInput type="text" formControlName="immatriculationUnique">
+            </mat-form-field>
+
+          </div>
+          <div class="col-4 mt-4">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Prénom</mat-label>
+              <input matInput type="text" formControlName="prenom">
+            </mat-form-field>
+
+          </div>
+          <div class="col-4 mt-4">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Nom</mat-label>
+              <input matInput type="text" formControlName="nom">
+            </mat-form-field>
+
+          </div>
+          <div class="col-4">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>CIN</mat-label>
+              <input matInput type="text" formControlName="cin">
+            </mat-form-field>
+
+          </div>
+          <div class="col-4">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Fonction</mat-label>
+              <input matInput type="text" formControlName="fonction">
+            </mat-form-field>
+
+          </div>
+          <div class="col-4">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Grade</mat-label>
+              <input matInput type="text" formControlName="grade">
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Avantage
+               <!-- <mat-icon class="required" matSuffix>star</mat-icon>-->
+              </mat-label>
+              <mat-select #quotaValue (selectionChange)="changeQuota(quotaValue.value)" >
+                <mat-option *ngFor="let avantage of listAvantage" [value]="avantage">
+                  {{avantage}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Quota</mat-label>
+              <input matInput type="number" value="{{test}}" formControlName="quota">
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Nombre véhicule</mat-label>
+              <input matInput type="number" formControlName="nombreVehicule">
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Date permis</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="datePermis">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="col-3 p-0">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 mt-4">
+            <mat-card class="example-card example-full-width">
+              <img *ngIf="!imageUploaded" class="personnel_image" mat-card-image
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnIHRyYW5zZm9ybT0ibWF0cml4KDAuOTkwMDAwMDAwMDAwMDAwMSwwLDAsMC45OTAwMDAwMDAwMDAwMDAxLDIuNTU5OTk5ODQ3NDEyNDU2LDIuNTU5OTk5ODQ3NDEyNDU2KSI+PGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Zz48Zz48cGF0aCBkPSJtMjU2LjAyNSA0ODMuMzM0IDEwMS40MjktMjUuNjE0YzU3Ljg5NS00OC4wNzQgOTQuNzcxLTEyMC41ODYgOTQuNzcxLTIwMS43MTkgMC0xMjUuMTQ0LTg3LjcxMS0yMjkuODAxLTIwNS4wMTItMjU1Ljg1Mi0xMzcuMzE2IDQuNjMxLTI0Ny4yMTMgMTE3LjQwNy0yNDcuMjEzIDI1NS44NTEgMCA3MS4xMTIgMjkgMTM1LjQ0NiA3NS44MTIgMTgxLjgzNnoiIGZpbGw9IiNjYmUyZmYiIGRhdGEtb3JpZ2luYWw9IiNjYmUyZmYiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48L2c+PGc+PHBhdGggZD0ibTQ0Ni45MTQgMjU2YzAgODMuOTE1LTQwLjM4MSAxNTguMzkxLTEwMi43NjUgMjA1LjA3OWw5Mi4wMzEtMjMuMjQxYzQ2LjgxNS00Ni4zOSA3NS44Mi0xMTAuNzI0IDc1LjgyLTE4MS44MzggMC0xNDEuMzg1LTExNC42MTUtMjU2LTI1Ni0yNTYtMTEuMDI0IDAtMjEuODg2LjY5OC0zMi41NDMgMi4wNSAxMjYuMDE5IDE1Ljk4OCAyMjMuNDU3IDEyMy41OSAyMjMuNDU3IDI1My45NXoiIGZpbGw9IiNiZWQ4ZmIiIGRhdGEtb3JpZ2luYWw9IiNiZWQ4ZmIiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48L2c+PGc+PGc+PGc+PHBhdGggZD0ibTMxOS42MjEgOTYuOTUyYzAtMTMuMDc1LTEwLjU5OS0yMy42NzQtMjMuNjc0LTIzLjY3NGgtODEuNTgyYy0zMC4wOTEgMC01NC40ODUgMjQuMzk0LTU0LjQ4NSA1NC40ODV2NjAuNDkzaDE5Mi4yMDl2LTU5LjYzNWMwLTEzLjA3NS0xMC41OTktMjMuNjc0LTIzLjY3NC0yMy42NzRoLS43OThjLTQuNDE2IDAtNy45OTYtMy41NzktNy45OTYtNy45OTV6IiBmaWxsPSIjMzY1ZTdkIiBkYXRhLW9yaWdpbmFsPSIjMzY1ZTdkIiBzdHlsZT0iIj48L3BhdGg+PHBhdGggZD0ibTMyOC40MTUgMTA0Ljk0N2gtLjc5OGMtNC40MTYgMC03Ljk5Ni0zLjU4LTcuOTk2LTcuOTk2IDAtMTMuMDc1LTEwLjU5OS0yMy42NzQtMjMuNjc0LTIzLjY3NGgtOC45NDV2MTE0Ljk3OGg2NS4wODZ2LTU5LjYzNWMuMDAxLTEzLjA3My0xMC41OTktMjMuNjczLTIzLjY3My0yMy42NzN6IiBmaWxsPSIjMmI0ZDY2IiBkYXRhLW9yaWdpbmFsPSIjMmI0ZDY2IiBzdHlsZT0iIj48L3BhdGg+PHBhdGggZD0ibTQyNS4wNDUgMzcyLjM1NWMtNi4yNTktNi4xODItMTQuMDAxLTEwLjk2My0yMi43OS0xMy43NDVsLTY5Ljg5MS0yMi4xMjgtNzYuMzQ4LTIuNjgzLTc2LjM4IDIuNjgzLTY5Ljg5MSAyMi4xMjhjLTIzLjY0NCA3LjQ4Ni0zOS43MTMgMjkuNDI4LTM5LjcxMyA1NC4yMjl2MTkuMDk0YzQ0Ljc4OSA0Ny4zMjggMTA3LjQ1MSA3Ny41NjggMTc3LjE4MyA3OS45MiA3OC4xMjgtMTcuMzUzIDE0My4xMjktNjkuNTc2IDE3Ny44My0xMzkuNDk4eiIgZmlsbD0iIzRhODBhYSIgZGF0YS1vcmlnaW5hbD0iIzRhODBhYSIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPjxwYXRoIGQ9Im00NDEuOTY4IDQzMS45MzJ2LTE5LjA5NGMwLTE3LjUzNi04LjA0LTMzLjYzNS0yMS4xMDUtNDQuMjEzLTM3LjExMSA3NS42MjYtMTEwLjQyMiAxMzAuMjY4LTE5Ny4zNDYgMTQxLjMxNyAxMC40OTIgMS4zMjkgMjEuMTc4IDIuMDM4IDMyLjAyNiAyLjA1NyAxMC40MjMtLjAxNiAyMC43MDgtLjYyIDMwLjgyNC0xLjc4MiA2MS4wMzEtNy4yMTIgMTE1LjQ4NS0zNS44OTQgMTU1LjYwMS03OC4yODV6IiBmaWxsPSIjNDA3MDkzIiBkYXRhLW9yaWdpbmFsPSIjNDA3MDkzIiBzdHlsZT0iIj48L3BhdGg+PHBhdGggZD0ibTI2MS43OTYgNTA4LjE2OGMxNS40ODktMzAuNzUxIDU1LjgyMi0xMTguMDY3IDQ0LjMyMS0xNzIuNjA5bC01MC4xMDEtMTkuNDk5LTUwLjE0OCAxOS41Yy0xMS44NTYgNTYuMjI1IDMxLjM3IDE0Ny4yNzcgNDUuNjgxIDE3NS4yOSAzLjQ0Mi0uODI2IDYuODU5LTEuNzIxIDEwLjI0Ny0yLjY4MnoiIGZpbGw9IiNlNGY2ZmYiIGRhdGEtb3JpZ2luYWw9IiNlNGY2ZmYiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48cGF0aCBkPSJtMjg4LjE5NyA0ODMuNzg5LTIwLjMxNC03OS45MTdoLTIzLjc2N2wtMjAuMjY0IDc5LjY5OSAyNS4wNTggMjcuODk3YzYuMzYxLTEuNDU3IDEyLjYzNC0zLjE0NiAxOC44MS01LjA1N3oiIGZpbGw9IiNlMjgwODYiIGRhdGEtb3JpZ2luYWw9IiNlMjgwODYiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48cGF0aCBkPSJtMjQ5LjMwMiA1MTEuOTA1YzIuMDc1LjA1NCA0LjE1NC4wOTEgNi4yNDEuMDk1IDIuNDE1LS4wMDQgNC44MjItLjA0NiA3LjIyMi0uMTEzbDEyLjkwNy0xNC4yNTljLTEwLjE1OSAzLjU2NC0yMC42MSA2LjUwNi0zMS4zMDkgOC43Nzl6IiBmaWxsPSIjZGQ2MzZlIiBkYXRhLW9yaWdpbmFsPSIjZGQ2MzZlIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PGc+PGc+PGc+PGc+PGc+PGc+PGc+PGc+PHBhdGggZD0ibTI5OC43NzQgMzI4LjE4M3YtNDUuMDY2aC04NS41OHY0NS4wNjZjMCAyMy42MzIgNDIuNzkgNDkuNDQ2IDQyLjc5IDQ5LjQ0NnM0Mi43OS0yNS44MTQgNDIuNzktNDkuNDQ2eiIgZmlsbD0iI2ZmZGRjZSIgZGF0YS1vcmlnaW5hbD0iI2ZmZGRjZSIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPjwvZz48L2c+PC9nPjwvZz48L2c+PC9nPjwvZz48cGF0aCBkPSJtMzUyLjA4OSAxODAuMzE4aC0xNi4zNTljLTkuMDk4IDAtMTYuNDczLTcuMzc1LTE2LjQ3My0xNi40NzN2LTkuMDE1YzAtMTEuODUxLTExLjU5NS0yMC4yMy0yMi44NDctMTYuNTExLTI2LjI0MyA4LjY3NC01NC41NzkgOC42NzYtODAuODIzLjAwNmwtLjAzMS0uMDFjLTExLjI1Mi0zLjcxNy0yMi44NDUgNC42NjItMjIuODQ1IDE2LjUxMnY5LjAxOWMwIDkuMDk4LTcuMzc1IDE2LjQ3My0xNi40NzMgMTYuNDczaC0xNi4zNTh2MjYuOTM4YzAgNi44ODMgNS41OCAxMi40NjQgMTIuNDY0IDEyLjQ2NCAyLjE3MiAwIDMuOTM5IDEuNzAxIDQuMDc2IDMuODY5IDIuNjI4IDQxLjY2OCAzNy4yMzUgNzQuNjU0IDc5LjU2NSA3NC42NTQgNDIuMzMgMCA3Ni45MzctMzIuOTg2IDc5LjU2NS03NC42NTQuMTM3LTIuMTY3IDEuOTA0LTMuODY5IDQuMDc2LTMuODY5IDYuODgzIDAgMTIuNDY0LTUuNTggMTIuNDY0LTEyLjQ2NHYtMjYuOTM5eiIgZmlsbD0iI2ZmZGRjZSIgZGF0YS1vcmlnaW5hbD0iI2ZmZGRjZSIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPjxwYXRoIGQ9Im0zMzUuNzMgMTgwLjMxOGMtOS4wOTggMC0xNi40NzMtNy4zNzUtMTYuNDczLTE2LjQ3M3YtOS4wMTVjMC0xMS44NTEtMTEuNTk1LTIwLjIzLTIyLjg0Ny0xNi41MTEtMy4xMDggMS4wMjctNi4yNDcgMS45MjMtOS40MDcgMi43MDd2ODguOTcyYy0uNDM4IDI4Ljk0OC0xNi4zIDU0LjE0Mi0zOS43MjUgNjcuNzU4IDIuODYxLjMxMSA1Ljc2My40ODYgOC43MDYuNDg2IDQyLjMzIDAgNzYuOTM3LTMyLjk4NiA3OS41NjUtNzQuNjU0LjEzNy0yLjE2NyAxLjkwNC0zLjg2OSA0LjA3Ni0zLjg2OSA2Ljg4MyAwIDEyLjQ2NC01LjU4IDEyLjQ2NC0xMi40NjR2LTI2LjkzOGgtMTYuMzU5eiIgZmlsbD0iI2ZmY2JiZSIgZGF0YS1vcmlnaW5hbD0iI2ZmY2JiZSIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPjwvZz48ZyBmaWxsPSIjZjRmYmZmIj48cGF0aCBkPSJtMjEzLjE5NCAzMTYuMDYtMzMuNTU4IDI3LjI2NyAzNS4xOTIgNDMuNTEzYzQuMjgxIDQuMTY4IDExLjAxOSA0LjQyNCAxNS42MDUuNTk0bDI2LjQ2NS0yMi4xMDd6IiBmaWxsPSIjZjRmYmZmIiBkYXRhLW9yaWdpbmFsPSIjZjRmYmZmIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PHBhdGggZD0ibTI5OC43OSAzMTYuMDYtNDEuODkyIDQ5LjI2NyAyNC44NzQgMjEuMjY4YzQuNTU3IDMuODk2IDExLjMyNyAzLjcgMTUuNjUxLS40NTNsMzQuOTQtNDIuODE1eiIgZmlsbD0iI2Y0ZmJmZiIgZGF0YS1vcmlnaW5hbD0iI2Y0ZmJmZiIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPjwvZz48L2c+PHBhdGggZD0ibTIxMy4xOTQgMzE2LjA2LTQ5LjI1NiAyNC4xOTljLTMuNzUgMS44NDItNS4yNTYgNi40MDQtMy4zNDEgMTAuMTE3bDkuNjUgMTguNzFjMi41MDEgNC44NDggMS41NzggMTAuNzU2LTIuMjgyIDE0LjYxLTEuOTg3IDEuOTgzLTQuMTM5IDQuMTMxLTYuMDA0IDUuOTkzLTMuMzM4IDMuMzMyLTQuNTM3IDguMjU1LTMuMDY3IDEyLjczNyAxMS42NTEgMzUuNTE3IDY3LjcyNSA4OS44MjggODguOTQ2IDEwOS40NzggMS40MjcuMDM4IDIuODU3LjA2NCA0LjI5LjA4LTE1LjM4OS0yOS45MzMtNjkuOTIyLTE0My42NTUtMzguOTM2LTE5NS45MjR6IiBmaWxsPSIjMzY1ZTdkIiBkYXRhLW9yaWdpbmFsPSIjMzY1ZTdkIiBzdHlsZT0iIj48L3BhdGg+PHBhdGggZD0ibTM0NC4wMTkgMzgzLjY5NWMtMy44NjEtMy44NTQtNC43ODMtOS43NjItMi4yODItMTQuNjFsOS42NS0xOC43MWMxLjkxNS0zLjcxMy40MDktOC4yNzUtMy4zNDEtMTAuMTE3bC00OS4yNTYtMjQuMTk4YzMwLjk3OCA1Mi4yNTUtMjMuNTE3IDE2NS45MjktMzguOTIzIDE5NS45IDEuNDQ4LS4wMjUgMi44OTMtLjA2MSA0LjMzNS0uMTA5IDIxLjI2NS0xOS42OTUgNzcuMjQ4LTczLjk0IDg4Ljg4OC0xMDkuNDI0IDEuNDctNC40ODIuMjcxLTkuNDA1LTMuMDY3LTEyLjczNy0xLjg2NS0xLjg2My00LjAxNy00LjAxMi02LjAwNC01Ljk5NXoiIGZpbGw9IiMzNjVlN2QiIGRhdGEtb3JpZ2luYWw9IiMzNjVlN2QiIHN0eWxlPSIiPjwvcGF0aD48cGF0aCBkPSJtMjU2Ljg5OCAzNjUuMzI3LTI2LjA2IDIxLjc2NCAxMy4yNzggMTYuNzgxaDIzLjc2N2wxMy4yNzktMTcuNzcxeiIgZmlsbD0iI2RkNjM2ZSIgZGF0YS1vcmlnaW5hbD0iI2RkNjM2ZSIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPjwvZz48L2c+PC9nPjwvZz48L2c+PC9zdmc+"
+                name="avatar_image">
+
+              <img *ngIf="imageUploaded" class="personnel_image" mat-card-image [src]="url">
+              <mat-card-actions class="m-0 p-0">
+                <div class="custom-file">
+                  <span class="pl-1"></span>
+                  <input matRipple type="file" (change)="onUploadNewDocument($event)" accept="image/jpeg, image/png">
+                </div>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Structure
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <mat-select formControlName="structure">
+          <mat-option *ngFor="let structure of ListStructure" [value]="structure">
+            {{structure.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="end">{{codeStructure}}</mat-hint>
+        <mat-error *ngIf="f.structure.invalid">Structure est requise</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="offset-6 col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onConfirm()" style="width: 100%" [disabled]="!newPersonnelForm.valid">
+          Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

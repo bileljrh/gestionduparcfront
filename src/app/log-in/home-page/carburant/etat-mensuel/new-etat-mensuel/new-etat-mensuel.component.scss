@@ -1,0 +1,42 @@
+@import "src/assets/Scss/Variables";
+@import "src/assets/Scss/Shared Classes";
+
+
+.header {
+  height: 38px;
+  background-color: $First_Color;
+}
+
+
+.float-right > button:nth-child(1) {
+  background-color: white;
+  color: $First_Color;
+
+}
+
+.float-right > button:nth-child(1) {
+  background-color: white;
+  color: $First_Color;
+  border: 1px solid $First_Color;
+  font-size: 12px;
+}
+
+
+div.offset-6.col-3 > div > button {
+  background-color: white;
+  color: $First_Color;
+  border: 1px solid $First_Color;
+  font-size: 12px;
+}
+
+
+div.col-3 > div > button {
+  background-color: $First_Color;
+  color: white;
+  border: none;
+  font-size: 12px;
+}
+
+th {
+  font-size: 11px;
+}

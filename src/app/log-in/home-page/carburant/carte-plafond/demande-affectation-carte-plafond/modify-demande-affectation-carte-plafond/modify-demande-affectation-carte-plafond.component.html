@@ -1,0 +1,95 @@
+<div class="container-fluid m-0 p-0" [formGroup]="modifyAffectationForm">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 header">
+      <span class="float-left">
+        <mat-icon class="mr-2">edit</mat-icon>
+        Modification d'affectation de carte Plafond sélectionnée</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-12 mt-3">
+      <div class="container-fluid frame">
+        <div class="row">
+          <div class="col-12">
+            Véhicule
+            <mat-divider class="mb-4"></mat-divider>
+          </div>
+          <div class="col-3">
+            <mat-form-field>
+              <mat-label>Bénéficiaire</mat-label>
+              <mat-select formControlName="matriculeBeneficiaire">
+                <mat-option *ngFor="let beneficiaire of vehiculeServiceList" [value]="beneficiaire">
+                  {{beneficiaire.matriculeBeneficiaire}}
+                </mat-option>
+              </mat-select>
+              <mat-hint align="end">{{nomBeneficiaire}}</mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field>
+              <mat-label>Véhicule</mat-label>
+              <mat-select formControlName="numero_plaque">
+                <mat-option *ngFor="let vehicule of vehiculeServiceList" [value]="vehicule">
+                  {{vehicule.numero_plaque}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Structure</mat-label>
+              <input matInput [value]="structure" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Type carburant</mat-label>
+              <input matInput [value]="typeCarburantVehicule" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-12">
+            Distribution
+            <mat-divider class="mb-4"></mat-divider>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Numero de carte</mat-label>
+              <input matInput [value]="data.tabData.numeroCarte" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Type carburant</mat-label>
+              <input matInput [value]="data.tabData.typeCarburantCarte" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Montant</mat-label>
+              <input matInput [value]="data.tabData.montant" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Date de la première affectation</mat-label>
+              <input matInput [value]="data.tabData.dateDebutUtilisation" disabled>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="offset-6 col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onCancelModification()" style="width: 90%">Annuler</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onConfirmModification()" style="width: 100%"
+                [matTooltip]="matoolipTex" matTooltipPosition="above"
+                [matTooltipDisabled]="isCadAndVehiculeHasSameSourceCarburant()">Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

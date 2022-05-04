@@ -1,0 +1,122 @@
+<div class="container-fluid m-0 p-0">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 header">
+      <span class="float-left">
+        <mat-icon class="mr-2">read_more</mat-icon>
+        Historique de la recharge sélectionnée</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-12 mt-3">
+      <div class="container-fluid frame">
+        <div class="row">
+          <div class="col-12">
+            Véhicule
+            <mat-divider class="mb-4"></mat-divider>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Bénéficiaire</mat-label>
+              <input matInput [value]="data.rechargeCarteAgilisCash.matriculeBeneficiaire" disabled>
+              <mat-hint align="end">{{data.rechargeCarteAgilisCash.nomBeneficiaire}}</mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Véhicule</mat-label>
+              <input matInput [value]="data.rechargeCarteAgilisCash.numero_plaque" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Structure</mat-label>
+              <input matInput [value]="data.rechargeCarteAgilisCash.structure" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Type carburant</mat-label>
+              <input matInput [value]="data.rechargeCarteAgilisCash.typeCarburant" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-12 mt-4">
+            Carte Agilis Cash et données de recharges
+            <mat-divider class="mb-4"></mat-divider>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Numéro de carte</mat-label>
+              <input matInput [value]="data.rechargeCarteAgilisCash.numeroCarte" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Solde carte</mat-label>
+              <input matInput [value]="data.rechargeCarteAgilisCash.soldeRestant" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Date de demande de recharge</mat-label>
+              <input matInput [value]="data.rechargeCarteAgilisCash.dateDemandeAffectation" disabled>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Date de recharge</mat-label>
+              <input matInput [value]="data.rechargeCarteAgilisCash.dateAffectation" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Mois de mission</mat-label>
+              <input matInput [value]="data.rechargeCarteAgilisCash.moisMission" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Destination</mat-label>
+              <input matInput [value]="data.rechargeCarteAgilisCash.destination" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Index de départ</mat-label>
+              <input matInput [value]="data.rechargeCarteAgilisCash.indexDepart" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Index à l'arrivée</mat-label>
+              <input matInput [value]="data.rechargeCarteAgilisCash.indexArrivee" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Distance à parcourir</mat-label>
+              <input matInput [value]="data.rechargeCarteAgilisCash.distanceParcourir" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Taux de consommation</mat-label>
+              <input matInput [value]="data.rechargeCarteAgilisCash.tauxConsommation" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Montant accrodée</mat-label>
+              <input matInput [value]="data.rechargeCarteAgilisCash.montantDemandee" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Quatité de carburant</mat-label>
+              <input matInput [value]="data.rechargeCarteAgilisCash.quantiteCarburantReservoir" disabled>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

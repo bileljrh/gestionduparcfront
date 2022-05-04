@@ -1,0 +1,144 @@
+@import "src/assets/Scss/Variables";
+@import "src/assets/Scss/Shared Classes";
+
+
+.mat-form-field {
+  font-size: 12px;
+  width: 100%;
+}
+
+.matIconBtn {
+  color: $First_Color;
+  background-color: transparent;
+  border: 1px solid $First_Color;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  font-size: 17px;
+  padding-left: 3px;
+  padding-top: 3px;
+
+  &:hover {
+    color: white;
+    background-color: $First_Color;
+  }
+}
+
+.example-full-width {
+  width: 100%;
+  font-size: 12px;
+}
+
+
+.itemPerPage {
+  margin-top: 45px;
+  width: 120px;
+}
+
+
+pagination-template > span {
+  color: #202020;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.customSelect select {
+  background-color: #202020;
+  color: white;
+  padding: 4px 4px 4px 4px;
+  width: 168px;
+  border: none;
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.customSelect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 7%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.customSelect:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.customSelect select option {
+  padding: 30px;
+}
+
+
+.custom-pagination .page-number {
+  display: inline-block;
+  margin: 0px 4px;
+  z-index: 10;
+}
+
+.page-number > .current {
+  background-color: #202020;
+  color: white;
+  text-align: center;
+  margin: 0px 4px;
+  height: 24px;
+  width: 24px;
+  border-radius: 3px;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.page-number button {
+  display: block;
+  background-color: white;
+  color: #202020;
+  border: 1px solid #202020;
+  text-align: center;
+  margin: 0px 0px;
+  height: 24px;
+  width: 24px;
+  border-radius: 3px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.pagination-previous, .pagination-next {
+  line-height: 20px;
+  cursor: pointer;
+  background-color: #202020;
+  color: white;
+  text-align: center;
+  margin: 0px 4px;
+  height: 24px;
+  width: 100px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.next {
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.previous {
+  font-size: 18px;
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+.itemPerPage {
+  margin-top: 45px;
+  width: 120px;
+}

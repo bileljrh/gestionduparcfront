@@ -1,0 +1,110 @@
+<div class="container-fluid" ngxUiLoaderBlurred>
+  <div class="row frame">
+    <div class="col-12">
+      Filtrage de la liste des demandes d'annulation des cartes Agilis Cash
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-12">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Filtrer les données du tableau ci-dessous</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row frame">
+    <div class="col-12">
+      liste des demandes d'annulation des cartes Agilis Cash
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-12">
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="index">
+          <th mat-header-cell *matHeaderCellDef>N°</th>
+          <td mat-cell *matCellDef="let row;let i=index"> {{i + 1}} </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="structure">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Structure</th>
+          <td mat-cell *matCellDef="let row"> {{row.structure}} </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="numeroCarte">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Numéro carte</th>
+          <td mat-cell *matCellDef="let row"> {{row.numeroCarte}} </td>
+        </ng-container>
+
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="matriculeBeneficiaire">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Matricule bénéficiaire</th>
+          <td mat-cell *matCellDef="let row"> {{row.matriculeBeneficiaire}} </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="nomBeneficiaire">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom bénéficiaire</th>
+          <td mat-cell *matCellDef="let row"> {{row.nomBeneficiaire}} </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="numero_plaque">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Numéro plaque</th>
+          <td mat-cell *matCellDef="let row"> {{row.numero_plaque}} </td>
+        </ng-container>
+
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="typeCarburant">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Type carburant</th>
+          <td mat-cell *matCellDef="let row"> {{row.typeCarburant}} </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="dateDemande">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Demande</th>
+          <td mat-cell *matCellDef="let row"> {{row.dateDemande}} </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="supprimer">
+          <th mat-header-cell *matHeaderCellDef>Supprimer</th>
+          <td mat-cell *matCellDef="let row">
+            <mat-icon class="mouseUp" (click)="deleteRow(row.id)">delete</mat-icon>
+          </td>
+        </ng-container>
+
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="vehicule">
+          <th mat-header-cell *matHeaderCellDef>Véhicule</th>
+          <td mat-cell *matCellDef="let row">
+            <mat-icon class="mouseUp">directions_car</mat-icon>
+          </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="plus">
+          <th mat-header-cell *matHeaderCellDef>Plus</th>
+          <td mat-cell *matCellDef="let row;let i=index">
+            <mat-icon class="mouseUp" (click)="readMore(i)">read_more</mat-icon>
+          </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+</div>
+<ngx-ui-loader></ngx-ui-loader>

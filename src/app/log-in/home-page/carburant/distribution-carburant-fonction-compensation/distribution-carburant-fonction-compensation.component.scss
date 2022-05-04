@@ -1,0 +1,54 @@
+@import "src/assets/Scss/Variables";
+@import "src/assets/Scss/Shared Classes";
+
+
+#ask4deleteParent, #ask4modifyParent {
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  padding-top: 23px;
+  background-color: rgba(0, 0, 0, 0.23);
+}
+
+#ask4deleteParent {
+  padding-left: 7%;
+  padding-right: 7%;
+}
+
+#ask4modifyParent {
+  padding-left: 7%;
+  padding-right: 7%;
+}
+
+#ask4deleteChild, #ask4modifyChild {
+  background-color: rgba(256, 256, 256, 1);
+  padding: 20px;
+  color: black;
+  font-size: 15px;
+  text-align: justify;
+  border-radius: 5px;
+  border: 2px $Second_Color solid;
+}
+
+#ask4deleteChild {
+  height: 130px;
+}
+
+#ask4modifyChild {
+  height: 570px;
+}
+
+table mat-form-field {
+  max-width: 120px;
+}
+
+table tr:hover {
+  background-color: white;
+}
+
+div.col-12 > button {
+  width: 100%;
+  background-color: $Third_Color;
+  border: 1px solid white;
+}
+

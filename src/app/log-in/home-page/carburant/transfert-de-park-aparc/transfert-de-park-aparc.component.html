@@ -1,0 +1,70 @@
+<div class="container-fluid" *ngIf="VIEW_TRANSFERT_PARC"  >
+  <div class="row frame"  >
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>UGP</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let ugp of UGP" [value]="ugp">
+            {{ugp}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Mois</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let mois of Mois" [value]="mois">
+            {{mois}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Année</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let annee of Annee" [value]="annee">
+            {{annee}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row frame"  >
+    <div class="col-12">
+      <table matSort (matSortChange)="sortData($event)">
+        <tr>
+          <th mat-sort-header="uGPdestinataire">UGP destinataire</th>
+          <th mat-sort-header="carburant">Carburant</th>
+          <th mat-sort-header="nbreDeBons">Nbre De Bons</th>
+          <th>Modifier</th>
+          <th>Supprimer</th>
+        </tr>
+
+        <tr *ngFor="let parkApark of sortedData">
+          <td>{{parkApark.uGPdestinataire}}</td>
+          <td>{{parkApark.carburant}}</td>
+          <td>{{parkApark.nbreDeBons}}</td>
+          <td>
+            <mat-icon>edit</mat-icon>
+          </td>
+          <td>
+            <mat-icon>delete</mat-icon>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+    <div class="offset-8 col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="secondary"  *ngIf="DETAIL_TRANSFERT_PARC"  >Details
+      </button>
+    </div>
+    <div class="col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="primary"  *ngIf="ADD_TRANSFERT_PARC"  >Nouveau transfert
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row frame">
+    <div class="col-12 mt-1">
+      Paramètres de filtrage
+      <mat-divider class="mb-3"></mat-divider>
+    </div>
+    <div class="col-12">
+      <div class="d-flex justify-content-center">
+        <mat-form-field>
+          <mat-label>UGP</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let ugp of UGP" [value]="ugp">
+              {{ugp}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="row frame">
+    <div class="col-12"  *ngIf="VIEW_SUIVI"  >
+      <table matSort (matSortChange)="sortData($event)">
+        <tr>
+          <th mat-sort-header="affectation">Affectation</th>
+          <th mat-sort-header="carburant">Carburant</th>
+          <th mat-sort-header="entree">Entrée</th>
+          <th mat-sort-header="sortie">Sortie</th>
+          <th mat-sort-header="complementaire">Complémentaire</th>
+          <th mat-sort-header="inventaire">Inventaire</th>
+          <th mat-sort-header="enStock">En stock</th>
+        </tr>
+
+        <tr *ngFor="let suivi of sortedData">
+          <td>{{suivi.affectation}}</td>
+          <td>{{suivi.carburant}}</td>
+          <td>{{suivi.entree}}</td>
+          <td>{{suivi.sortie}}</td>
+          <td>{{suivi.complementaire}}</td>
+          <td>{{suivi.inventaire}}</td>
+          <td>{{suivi.enStock}}</td>
+        </tr>
+      </table>
+
+    </div>
+    <div class="offset-10 col-2 mb-2 mt-5">
+      <button
+      *ngIf="ADD_SUIVI"    mat-raised-button class="primary">Nouveau retour
+      </button>
+    </div>
+  </div>
+</div>

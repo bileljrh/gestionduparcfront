@@ -1,0 +1,45 @@
+@import "src/assets/Scss/Variables";
+@import "src/assets/Scss/Shared Classes";
+
+
+.example-full-width {
+  width: 100%;
+}
+
+
+.inState {
+  cursor: not-allowed;
+  color: red;
+
+  :hover {
+    color: #005e00;
+  }
+}
+
+.notInState {
+  cursor: pointer;
+  color: green;
+
+  :hover {
+    color: #d00;
+  }
+}
+
+.mat-snack-bar-container {
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: block;
+  margin: 35px;
+  max-width: 43vw;
+  min-width: 460px;
+  padding: 16px 16px;
+  min-height: 48px;
+  transform-origin: center;
+  background-color: $First_Color;
+  color: white;
+}
+
+.example-full-width {
+  width: 100%;
+  font-size: 13px;
+}

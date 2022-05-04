@@ -1,0 +1,18 @@
+@import "src/assets/Scss/Variables";
+
+.notificationElement {
+  width: 100%;
+  height: 80px;
+  border: 1px solid #ececec;
+  border-radius: 6px;
+  margin-bottom: 6px;
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
+}
+
+.notificationText {
+  font-size: 9px;
+  text-align: justify;
+}

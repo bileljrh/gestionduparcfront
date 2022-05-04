@@ -1,0 +1,73 @@
+<div class="container-fluid m-0 p-0 frame" [formGroup]="modifiedProgrammeForm">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0">
+      <span class="float-left">
+        <mat-icon class="mr-2">fiber_new</mat-icon>
+        Modifier le programme sélectionné</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-4 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Code</mat-label>
+        <input matInput placeholder type="text" formControlName="code">
+      </mat-form-field>
+    </div>
+    <div class="col-4 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Désignation</mat-label>
+        <input matInput placeholder type="text" formControlName="designation">
+      </mat-form-field>
+    </div>
+    <div class="col-4 mt-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Cycle</mat-label>
+        <input matInput placeholder type="text" formControlName="cycle">
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Marque</mat-label>
+        <mat-select formControlName="marque">
+          <mat-option *ngFor="let marque of ListMarqueVehicule" [value]="marque">
+            {{marque.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="end">{{codeMarque}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let type of ListTypeVehicule" [value]="type">
+            {{type.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="end">{{codeType}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Energie</mat-label>
+        <mat-select formControlName="energie">
+          <mat-option *ngFor="let energie of ListEnergie" [value]="energie">
+            {{energie.description}}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="end">{{codeEnergie}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="offset-6 col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onConfirm()" style="width: 100%" [disabled]="!modifiedProgrammeForm.valid">
+          Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

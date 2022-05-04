@@ -1,0 +1,173 @@
+<div class="container-fluid m-0 p-0" [formGroup]="newEtatMensuelForm">
+  <div class="container-fluid frame">
+    <div class="row">
+      <div class="col-12 mt-1">
+        Véhicule & Etat mensuel
+        <mat-divider class="mb-4"></mat-divider>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>N° véhicule</mat-label>
+          <mat-select formControlName="numero_plaque">
+            <mat-option *ngFor="let vehicule of listBeneficiairesInternes" [value]="vehicule">
+              {{vehicule.numero_plaque}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Structure</mat-label>
+          <input matInput [value]="structure" disabled>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Mois d'état</mat-label>
+          <mat-select formControlName="moisEtat">
+            <mat-option *ngFor="let yearAndMonth of listMonthsAndYears" [value]="yearAndMonth.numericFormat">
+              {{yearAndMonth.stringFormat}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Etat mensuel</mat-label>
+          <mat-select formControlName="etatMensuel">
+            <mat-option *ngFor="let etat of etatMensuel" [value]="etat">
+              {{etat}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-12 mt-3">
+        paramètres de consommation
+        <mat-divider class="mb-4"></mat-divider>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Bénéficiaire</mat-label>
+          <mat-select formControlName="matriculeBeneficiaire">
+            <mat-option *ngFor="let beneficiare of listBeneficiairesInternes" [value]="beneficiare">
+              {{beneficiare.matriculeBeneficiaire}}
+            </mat-option>
+          </mat-select>
+          <mat-hint align="end">{{nomBeneficiaire}}</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Quantité demandée</mat-label>
+          <input matInput type="number" formControlName="quantiteDemandee">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Quantité accordée</mat-label>
+          <input matInput type="number" formControlName="quantiteAccordee">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Quantité restante</mat-label>
+          <input matInput type="number" formControlName="quantiteRestantee">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Quantité retournée</mat-label>
+          <input matInput type="number" formControlName="quantiteRetournee">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Index fin mois</mat-label>
+          <input matInput type="number" placeholder="En km" formControlName="indexFinMois">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Index fin mois précédant</mat-label>
+          <input matInput type="number" placeholder="En km" formControlName="indexFinMoisPrecedant">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Carburant</mat-label>
+          <input matInput type="number" formControlName="quantiteCarburant">
+          <mat-hint align="end">{{typeCarburant}}</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Distance parcourus</mat-label>
+          <input matInput type="number" formControlName="distanceParcourus">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre d'heures travaillées</mat-label>
+          <input matInput type="number" formControlName="nombreHeuresTravail">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Pourcentage consommation</mat-label>
+          <input matInput type="number" formControlName="pourcentageConsommation">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Pourcentage véhicule</mat-label>
+          <input matInput type="number" formControlName="pourcentageVehicule" disabled>
+        </mat-form-field>
+      </div>
+      <div class="col-12 mt-3">
+        paramètres d'exploitation
+        <mat-divider class="mb-4"></mat-divider>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Jours ouvrables</mat-label>
+          <input matInput type="number" formControlName="jourOuvrables">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Jours de production</mat-label>
+          <input matInput type="number" formControlName="jours2Production">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Jours disponsès</mat-label>
+          <input matInput type="number" formControlName="jours2Dispense">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Jours de repos</mat-label>
+          <input matInput type="number" formControlName="jours2Repos">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="offset-8 col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="secondary" (click)="onDeny()">Annuler
+      </button>
+    </div>
+    <div class="col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="primary" (click)="onConfirm()">Confirmer
+      </button>
+    </div>
+  </div>
+</div>
+
+
+

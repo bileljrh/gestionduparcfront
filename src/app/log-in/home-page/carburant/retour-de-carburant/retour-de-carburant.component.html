@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="row frame" *ngIf="VIEW_RETOUR_CARBURANT"  >
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Parc</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let parc of Parc" [value]="parc">
+            {{parc}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Date de retour</mat-label>
+        <input matInput [matDatepicker]="picker1">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row frame">
+    <div class="col-12">
+      <table matSort (matSortChange)="sortData($event)">
+        <tr>
+          <th mat-sort-header="vehicule">Véhicule</th>
+          <th mat-sort-header="delaPart">De la Part</th>
+          <th mat-sort-header="nbrBonsRetour">Nbr des bons de retour</th>
+          <th>Modifier</th>
+        </tr>
+
+        <tr *ngFor="let retourCarburant of sortedData">
+          <td>{{retourCarburant.vehicule}}</td>
+          <td>{{retourCarburant.delaPart}}</td>
+          <td>{{retourCarburant.nbrBonsRetour}}</td>
+          <td>
+            <mat-icon>edit</mat-icon>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+    <div class="offset-10 col-2 mb-2 mt-5">
+      <button
+        mat-raised-button class="primary" *ngIf="ADD_RETOUR_CARBURANT"   >Nouveau retour
+      </button>
+    </div>
+  </div>
+</div>

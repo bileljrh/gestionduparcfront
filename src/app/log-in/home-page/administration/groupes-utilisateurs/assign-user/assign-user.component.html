@@ -1,0 +1,67 @@
+<div class="container-fluid m-0 p-0 frame" ngxUiLoaderBlurred style="max-height: 700px;">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 title">
+      <span class="float-left">
+        <mat-icon class="mr-2">supervisor_account</mat-icon>
+        Assigner les utilisateurs du groupe</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+
+    <div class="col-12 mt-4">
+      Selection d'utilisateur
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Structure</mat-label>
+        <mat-select [formControl]="structureControl">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let structure of ListStructure" [value]="structure">
+            {{structure.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="end">{{codeStructure}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-5">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Utilisateur</mat-label>
+        <mat-select [formControl]="utilisateurControl">
+          <mat-option *ngFor="let utilisateur of ListUtilisateur" [value]="utilisateur">
+            {{utilisateur.nom}} {{utilisateur.prenom}}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="end">{{matriculeUtilisateur}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-1 addButton plusUser" matRipple>
+      <mat-icon style="cursor: pointer" (click)="addNewUtilisateur4Group()">add_circle</mat-icon>
+    </div>
+    <div *ngIf="ListUtilisateurGroupe.length>0" class="col-12 mt-2">
+      Utilisateurs du groupe
+      <mat-divider class="mb-3"></mat-divider>
+    </div>
+    <ng-container *ngFor="let utilisateur of ListUtilisateurGroupe">
+      <div class="col-3 mb-2" style="font-size: 11px; font-style: italic">{{utilisateur.matricule}}</div>
+      <div class="col-8 mb-2"
+           style="font-size: 11px; font-style: italic">{{utilisateur.nom}} {{utilisateur.prenom}}</div>
+      <div class="col-1 mb-2">
+        <mat-icon style="cursor: pointer" (click)="removeSelectedUtilisateur(utilisateur)">remove_circle</mat-icon>
+      </div>
+    </ng-container>
+
+    <div class="offset-6 col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onConfirm()" style="width: 100%">
+          Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader></ngx-ui-loader>

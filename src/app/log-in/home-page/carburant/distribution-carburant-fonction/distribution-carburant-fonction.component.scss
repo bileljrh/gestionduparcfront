@@ -1,0 +1,11 @@
+@import "src/assets/Scss/Variables";
+@import "src/assets/Scss/Shared Classes";
+
+
+div.col-12 > button {
+  width: 100%;
+  background-color: $Third_Color;
+  border: 1px solid white;
+}
+
+

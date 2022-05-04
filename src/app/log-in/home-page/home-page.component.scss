@@ -1,0 +1,279 @@
+@import "src/assets/Scss/Variables";
+
+
+.example-container {
+  max-width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+}
+
+.example-sidenav-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 0px;
+  background-color: white;
+  max-width: 300px !important;
+}
+
+
+.appName {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+.GesParC {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  background-color: $First_Color;
+  color: white;
+  margin-bottom: 27px;
+  display: inline-flex;
+  vertical-align: middle;
+  padding-top: 4px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.carIcon {
+  font-size: 29px;
+  margin-right: 10px;
+
+}
+
+div.GesParC > span {
+  font-size: 17px;
+  padding-top: 7px;
+}
+
+
+#path {
+  font-size: 15px;
+  font-weight: 500;
+  padding-left: 10px;
+  padding-top: 7px
+}
+
+.downBar {
+  background-color: white;
+  border-top: 5px solid $Fourth_Color;
+  border-bottom: 4px solid $First_Color;
+  height: 42px;
+}
+
+.directionButton {
+  background-color: $Fourth_Color;
+  color: $First_Color;
+  border-top: none;
+  border-radius: 0px;
+  outline: none;
+  height: 33px;
+
+  &:focus, &:visited {
+    outline: none;
+  }
+}
+
+button.col-1.directionButton > mat-icon {
+  font-size: 20px;
+}
+
+.windowsContainer {
+  background-color: transparent;
+  padding: 30px 30px 15px 15px;
+}
+
+
+mat-drawer {
+  border-right: 4px solid $First_Color;
+
+}
+
+.title {
+  height: 34px;
+  background-color: $Third_Color;
+  font-size: 13px;
+  color: black;
+  text-align: left;
+  padding-left: 17px;
+  padding-top: 8px;
+  font-weight: 500;
+  user-select: none;
+}
+
+
+.homeNavbar {
+  background-color: $First_Color;
+  height: 40px;
+}
+
+
+.header3 {
+  background-color: transparent;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 0px;
+  margin-top: 3px;
+}
+
+.header2 {
+  background-color: transparent;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 0px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
+.header1 {
+  background-color: transparent;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 0px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.drawerBtn {
+  background-color: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  margin-top: 0px;
+}
+
+button.drawerBtn > mat-icon {
+  font-size: 37px;
+}
+
+.openedSideNav {
+  background-color: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  margin-top: 0px;
+}
+
+.closedSideNav {
+  background-color: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  margin-top: 13px;
+  padding-left: 18px;
+}
+
+.mat-expansion-panel {
+  margin: 0px;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  padding: 0px;
+  min-height: 40px;
+}
+
+mat-accordion {
+  box-shadow: none;
+}
+
+.firstSubPanel {
+  font-size: 12px;
+  font-weight: 500;
+  width: 100%;
+  color: black;
+  padding-left: 63px;
+  min-height: 40px;
+  cursor: pointer;
+  line-height: 40px;
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #f1f1f1;
+  outline: none;
+
+  &:hover {
+    background-color: #ededed;
+    text-decoration: underline;
+  }
+}
+
+.secondSubPanel {
+  font-size: 12px;
+  font-weight: 500;
+  width: 100%;
+  color: black;
+  padding-left: 73px;
+  min-height: 40px;
+  cursor: pointer;
+  line-height: 40px;
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #f1f1f1;
+  outline: none;
+
+  &:hover {
+    background-color: #ededed;
+    text-decoration: underline;
+  }
+}
+
+
+.matIconPanel {
+  transform: scale(0.9);
+  color: black;
+  margin-right: 20px;
+}
+
+
+.mat-expansion-panel-header-even {
+  font-size: 13px;
+  line-height: 28px;
+  font-weight: 500;
+  cursor: pointer;
+  min-height: 43px;
+  border-top: 1px solid #EEEEEE;
+  border-bottom: 1px solid #EEEEEE;
+  background-color: white;
+}
+
+
+.mat-expansion-panel-header-odd {
+  font-size: 13px;
+  line-height: 28px;
+  font-weight: 500;
+  cursor: pointer;
+  min-height: 43px;
+  background-color: #f5f5f5;
+}
+
+.imageProfile {
+  width: 130px;
+  height: 130px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 27px;
+}
+
+.notification {
+  border-radius: 4px;
+  text-align: left;
+  padding: 8px 4px;
+  width: 230px;
+  height: 340px;
+  position: absolute;
+  top: 35px;
+  background-color: white;
+  color: black;
+  left: 23px;
+  z-index: 100;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+

@@ -1,0 +1,482 @@
+<div class="container-fluid m-0 p-0 frame container" ngxUiLoaderBlurred [formGroup]="modifiedVehiculeForm">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 title">
+      <span class="float-left">
+        <mat-icon class="mr-2">edit</mat-icon>
+        Fiche véhicule sélectionné</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <div class="col-12 mt-3">
+      Informations générales de véhicule
+      <mat-divider class="mb-4"></mat-divider>
+    </div>
+    <div class="col-3 mb-2">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>N° plaque
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input type="text" matInput formControlName="numeroPlaque">
+      </mat-form-field>
+    </div>
+    <div class="col-3 mb-2">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Genre
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <mat-select formControlName="genre">
+          <mat-option *ngFor="let genre of ListGenreVehicule" [value]="genre">
+            {{genre.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="end">{{codeGenre}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-3 mb-2">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Marque
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <mat-select formControlName="marque">
+          <mat-option *ngFor="let marque of ListMarqueVehicule" [value]="marque">
+            {{marque.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="end">{{codeMarque}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-3 mb-2">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Type
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let type of ListTypeVehicule" [value]="type">
+            {{type.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="end">{{codeType}}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-12">
+      <mat-tab-group>
+        <mat-tab label="Affectation">
+          <div class="container-fluid m-0 p-0 mt-3">
+            <div class="row m-0 p-0 mb-3">
+              <div class="col-9 m-0 p-0">
+                <div class="container-fluid m-0 p-0">
+                  <div class="row m-0 p-0">
+                    <div class="col-4 m-0">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Etat</mat-label>
+                        <mat-select formControlName="etat">
+                          <mat-option *ngFor="let etat of ListEtatVehicule" [value]="etat">
+                            {{etat}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4 m-0">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Structure
+                          <mat-icon class="required" matSuffix>star</mat-icon>
+                        </mat-label>
+                        <mat-select formControlName="structure">
+                          <mat-option *ngFor="let structure of ListStructure"
+                                      [value]="structure">{{structure.designation}}</mat-option>
+                        </mat-select>
+                        <mat-hint align="end">{{codeStructure}}</mat-hint>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4 m-0">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Gouvernorat
+                          <mat-icon class="required" matSuffix>star</mat-icon>
+                        </mat-label>
+                        <mat-select formControlName="gouvernorat">
+                          <mat-option
+                            *ngFor="let gouvernorat of ListGouvernorat"
+                            [value]="gouvernorat">{{gouvernorat.designation}}</mat-option>
+                        </mat-select>
+                        <mat-hint align="end">{{codeGouvernorat}}</mat-hint>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Nature affectation
+                          <mat-icon class="required" matSuffix>star</mat-icon>
+                        </mat-label>
+                        <mat-select formControlName="natureAffectation">
+                          <mat-option
+                            *ngFor="let natureAffectation of ListNatureAffectation"
+                            [value]="natureAffectation">{{natureAffectation}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Date affectation</mat-label>
+                        <input matInput [matDatepicker]="picker1" formControlName="dateAffectation">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Ref affectation</mat-label>
+                        <input matInput type="text" formControlName="referenceAffectation">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Bénéficiaire</mat-label>
+                        <mat-select formControlName="beneficiaire">
+                          <mat-option *ngFor="let beneficiaire of ListBeneficiaire"
+                                      [value]="beneficiaire">{{beneficiaire.nom}}</mat-option>
+                        </mat-select>
+                        <mat-hint align="end">{{codeBeneficiaire}}</mat-hint>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>N° immatriculation</mat-label>
+                        <input matInput type="text" formControlName="numeroImmatriculation">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>N° propriétaire d'état</mat-label>
+                        <input matInput type="text" formControlName="numeroProprietaireEtat">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>N° de châssis
+                          <mat-icon class="required" matSuffix>star</mat-icon>
+                        </mat-label>
+                        <input matInput type="text" formControlName="numeroChassis">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>N° de carte d'utilisation</mat-label>
+                        <input matInput type="text" formControlName="numeroCarteUtilisation">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Index KM</mat-label>
+                        <input matInput type="number" formControlName="indexKm">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Lieux de parking</mat-label>
+                        <mat-select formControlName="lieuParking">
+                          <mat-option
+                            *ngFor="let lieuParking of ListLieuParking"
+                            [value]="lieuParking">{{lieuParking.adresse}}</mat-option>
+                        </mat-select>
+                        <mat-hint align="end">{{codeLieuParking}}</mat-hint>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3 m-0 p-0">
+                <div class="container-fluid m-0 p-0">
+                  <div class="row m-0 p-0">
+                    <div class="col-12 m-0">
+                      <mat-card class="example-card example-full-width">
+                        <img *ngIf="!imageUploaded && selectedVehicule.urlImageVehicule===null"
+                             class="personnel_image" mat-card-image
+                             src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnIHRyYW5zZm9ybT0ibWF0cml4KDAuOTEsMCwwLDAuOTEsNS43NTk5OTk1MzM3OTYzMTgsNS43NTk5ODg0MTI4NTcwMjcpIj48ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJpY29uIj48cGF0aCBkPSJtMTI0LjE1NSAyNi43MThoLTYuNmEyLjAxMiAyLjAxMiAwIDAgMCAtMi4wMTIgMi4wMTJ2MTFsLTUuNyA1LjYzMy40ODYgMy4yNDEgNi43ODMtNi4xMzFhMiAyIDAgMCAwIC40NDcuMDU0aDYuNmEyLjAxMiAyLjAxMiAwIDAgMCAyLjAxMi0yLjAxMnYtMTEuNzg1YTIuMDEyIDIuMDEyIDAgMCAwIC0yLjAxNi0yLjAxMnoiIGZpbGw9IiM0MzU2N2MiIGRhdGEtb3JpZ2luYWw9IiM0MzU2N2MiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48cGF0aCBkPSJtMy44NDUgMjYuNzE4aDYuNmEyLjAxMiAyLjAxMiAwIDAgMSAyLjAxMiAyLjAxMnYxMWw1LjcgNS42MzMtLjQ4NCAzLjIzNy02Ljc4My02LjEzMmEyIDIgMCAwIDEgLS40NDcuMDU0aC02LjZhMi4wMTIgMi4wMTIgMCAwIDEgLTIuMDEtMi4wMTJ2LTExLjc4YTIuMDEyIDIuMDEyIDAgMCAxIDIuMDEyLTIuMDEyeiIgZmlsbD0iIzQzNTY3YyIgZGF0YS1vcmlnaW5hbD0iIzQzNTY3YyIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPjxwYXRoIGQ9Im0xMTkuMTQxIDg4Ljc1LTEzLjUwOC0uMDVhMi43NjMgMi43NjMgMCAwIDAgLTIuNzYyIDIuNzYybC4wNDggMjQuOTA2YTIuNzYyIDIuNzYyIDAgMCAwIDIuNzYyIDIuNzYxaDEzLjQ2YTIuNzYxIDIuNzYxIDAgMCAwIDIuNzYyLTIuNzYxdi0yNC44NTZhMi43NjIgMi43NjIgMCAwIDAgLTIuNzYyLTIuNzYyeiIgZmlsbD0iIzJmM2E1YSIgZGF0YS1vcmlnaW5hbD0iIzJmM2E1YSIgc3R5bGU9IiI+PC9wYXRoPjxwYXRoIGQ9Im0yMi43MyA4OC43NS0xMy41MDgtLjA1YTIuNzYzIDIuNzYzIDAgMCAwIC0yLjc2MiAyLjc2NGwuMDQ4IDI0LjkwNmEyLjc2MiAyLjc2MiAwIDAgMCAyLjc2MiAyLjc2MWgxMy40NmEyLjc2MSAyLjc2MSAwIDAgMCAyLjc2Mi0yLjc2MXYtMjQuODU4YTIuNzYyIDIuNzYyIDAgMCAwIC0yLjc2Mi0yLjc2MnoiIGZpbGw9IiMyZjNhNWEiIGRhdGEtb3JpZ2luYWw9IiMyZjNhNWEiIHN0eWxlPSIiPjwvcGF0aD48cGF0aCBkPSJtMTA5LjIxMiAxNS42NjVhNS41OTQgNS41OTQgMCAwIDAgLTUuMzMzLTQuNzM2IDM4Ni45ODQgMzg2Ljk4NCAwIDAgMCAtNzkuNzU4IDAgNS41OTQgNS41OTQgMCAwIDAgLTUuMzMzIDQuNzM2bC02Ljk5NCA0NS4zMjkgNi42NjUgMzIuNTIxaDkxLjA4Mmw2LjY2NS0zMi41MjF6IiBmaWxsPSIjM2Y1MWI1IiBkYXRhLW9yaWdpbmFsPSIjZjZiYTViIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PHBhdGggZD0ibTEwNy45IDQ0LjAycS0yMy43LTIuMDItNDcuNTQtMS44N2MtLjk4IDAtMS45Ni4wMS0yLjkzLjAyLTEuMjIuMDEtMi40My4wMy0zLjY0LjA3cS0yLjk1NS4wNDUtNS45MS4xNC0xMy44Ni40MzUtMjcuNzYgMS42NGw0LjI0LTI3LjQ5LjItLjAxLjE1LjAxYTM3My42IDM3My42IDAgMCAxIDM4Ljg1LTIuMDNoLjA0YzEuOTEgMCAzLjg0LjAxIDUuNzYuMDUgMS4xOS4wMSAyLjM4LjA0IDMuNTcuMDcuOTUuMDIgMS45MS4wNSAyLjg2LjA5IDkuMTEuMjggMTguMzMuOSAyNy41MiAxLjgzbC4xOS4wMS4xOC4wMXoiIGZpbGw9IiM0MzU2N2MiIGRhdGEtb3JpZ2luYWw9IiM0MzU2N2MiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48cGF0aCBkPSJtMTEwLjQzOSA1NC42NDNhNy4zODMgNy4zODMgMCAwIDAgLTUuOTMtNi4yNDZjLTEyLjczNC0yLjQxOC00MC40MjUtMi4yMzgtNDAuNTA5LTIuMjM4cy0yNy43NzUtLjE4LTQwLjUwOSAyLjIzOGE3LjM4MyA3LjM4MyAwIDAgMCAtNS45MyA2LjI0NmwtMS45NDggMTQuMDI3IDEwLjM1MSAyNC44NDVoNzYuMDcybDEwLjM1MS0yNC44NDV6IiBmaWxsPSIjNGE1ZWNkIiBkYXRhLW9yaWdpbmFsPSIjZjljODdlIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PHBhdGggZD0ibTEwNC40NyA2Ni4zNDRjLTEuMTQ2LTcuNzY0LTIuOTY3LTEwLjg2OS0xMS40MzctMTIuOTM5LTguNDUzLTIuMDY2LTI4Ljk1NS0yLjMyMi0yOS4wMzMtMi4zMThzLTIwLjU4LjI1Mi0yOS4wMzMgMi4zMThjLTguNDY3IDIuMDctMTAuMjkxIDUuMTc1LTExLjQzNyAxMi45MzlzMS4wODggMTcuMzc3IDEuMDg4IDE3LjM3N2g3OC43NjRzMi4yMzQtOS42MTQgMS4wODgtMTcuMzc3eiIgZmlsbD0iIzNmNTFiNSIgZGF0YS1vcmlnaW5hbD0iI2Y2YmE1YiIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPjxwYXRoIGQ9Im0xMjIuMzUgNjEuMTcyLTkuNTIxLTEuNTExYTMuODM2IDMuODM2IDAgMCAwIC00LjM0MiAyLjk0bC0xLjExMiA0LjlhMy44NDMgMy44NDMgMCAwIDAgLS4wOTUuODQ5djIxLjMyOWEzLjgzNyAzLjgzNyAwIDAgMCAzLjgzNyAzLjgzNmgxMC42MzFhMy44MzcgMy44MzcgMCAwIDAgMy44MzctMy44MzZ2LTI0LjcxOGEzLjgzNyAzLjgzNyAwIDAgMCAtMy4yMzUtMy43ODl6IiBmaWxsPSIjM2Y1MWI1IiBkYXRhLW9yaWdpbmFsPSIjZjZiYTViIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PHBhdGggZD0ibTUuNjUgNjEuMTcyIDkuNTIxLTEuNTExYTMuODM2IDMuODM2IDAgMCAxIDQuMzQyIDIuOTRsMS4xMTIgNC45YTMuODQzIDMuODQzIDAgMCAxIC4wOTUuODQ5djIxLjMyOWEzLjgzNyAzLjgzNyAwIDAgMSAtMy44MzcgMy44MzZoLTEwLjYzMWEzLjgzNyAzLjgzNyAwIDAgMSAtMy44MzctMy44MzZ2LTI0LjcxOGEzLjgzNyAzLjgzNyAwIDAgMSAzLjIzNS0zLjc4OXoiIGZpbGw9IiMzZjUxYjUiIGRhdGEtb3JpZ2luYWw9IiNmNmJhNWIiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48cGF0aCBkPSJtMTI2LjA1NCA4MS4wMzZoLTEyNC4xMDhhMS45NDYgMS45NDYgMCAwIDAgLTEuOTQ2IDEuOTQ2djguNjQzYTQuODM4IDQuODM4IDAgMCAwIDQuODM5IDQuODM5aDExOC4zMjJhNC44MzggNC44MzggMCAwIDAgNC44MzktNC44Mzl2LTguNjQzYTEuOTQ2IDEuOTQ2IDAgMCAwIC0xLjk0Ni0xLjk0NnoiIGZpbGw9IiM0MzU2N2MiIGRhdGEtb3JpZ2luYWw9IiM0MzU2N2MiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48cGF0aCBkPSJtOTEuMzUyIDU5LjMxNGE2IDYgMCAxIDAgNiA2IDYgNiAwIDAgMCAtNi02eiIgZmlsbD0iI2RiZTJlYiIgZGF0YS1vcmlnaW5hbD0iI2RiZTJlYiIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPjxwYXRoIGQ9Im0zNi42NDggNTkuMzE0YTYgNiAwIDEgMCA2IDYgNiA2IDAgMCAwIC02LTZ6IiBmaWxsPSIjZGJlMmViIiBkYXRhLW9yaWdpbmFsPSIjZGJlMmViIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PHBhdGggZD0ibTExNS42IDg1LjE3NmEzLjU3NCAzLjU3NCAwIDEgMCAzLjU3NCAzLjU3NCAzLjU3NCAzLjU3NCAwIDAgMCAtMy41NzQtMy41NzR6IiBmaWxsPSIjZGJlMmViIiBkYXRhLW9yaWdpbmFsPSIjZGJlMmViIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PHBhdGggZD0ibTEyLjQgODUuMTc2YTMuNTc0IDMuNTc0IDAgMSAwIDMuNTczIDMuNTc0IDMuNTc0IDMuNTc0IDAgMCAwIC0zLjU3My0zLjU3NHoiIGZpbGw9IiNkYmUyZWIiIGRhdGEtb3JpZ2luYWw9IiNkYmUyZWIiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48ZyBmaWxsPSIjNDM1NjdjIj48cGF0aCBkPSJtNTAuMzYgNTkuNjEzYTEuODM2IDEuODM2IDAgMCAwIC0xLjgzNiAxLjgzNnYxNS4yNmExLjgzNiAxLjgzNiAwIDEgMCAzLjY3MiAwdi0xNS4yNmExLjgzNiAxLjgzNiAwIDAgMCAtMS44MzYtMS44MzZ6IiBmaWxsPSIjNDM1NjdjIiBkYXRhLW9yaWdpbmFsPSIjNDM1NjdjIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PHBhdGggZD0ibTU3LjE4IDU5LjYxM2ExLjgzNiAxLjgzNiAwIDAgMCAtMS44MzYgMS44MzZ2MTUuMjZhMS44MzYgMS44MzYgMCAwIDAgMy42NzIgMHYtMTUuMjZhMS44MzYgMS44MzYgMCAwIDAgLTEuODM2LTEuODM2eiIgZmlsbD0iIzQzNTY3YyIgZGF0YS1vcmlnaW5hbD0iIzQzNTY3YyIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPjxwYXRoIGQ9Im02NCA1OS42MTNhMS44MzYgMS44MzYgMCAwIDAgLTEuODM2IDEuODM2djE1LjI2YTEuODM2IDEuODM2IDAgMCAwIDMuNjcyIDB2LTE1LjI2YTEuODM2IDEuODM2IDAgMCAwIC0xLjgzNi0xLjgzNnoiIGZpbGw9IiM0MzU2N2MiIGRhdGEtb3JpZ2luYWw9IiM0MzU2N2MiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48cGF0aCBkPSJtNzAuODIgNTkuNjEzYTEuODM2IDEuODM2IDAgMCAwIC0xLjgzNiAxLjgzNnYxNS4yNmExLjgzNiAxLjgzNiAwIDAgMCAzLjY3MiAwdi0xNS4yNmExLjgzNiAxLjgzNiAwIDAgMCAtMS44MzYtMS44MzZ6IiBmaWxsPSIjNDM1NjdjIiBkYXRhLW9yaWdpbmFsPSIjNDM1NjdjIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PHBhdGggZD0ibTc3LjY0IDU5LjYxM2ExLjgzNiAxLjgzNiAwIDAgMCAtMS44NCAxLjgzNnYxNS4yNmExLjgzNiAxLjgzNiAwIDEgMCAzLjY3MiAwdi0xNS4yNmExLjgzNiAxLjgzNiAwIDAgMCAtMS44MzItMS44MzZ6IiBmaWxsPSIjNDM1NjdjIiBkYXRhLW9yaWdpbmFsPSIjNDM1NjdjIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PC9nPjxnIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii4yNSI+PHBhdGggZD0ibTY5LjM2IDE0LjU1LTE1LjU3IDI3LjY5cS0yLjk1NS4wNDUtNS45MS4xNGwxNS42OC0yNy44OGguMDRjMS45MSAwIDMuODQuMDEgNS43Ni4wNXoiIGZpbGw9IiNmZmZmZmYiIGRhdGEtb3JpZ2luYWw9IiNmZmZmZmYiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48cGF0aCBkPSJtNzUuNzkgMTQuNzEtMTUuNDMgMjcuNDRjLS45OCAwLTEuOTYuMDEtMi45My4wMmwxNS41LTI3LjU1Yy45NS4wMiAxLjkxLjA1IDIuODYuMDl6IiBmaWxsPSIjZmZmZmZmIiBkYXRhLW9yaWdpbmFsPSIjZmZmZmZmIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PC9nPjwvZz48L2c+PC9zdmc+">
+                        <img *ngIf="!imageUploaded && selectedVehicule.urlImageVehicule!==null" class="personnel_image"
+                             mat-card-image
+                             [src]="selectedVehicule.urlImageVehicule" [name]="selectedVehicule.nameImageVehicule">
+                        <img *ngIf="imageUploaded" class="personnel_image" mat-card-image
+                             [src]="url">
+                        <mat-card-actions class="m-0 p-0">
+                          <div class="custom-file">
+                          </div>
+                        </mat-card-actions>
+                      </mat-card>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Carte grise">
+          <div class="container-fluid mt-3">
+            <div class="row">
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>N° carte grise</mat-label>
+                  <input matInput type="text" formControlName="numeroCarteGrise">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Type</mat-label>
+                  <input matInput type="text" formControlName="typeCarteGrise">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Référence du type</mat-label>
+                  <input matInput type="text" formControlName="referenceType">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Energie
+                    <mat-icon class="required" matSuffix>star</mat-icon>
+                  </mat-label>
+                  <mat-select formControlName="energie">
+                    <mat-option *ngFor="let energie of ListEnergie" [value]="energie">
+                      {{energie.description}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-hint align="end">{{codeEnergie}}</mat-hint>
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Nombre de places</mat-label>
+                  <input matInput formControlName="nombreDePlaces" type="number">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Carosserie</mat-label>
+                  <input matInput type="text" formControlName="carosserie">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Poids total à charge</mat-label>
+                  <input matInput formControlName="poidsTotalACharge" type="number">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Consommation moyenne</mat-label>
+                  <input matInput placeholder="litres de carburant au 100km" formControlName="consommationMoyenne"
+                         type="number">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Charge utile</mat-label>
+                  <input matInput placeholder="" formControlName="chargeUtile" type="number">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Poids total sans charge</mat-label>
+                  <input matInput formControlName="poidsTotalSansCharge" type="number">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Dimension des pneus avants</mat-label>
+                  <input matInput formControlName="dimensionsPneuAvant" type="number">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Dimension des pneus arrières</mat-label>
+                  <input matInput formControlName="dimensionsPneuArriere" type="number">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Poids à vide</mat-label>
+                  <input matInput formControlName="poidsAVide" type="number">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Puissance fiscale</mat-label>
+                  <input matInput formControlName="puissanceFixale" type="number">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Puissance moteur</mat-label>
+                  <input matInput formControlName="puissanceMoteur" type="number">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Nombre d'essieux</mat-label>
+                  <input matInput formControlName="nombreEssieux" type="number">
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Volume du cylindre</mat-label>
+                  <input matInput formControlName="volumeCylindre" type="number">
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Date première mise en circulation
+                    <mat-icon class="required" matSuffix>star</mat-icon>
+                  </mat-label>
+                  <input matInput [matDatepicker]="picker2" formControlName="datePremiereMiseEnCirculation">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Exploitation">
+          <div class="container-fluid mt-3">
+            <div class="row">
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Type taxe
+                    <mat-icon class="required" matSuffix>star</mat-icon>
+                  </mat-label>
+                  <mat-select formControlName="typeTaxe">
+                    <mat-option *ngFor="let typeTaxe of ListTypeTaxe" [value]="typeTaxe">
+                      {{typeTaxe}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Usage</mat-label>
+                  <mat-select formControlName="exploitationUsage">
+                    <mat-option *ngFor="let usage of ListUsage" [value]="usage">
+                      {{usage}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Type assurance</mat-label>
+                  <mat-select formControlName="typeAssurance">
+                    <mat-option *ngFor="let typeAssurance of ListTypeAssurance" [value]="typeAssurance">
+                      {{typeAssurance}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Assurance</mat-label>
+                  <input matInput type="text" formControlName="nomAssurance">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Fournisseur</mat-label>
+                  <mat-select formControlName="fournisseur">
+                    <mat-option *ngFor="let fournisseur of ListFournisseur" [value]="fournisseur">
+                      {{fournisseur.designation}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-hint align="end">{{codeFournisseur}}</mat-hint>
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Référence BC</mat-label>
+                  <input matInput type="text" formControlName="referenceBC">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Date réception</mat-label>
+                  <input matInput [matDatepicker]="picker3" formControlName="dateReception">
+                  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                  <mat-datepicker #picker3></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Prix achat</mat-label>
+                  <input matInput type="number" formControlName="prixAchat">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Situation douanière</mat-label>
+                  <input matInput type="text" formControlName="situationDouaniere">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>N° d'immatriculation temporaire</mat-label>
+                  <input matInput type="text" formControlName="numeroImmatriculationTemporaire">
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Compagnie de leasing</mat-label>
+                  <mat-select formControlName="compagnieLeasing">
+                    <mat-option *ngFor="let compagnieLeasing of ListCompagnieLeasing" [value]="compagnieLeasing">
+                      {{compagnieLeasing}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Date echeance</mat-label>
+                  <input matInput [matDatepicker]="picker4" formControlName="dateEcheance">
+                  <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                  <mat-datepicker #picker4></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Documents">
+          <div class="container-fluid mt-3" id="documentsContainer">
+            <div class="row">
+              <div *ngIf="ListDocuments.length>0" class="col-12 pl-0 pr-0">
+                Listes des documents
+                <mat-divider class="mb-4"></mat-divider>
+              </div>
+              <table *ngIf="ListDocuments.length>0" mat-table [dataSource]="dataSource" matSort
+                     class="mat-elevation-z8">
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="N°">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> N°</th>
+                  <td mat-cell *matCellDef="let element;let i = index">{{i + 1}}</td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="documentName">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom du document</th>
+                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="apercue">
+                  <th mat-header-cell *matHeaderCellDef> Aperçue Document</th>
+                  <td mat-cell *matCellDef="let element; let i = index" style="cursor: pointer">
+                    <mat-icon class="mouseUp" (click)="viewDocument(element.adresse)">menu_book</mat-icon>
+                  </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader></ngx-ui-loader>

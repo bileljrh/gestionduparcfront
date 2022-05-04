@@ -1,0 +1,94 @@
+<div class="container-fluid m-0 p-0 frame" [formGroup]="modifiedReformeForm">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 title">
+      <span class="float-left">
+        <mat-icon class="mr-2">edit</mat-icon>
+        <span>Modifier la réforme sélectionnée</span>
+            </span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+
+    
+   <!--  <div class="col-4 mt-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Nom
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput formControlName="nom">
+      </mat-form-field>
+    </div> -->
+    <!--
+    <div class="col-4 mt-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Reférence
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput placeholder="" formControlName="reference" type="text">
+      </mat-form-field>
+    </div>
+    -->
+
+
+   <!--  <div class="col-4 mt-3">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Prix
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput placeholder="" formControlName="prix" type="number">
+      </mat-form-field>
+    </div> -->
+    <div class="col-6">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Numéro plaque
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput type="text" [value]="data.element.numeroPlaque">
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Date
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Date de sortie
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="dateSortie">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Cause
+          <mat-icon class="required" matSuffix>star</mat-icon>
+        </mat-label>
+        <textarea matInput rows="1" formControlName="cause"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="offset-6 col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onCancel()" style="width: 90%">Annuler</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right mt-4 mb-3">
+        <button mat-raised-button (click)="onConfirm()" style="width: 100%" [disabled]="!modifiedReformeForm.valid">
+          Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

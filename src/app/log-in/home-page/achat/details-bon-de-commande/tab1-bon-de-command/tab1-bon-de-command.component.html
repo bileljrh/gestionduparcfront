@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="row pt-3">
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Achat</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let achat of Achat" [value]="achat">
+            {{achat}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Parc</mat-label>
+        <input matInput placeholder="" value="Nom du Park" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width">
+        <input type="text"
+               placeholder="Code fournisseur"
+               aria-label="Number"
+               matInput
+               [formControl]="myControl"
+               [matAutocomplete]="auto">
+        <mat-hint align="end">Nom du founisseur</mat-hint>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let code of CodeFournisseur" [value]="code">
+            {{code}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>N° pièce</mat-label>
+        <input matInput placeholder="" value="Numéro de pièce" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker1">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Montant</mat-label>
+        <input matInput placeholder="" value="17,520" disabled>
+      </mat-form-field>
+    </div>
+    <app-tab-table></app-tab-table>
+  </div>
+
+
+</div>

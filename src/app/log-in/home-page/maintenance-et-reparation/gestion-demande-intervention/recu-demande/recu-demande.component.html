@@ -1,0 +1,110 @@
+<div class="container-fluid m-0 p-0 frame" [formGroup]="modifyDemandeForm">
+    <div class="row m-0 p-0">
+      <div class="col-12 m-0 p-0 titleHeader">
+        <span class="float-left">
+          <mat-icon class="mr-2">fiber_new</mat-icon>
+          Reçu de la demande d'intervention sélectionnée
+        </span>
+        <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+      </div>
+      <div class="col-12 mt-4">
+        Données véhicule
+        <mat-divider class="mb-4"></mat-divider>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Structure</mat-label>
+          <input matInput type="text" [value]="modifyDemande.structure"  [disabled]="statusDemandeIntervention()">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>UGP</mat-label>
+          <input matInput type="text" [value]="modifyDemande.ugp"  [disabled]="statusDemandeIntervention()">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Véhicule</mat-label>
+          <input matInput type="text" [value]="vehiculetest"  [disabled]="statusDemandeIntervention()"><!--[value]="vehiculetest.id"-->
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Bénéficiaire</mat-label>
+          <input matInput type="text" [value]="modifyDemande.nomBeneficiaire"  [disabled]="statusDemandeIntervention()">
+          <mat-hint align="end">{{modifyDemande.nomBeneficiaire}}</mat-hint>
+        </mat-form-field>
+      </div>
+    
+      <div class="col-12 mt-4">
+        Données demande
+        <mat-divider class="mb-4"></mat-divider>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Demandeur</mat-label>
+          <input matInput type="text" formControlName="demandeur" readonly>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Date demande</mat-label>
+          <input matInput [ngxMatDatetimePicker]="picker" formControlName="dateDemande"  [disabled]="statusDemandeIntervention()">
+          <mat-datepicker-toggle matSuffix [for]="picker">
+          </mat-datepicker-toggle>
+          <ngx-mat-datetime-picker #picker
+                                   [showSpinners]="showSpinners"
+                                   [showSeconds]="showSeconds"
+                                   [stepHour]="stepHour" [stepMinute]="stepMinute"
+                                   [stepSecond]="stepSecond">
+          </ngx-mat-datetime-picker>
+        </mat-form-field>
+      </div>
+  
+      <div class="col-3">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>ugpReparation</mat-label>
+          <input matInput type="text" [value]="modifyDemande.ugpReparation"  [readonly]="statusDemandeIntervention()">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Index KM</mat-label>
+          <input matInput type="number" formControlName="indexKm" required>
+        </mat-form-field>
+      </div>
+      
+    
+      <div class="col-6"  *ngIf="stat || statusDemandeIntervention()">
+        <mat-form-field class="example-full-width" appearance="outline" >
+          <mat-label>Date RDV</mat-label>
+          <input matInput [ngxMatDatetimePicker]="picker1" formControlName="dateRDV"
+          [value]="modifyDemande.dateRDV"
+          [disabled]="!stat">
+          <mat-datepicker-toggle matSuffix [for]="picker1">
+          </mat-datepicker-toggle>
+          <ngx-mat-datetime-picker #picker1
+                                   [showSpinners]="showSpinners"
+                                   [showSeconds]="showSeconds"
+                                   [stepHour]="stepHour" [stepMinute]="stepMinute"
+                                   [stepSecond]="stepSecond">
+          </ngx-mat-datetime-picker>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Description de l'intervention</mat-label>
+          <textarea matInput rows="1" formControlName="descriptionIntervention" readonly></textarea>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Observation</mat-label>
+          <textarea matInput rows="1" formControlName="observation" [disabled]="statusDemandeIntervention()"></textarea>
+        </mat-form-field>
+      </div>
+
+    </div>
+  </div>
+  

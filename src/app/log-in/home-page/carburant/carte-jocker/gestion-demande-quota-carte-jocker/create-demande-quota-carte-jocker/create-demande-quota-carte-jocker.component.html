@@ -1,0 +1,68 @@
+<div class="container-fluid m-0 p-0 frame" ngxUiLoaderBlurred [formGroup]="demandeQuotaCarteJockerForm">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 header">
+      <span class="float-left">
+        <mat-icon class="mr-2">fiber_new</mat-icon>
+        Ajouter une nouvelle demande quota carte Jocker</span>
+      <span class="float-right closeDialog" (click)="closeDialog()">X</span>
+    </div>
+    <br>
+    <div class="col-4">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Numero carte</mat-label>
+        <mat-select formControlName="numCarteForm" 	[(ngModel)] = "demandeQuotaCarteJocker.numCarte">
+          <mat-option *ngFor="let carteJocker of carteJockerList" [value]="carteJocker">
+            {{carteJocker.numeroCarte}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+      <div class="col-4">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Type Carburant</mat-label>
+          <input matInput type="text" formControlName="typeCarburantForm" 	[(ngModel)] = "demandeQuotaCarteJocker.typeCarburant" >
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Demandeur</mat-label>
+          <input matInput type="text" formControlName="demandeurForm" 	[(ngModel)] = "demandeQuotaCarteJocker.demandeur" >
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>cause de blocage</mat-label>
+          <input matInput type="text" formControlName="causeDeBlocageForm" 	[(ngModel)] = "demandeQuotaCarteJocker.causeDeBlocage">
+        </mat-form-field>
+      </div>
+
+      <div class="col-4">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Quantite demandé</mat-label>
+          <input matInput type="number" formControlName="quantiteDemandeForm" 	[(ngModel)] = "demandeQuotaCarteJocker.quantiteDemande">
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Date de demande</mat-label>
+          <input matInput type="date" formControlName= "dateDemandeForm" 	[(ngModel)] = "demandeQuotaCarteJocker.dateDemande">
+        </mat-form-field>
+      </div>
+      
+      <div class="offset-6 col-3">
+        <div class="float-right mt-4 mb-3">
+          <button mat-raised-button (click)="onCancelAdding()" style="width: 90%">Annuler</button>
+        </div>
+      </div>
+  
+      <div class="col-3">
+        <div class="float-right mt-4 mb-3">
+          <button mat-raised-button (click)="onConfirmAdding()" style="width: 100%"
+                  [disabled]="!demandeQuotaCarteJockerForm.valid">Confirmer
+          </button>
+        </div>
+
+      </div>
+    </div>
+  <ngx-ui-loader></ngx-ui-loader>
+  
